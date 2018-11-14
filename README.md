@@ -10,7 +10,7 @@
 - Share feature
 - Notifications
 
-##Milestone 1 - Design:
+# Milestone 1 - Design:
 
 
 ### 3rd party libraries:
