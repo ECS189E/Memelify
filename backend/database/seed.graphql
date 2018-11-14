@@ -1,0 +1,21 @@
+mutation {
+  createUser(data: {
+    email: "mockuser@memestatic.fun"
+    password: "$2a$10$hACwQ5/HQI6FhbIISOUVeusy3sKyUDhSq36fF5d/54aAdiygJPFzm" # plaintext password: "nooneknows"
+    name: "ECS 189 Meme Bot"
+    posts: {
+      create: [{
+        title: "Hello World 👋"
+        text: "I like turtles."
+      }, {
+        title: "Join us at GraphQL Europe 🇪🇺 "
+        text: "Get a 10%-discount with this promo code on graphql-europe.org: gql-boilerplates"
+      }, {
+        title: "Solving world hunger"
+        text: "This is a draft..."
+      }]
+    }
+  }) {
+    id
+  }
+}
