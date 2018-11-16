@@ -8,13 +8,23 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-
+class ViewController: UIViewController, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        <#code#>
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        <#code#>
+    }
+    
+    
+    @IBOutlet weak var memeTable: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        memeTable.dataSource = self
         // Do any additional setup after loading the view, typically from a nib.
     }
-
 
 }
 
