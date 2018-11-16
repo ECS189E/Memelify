@@ -50,32 +50,39 @@
                                                         <constraint firstAttribute="height" constant="225" id="re7-O7-K0r"/>
                                                     </constraints>
                                                 </imageView>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X0y-36-fmC">
-                                                    <rect key="frame" x="276" y="85" width="55" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X0y-36-fmC">
+                                                    <rect key="frame" x="270" y="86.5" width="55" height="30"/>
                                                     <state key="normal" title="Favorite">
                                                         <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </state>
                                                 </button>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3fk-dM-I8T">
-                                                    <rect key="frame" x="283" y="141" width="40" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3fk-dM-I8T">
+                                                    <rect key="frame" x="280" y="141.5" width="40" height="30"/>
                                                     <state key="normal" title="Share">
                                                         <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                 </button>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Likes: 45" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BCK-yN-4ZF">
-                                                    <rect key="frame" x="282" y="34" width="70" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Likes: 45" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BCK-yN-4ZF">
+                                                    <rect key="frame" x="265" y="11.5" width="70" height="40"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="40" id="ODa-Aa-CEm"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="X0y-36-fmC" firstAttribute="leading" secondItem="xHO-aV-hn3" secondAttribute="trailing" constant="40" id="6Fl-eU-tk9"/>
                                                 <constraint firstAttribute="bottom" secondItem="xHO-aV-hn3" secondAttribute="bottom" id="Kqi-a0-cL1"/>
                                                 <constraint firstAttribute="trailing" secondItem="xHO-aV-hn3" secondAttribute="trailing" id="M9J-4a-5tz"/>
+                                                <constraint firstItem="3fk-dM-I8T" firstAttribute="top" secondItem="X0y-36-fmC" secondAttribute="bottom" constant="25" id="WVc-kr-LIf"/>
+                                                <constraint firstItem="X0y-36-fmC" firstAttribute="top" secondItem="BCK-yN-4ZF" secondAttribute="bottom" constant="35" id="XQJ-MG-rea"/>
+                                                <constraint firstItem="X0y-36-fmC" firstAttribute="top" secondItem="BCK-yN-4ZF" secondAttribute="bottom" constant="35" id="YSj-0M-7OB"/>
+                                                <constraint firstItem="3fk-dM-I8T" firstAttribute="centerX" secondItem="KPl-c7-tl8" secondAttribute="centerX" constant="185" id="beA-sc-Mp4"/>
                                                 <constraint firstItem="xHO-aV-hn3" firstAttribute="top" secondItem="KPl-c7-tl8" secondAttribute="top" constant="5" id="fLz-ZU-mDq"/>
+                                                <constraint firstItem="BCK-yN-4ZF" firstAttribute="top" secondItem="KPl-c7-tl8" secondAttribute="topMargin" id="hkE-UX-xWI"/>
+                                                <constraint firstItem="BCK-yN-4ZF" firstAttribute="leading" secondItem="KPl-c7-tl8" secondAttribute="leadingMargin" constant="250" id="lHH-al-B96"/>
                                                 <constraint firstItem="xHO-aV-hn3" firstAttribute="leading" secondItem="KPl-c7-tl8" secondAttribute="leading" constant="5" id="vpr-Ga-kCD"/>
                                             </constraints>
                                         </tableViewCellContentView>
