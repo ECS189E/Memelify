@@ -17,23 +17,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Memelify" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DEk-uh-6cj">
-                                <rect key="frame" x="0.0" y="20" width="375" height="100"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="100" id="H7k-DR-rTJ"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="SnellRoundhand-Bold" family="Snell Roundhand" pointSize="24"/>
-                                <color key="textColor" red="0.98102849719999996" green="0.981010139" blue="0.98102265600000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kap-KO-lju">
-                                <rect key="frame" x="300" y="55" width="75" height="30"/>
-                                <state key="normal" title="Settings">
-                                    <color key="titleColor" red="0.98102849719999996" green="0.981010139" blue="0.98102265600000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                </state>
-                            </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="FBD-Lb-HD8">
-                                <rect key="frame" x="0.0" y="120" width="375" height="545"/>
+                                <rect key="frame" x="0.0" y="95" width="375" height="570"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="memetile" rowHeight="218" id="8OM-2N-cO9" customClass="MemeTile" customModule="Memelify" customModuleProvider="target">
@@ -56,9 +41,9 @@
                                                         <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </state>
                                                 </button>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3fk-dM-I8T">
-                                                    <rect key="frame" x="280" y="141.5" width="40" height="30"/>
-                                                    <state key="normal" title="Share">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3fk-dM-I8T">
+                                                    <rect key="frame" x="288" y="141.5" width="24" height="24"/>
+                                                    <state key="normal" image="share.png">
                                                         <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                 </button>
@@ -100,24 +85,40 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <items>
-                                    <tabBarItem systemItem="favorites" id="lOj-1O-o5H"/>
-                                    <tabBarItem title="Home" image="cabinet.png" id="047-tM-Sqh"/>
-                                    <tabBarItem title="Hot" id="uUE-VC-fzS"/>
+                                    <tabBarItem title="Favorites" image="010-heart.png" selectedImage="010-heart.png" id="lOj-1O-o5H"/>
+                                    <tabBarItem title="Home" image="006-home-1.png" selectedImage="006-home-1.png" id="047-tM-Sqh"/>
+                                    <tabBarItem title="Trending" image="012-fire.png" selectedImage="012-fire.png" id="uUE-VC-fzS"/>
                                 </items>
                             </tabBar>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="memelify logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="ama-Df-YTj">
+                                <rect key="frame" x="75" y="30" width="225" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="225" id="76x-0L-hsN"/>
+                                    <constraint firstAttribute="height" constant="50" id="otw-zQ-Iu0"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kap-KO-lju">
+                                <rect key="frame" x="322" y="35" width="48" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="0QI-6r-4Hs"/>
+                                    <constraint firstAttribute="width" constant="48" id="NVB-65-hPC"/>
+                                </constraints>
+                                <state key="normal" image="controls.png">
+                                    <color key="titleColor" red="0.98102849719999996" green="0.981010139" blue="0.98102265600000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.2065781951" green="0.4742322564" blue="0.62390309570000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
-                            <constraint firstItem="Kap-KO-lju" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="3Xq-2w-0dB"/>
-                            <constraint firstItem="DEk-uh-6cj" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="FG6-S4-7AJ"/>
+                            <constraint firstItem="ama-Df-YTj" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="4Ng-ha-1yz"/>
+                            <constraint firstItem="Kap-KO-lju" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="15" id="NNk-Fv-Auk"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="FBD-Lb-HD8" secondAttribute="trailing" id="OTa-l6-Y9g"/>
+                            <constraint firstItem="FBD-Lb-HD8" firstAttribute="top" secondItem="ama-Df-YTj" secondAttribute="bottom" constant="15" id="Qea-kh-pO6"/>
                             <constraint firstItem="FBD-Lb-HD8" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Wv1-ra-JQ1"/>
-                            <constraint firstItem="Kap-KO-lju" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="300" id="X7c-5i-1Dj"/>
-                            <constraint firstItem="DEk-uh-6cj" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="YG6-KR-DaL"/>
-                            <constraint firstItem="Kap-KO-lju" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="35" id="YVo-JR-78m"/>
-                            <constraint firstItem="FBD-Lb-HD8" firstAttribute="top" secondItem="DEk-uh-6cj" secondAttribute="bottom" id="cEc-fD-GPl"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="FBD-Lb-HD8" secondAttribute="bottom" constant="2" id="fVH-L8-cCm"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="DEk-uh-6cj" secondAttribute="trailing" id="snZ-vq-lQa"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Kap-KO-lju" secondAttribute="trailing" constant="5" id="kXS-6S-8jY"/>
+                            <constraint firstItem="ama-Df-YTj" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="qlS-i2-o76"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="FBD-Lb-HD8" secondAttribute="bottom" constant="2" id="zh1-Tm-Sq4"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -131,6 +132,11 @@
         </scene>
     </scenes>
     <resources>
-        <image name="cabinet.png" width="24" height="24"/>
+        <image name="006-home-1.png" width="24" height="24"/>
+        <image name="010-heart.png" width="24" height="24"/>
+        <image name="012-fire.png" width="24" height="24"/>
+        <image name="controls.png" width="64" height="64"/>
+        <image name="memelify logo.png" width="511" height="94"/>
+        <image name="share.png" width="24" height="24"/>
     </resources>
 </document>
