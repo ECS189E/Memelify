@@ -90,7 +90,7 @@
                                     <tabBarItem title="Trending" image="012-fire.png" selectedImage="012-fire.png" id="uUE-VC-fzS"/>
                                 </items>
                             </tabBar>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="memelify logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="ama-Df-YTj">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Memelify-transparent.png" translatesAutoresizingMaskIntoConstraints="NO" id="ama-Df-YTj">
                                 <rect key="frame" x="75" y="30" width="225" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="225" id="76x-0L-hsN"/>
@@ -108,7 +108,7 @@
                                 </state>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.2065781951" green="0.4742322564" blue="0.62390309570000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="backgroundColor" red="0.62390309570000002" green="0.24034283941955334" blue="0.49513686941237717" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="ama-Df-YTj" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="4Ng-ha-1yz"/>
                             <constraint firstItem="Kap-KO-lju" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="15" id="NNk-Fv-Auk"/>
@@ -135,8 +135,8 @@
         <image name="006-home-1.png" width="24" height="24"/>
         <image name="010-heart.png" width="24" height="24"/>
         <image name="012-fire.png" width="24" height="24"/>
+        <image name="Memelify-transparent.png" width="641" height="259"/>
         <image name="controls.png" width="64" height="64"/>
-        <image name="memelify logo.png" width="511" height="94"/>
         <image name="share.png" width="24" height="24"/>
     </resources>
 </document>
