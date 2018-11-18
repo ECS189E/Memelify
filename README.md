@@ -21,7 +21,7 @@
 ##### We are going to use Heroku for our Platform as a Service and Alamofire for out networking library.
 ##### The API will be hosted on Heroku and it will make API calls to either facebook or reddit API. We will use Alamofire will make requests, wait for response, and parse JSON.
 
-### Listing of all of the models(data structures):
+### Listing of all of the models (data structures):
 ##### For our app we will need possibly two data structures for all of the information we need to store. The first would be the object that represents a meme to the user, called Memetile and it includes all of the relevant information pertaining to the meme inside so that it can be easily put together detailed below.
 ##### Memetile:
 - UIImage meme: the actual image of the meme
@@ -40,7 +40,7 @@
 2. Home (New): Shows the latest memes that were posted
 3. Favorites: Shows the user’s favorite memes
 
-##### At the top of the home view controller, we will have our logo centered and to the right we will have a Settings button (or a hamburger menu) that will take the user to the General Settings view controller.
+##### At the top of the home view controller, we will have our logo centered and to the right we will have a Settings button that will take the user to the General Settings view controller.
 
 ##### The general settings controller will have toggles controlling app notifications such as if they want to receive a notification reminding them to see the “Meme of the day” (meme with most likes of the day” and if they want to receive notifications about hottest memes (memes the reach a certain threshold).
 ##### Then, in Display the user will be able to select the “Default home”. Initially the app sets latest memes as default, but the user can choose to see  hottest memes as the default when they open the app. 
@@ -49,10 +49,10 @@
 ##### Lastly, the “About Us” will contain some information about us and how we developed the app. It will also contain our Github usernames so users can find us on github. We will also post the app’s repo so users can contribute to our app (open source, yay!) or they can submit issues/PRs.
 
 ### List of approximately week long tasks and a timeline of when each of them will be done:
-##### https://trello.com/b/IvjtEJzZ/memeify
+##### https://trello.com/b/IvjtEJzZ/memelify
 
 ### A trello board that includes all of the tasks and their state:
-##### https://trello.com/b/IvjtEJzZ/memeify
+##### https://trello.com/b/IvjtEJzZ/memelify
 
 
 ### A testing plan:
