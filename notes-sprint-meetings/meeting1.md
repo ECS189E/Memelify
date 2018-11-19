@@ -7,8 +7,7 @@ different views to guide the user to the best memes UC Davis has to offer such
 as hot and trending memes. With a quick tap, as soon as the app is opened, the
 meme magic begins!
 
-#####See our progress in our [Trello](https://trello.com/b/IvjtEJzZ/memelify)
-board.
+##### See our progress in our [Trello](https://trello.com/b/IvjtEJzZ/memelify) board.
 
 ## What we did:
 
