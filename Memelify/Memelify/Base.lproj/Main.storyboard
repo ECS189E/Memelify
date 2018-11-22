@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Memelify" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="FBD-Lb-HD8">
+                                <rect key="frame" x="0.0" y="95" width="375" height="570"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="memetile" rowHeight="218" id="8OM-2N-cO9" customClass="MemeTile" customModule="Memelify" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="218"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="8OM-2N-cO9" id="KPl-c7-tl8">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="217.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xHO-aV-hn3">
+                                                    <rect key="frame" x="5" y="5" width="225" height="225.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="225" id="Pbc-1D-7zb"/>
+                                                        <constraint firstAttribute="width" constant="225" id="Vrm-JJ-1du"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X0y-36-fmC">
+                                                    <rect key="frame" x="291" y="87" width="24" height="24"/>
+                                                    <state key="normal" image="010-heart.png">
+                                                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    </state>
+                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Likes: 45" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BCK-yN-4ZF">
+                                                    <rect key="frame" x="265" y="31.5" width="70" height="20.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3fk-dM-I8T">
+                                                    <rect key="frame" x="291" y="141" width="24" height="24"/>
+                                                    <state key="normal" image="share.png">
+                                                        <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailingMargin" secondItem="BCK-yN-4ZF" secondAttribute="trailing" constant="25" id="E1X-iV-6d6"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="X0y-36-fmC" secondAttribute="trailing" constant="45" id="Mjk-64-LQ1"/>
+                                                <constraint firstItem="X0y-36-fmC" firstAttribute="top" secondItem="BCK-yN-4ZF" secondAttribute="bottom" constant="35" id="XuQ-bR-nzQ"/>
+                                                <constraint firstItem="xHO-aV-hn3" firstAttribute="leading" secondItem="KPl-c7-tl8" secondAttribute="leading" constant="5" id="fAx-h0-sr5"/>
+                                                <constraint firstItem="BCK-yN-4ZF" firstAttribute="top" secondItem="KPl-c7-tl8" secondAttribute="topMargin" constant="20" id="gAn-K9-124"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="3fk-dM-I8T" secondAttribute="trailing" constant="45" id="gqZ-jZ-hEx"/>
+                                                <constraint firstAttribute="bottom" secondItem="xHO-aV-hn3" secondAttribute="bottom" id="nWH-oV-KJR"/>
+                                                <constraint firstItem="xHO-aV-hn3" firstAttribute="top" secondItem="KPl-c7-tl8" secondAttribute="top" constant="5" id="v9L-ru-ECs"/>
+                                                <constraint firstItem="3fk-dM-I8T" firstAttribute="top" secondItem="X0y-36-fmC" secondAttribute="bottom" constant="30" id="vra-4t-gIv"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="favorite" destination="X0y-36-fmC" id="MF8-YX-XwL"/>
+                                            <outlet property="likes" destination="BCK-yN-4ZF" id="jZz-ji-wdu"/>
+                                            <outlet property="meme" destination="xHO-aV-hn3" id="6aC-9k-wcK"/>
+                                            <outlet property="share" destination="3fk-dM-I8T" id="fzC-A7-Uee"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <tabBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CE2-Xv-dJW">
+                                <rect key="frame" x="0.0" y="617" width="375" height="49"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <items>
+                                    <tabBarItem title="Favorites" image="010-heart.png" selectedImage="010-heart.png" id="lOj-1O-o5H"/>
+                                    <tabBarItem title="Home" image="006-home-1.png" selectedImage="006-home-1.png" id="047-tM-Sqh"/>
+                                    <tabBarItem title="Trending" image="012-fire.png" selectedImage="012-fire.png" id="uUE-VC-fzS"/>
+                                </items>
+                            </tabBar>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Memelify-transparent.png" translatesAutoresizingMaskIntoConstraints="NO" id="ama-Df-YTj">
+                                <rect key="frame" x="75" y="30" width="225" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="225" id="76x-0L-hsN"/>
+                                    <constraint firstAttribute="height" constant="50" id="otw-zQ-Iu0"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kap-KO-lju">
+                                <rect key="frame" x="322" y="35" width="48" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="0QI-6r-4Hs"/>
+                                    <constraint firstAttribute="width" constant="48" id="NVB-65-hPC"/>
+                                </constraints>
+                                <state key="normal" image="controls.png">
+                                    <color key="titleColor" red="0.98102849719999996" green="0.981010139" blue="0.98102265600000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.62390309570000002" green="0.24034283941955334" blue="0.49513686941237717" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="ama-Df-YTj" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="4Ng-ha-1yz"/>
+                            <constraint firstItem="Kap-KO-lju" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="15" id="NNk-Fv-Auk"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="FBD-Lb-HD8" secondAttribute="trailing" id="OTa-l6-Y9g"/>
+                            <constraint firstItem="FBD-Lb-HD8" firstAttribute="top" secondItem="ama-Df-YTj" secondAttribute="bottom" constant="15" id="Qea-kh-pO6"/>
+                            <constraint firstItem="FBD-Lb-HD8" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Wv1-ra-JQ1"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="FBD-Lb-HD8" secondAttribute="bottom" constant="2" id="fVH-L8-cCm"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Kap-KO-lju" secondAttribute="trailing" constant="5" id="kXS-6S-8jY"/>
+                            <constraint firstItem="ama-Df-YTj" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="qlS-i2-o76"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="FBD-Lb-HD8" secondAttribute="bottom" constant="2" id="zh1-Tm-Sq4"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="memeTable" destination="FBD-Lb-HD8" id="kXo-fq-uDZ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="133.59999999999999" y="133.5832083958021"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="006-home-1.png" width="24" height="24"/>
+        <image name="010-heart.png" width="24" height="24"/>
+        <image name="012-fire.png" width="24" height="24"/>
+        <image name="Memelify-transparent.png" width="641" height="259"/>
+        <image name="controls.png" width="64" height="64"/>
+        <image name="share.png" width="24" height="24"/>
+    </resources>
+</document>
