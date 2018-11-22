@@ -15,16 +15,13 @@ class FavoritesViewController: UIViewController {
 
         // Do any additional setup after loading the view.
     }
-    
 
-    /*
-    // MARK: - Navigation
+    // Shows Memelify logo on the navigation bar
+    override func viewDidAppear(_ animated: Bool) {
+        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
+        imageView.contentMode = .scaleAspectFit
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        imageView.image = UIImage(named: "Memelify-transparent.png")
+        navigationItem.titleView = imageView
     }
-    */
-
 }
