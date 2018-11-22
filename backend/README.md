@@ -17,15 +17,13 @@ This directory contains code for Memelify API service
 | `limit`    |  Integer - number of items to return    |
 
 
-## Example:
-
-* Returns a list of 2 latest memes starting from 3
+For example, I would like to make an API call to returns a list of 2 latest memes starting from index 3.
 ```
-http://hostname/api/memes/latest?offset=3&limit=5
+http://206.189.218.125/api/memes/latest?offset=3&limit=5
 ```
+The response is a json object.
 
-The response is a json object
-```json
+```javascript
 {
     has_more: true,
     memes: [
@@ -48,17 +46,18 @@ The response is a json object
 }
 ```
 
-* With:
+* The JSON object has following skeleton:
 ```s
-has_more --- if we still have more items to scroll down
-offset   --- current offset index
-size     --- size of the whole list
-memes    --- collection of memes object
+{
+    has_more: bool  --- if we still have more items to scroll down
+    offset:   int   --- current offset index
+    size:     int   --- size of the whole list
+    memes:    []    --- collection of memes object
+}
 ```
 
 ### Limitations
 
-* The current implementation does not if there is a new meme appeared. Therefore,
-we need to manually restart docker container to reload the bot.
-
 * No HTTPS.
+* The current implementation does not know if there is a new meme appeared.
+Therefore, we need to manually restart docker container to reload the bot.
