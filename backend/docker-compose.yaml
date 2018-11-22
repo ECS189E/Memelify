@@ -1,0 +1,18 @@
+
+version: '3'
+
+services:
+  api:
+    restart: always
+    build: ./flask
+    ports:
+      - "8000:8000"
+    command: gunicorn -w 1 -b :8000 meme_bot.app:app
+
+  nginx:
+    restart: always
+    build: ./nginx
+    depends_on:
+      - "api"
+    ports:
+      - "80:80"
