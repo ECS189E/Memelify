@@ -9,6 +9,8 @@
 import UIKit
 
 class HomeViewController: UIViewController, UITableViewDataSource {
+        @IBOutlet weak var memeTable: UITableView!
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
@@ -17,10 +19,7 @@ class HomeViewController: UIViewController, UITableViewDataSource {
         let temp = UITableViewCell()
         return temp
     }
-    
-    
-    @IBOutlet weak var memeTable: UITableView!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         memeTable.dataSource = self
