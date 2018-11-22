@@ -7,22 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		DE244825219FAAA5008DF45E /* share.png in Resources */ = {isa = PBXBuildFile; fileRef = DE24481F219FAAA3008DF45E /* share.png */; };
-		DE244826219FAAA5008DF45E /* memelify logo.png in Resources */ = {isa = PBXBuildFile; fileRef = DE244820219FAAA4008DF45E /* memelify logo.png */; };
-		DE244827219FAAA5008DF45E /* controls.png in Resources */ = {isa = PBXBuildFile; fileRef = DE244821219FAAA4008DF45E /* controls.png */; };
-		DE244828219FAAA5008DF45E /* 010-heart.png in Resources */ = {isa = PBXBuildFile; fileRef = DE244822219FAAA4008DF45E /* 010-heart.png */; };
-		DE244829219FAAA5008DF45E /* 006-home-1.png in Resources */ = {isa = PBXBuildFile; fileRef = DE244823219FAAA5008DF45E /* 006-home-1.png */; };
-		DE24482A219FAAA5008DF45E /* 012-fire.png in Resources */ = {isa = PBXBuildFile; fileRef = DE244824219FAAA5008DF45E /* 012-fire.png */; };
+		8A8F281821A63A660037B9F8 /* MemeTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8F281721A63A650037B9F8 /* MemeTile.swift */; };
+		8A8F281B21A63A7C0037B9F8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8F281A21A63A7C0037B9F8 /* ViewController.swift */; };
 		DE24482C21A0F6DB008DF45E /* Memelify-transparent.png in Resources */ = {isa = PBXBuildFile; fileRef = DE24482B21A0F6D9008DF45E /* Memelify-transparent.png */; };
 		DE24482E21A0F6EB008DF45E /* loading.jpg in Resources */ = {isa = PBXBuildFile; fileRef = DE24482D21A0F6EA008DF45E /* loading.jpg */; };
 		DE56B977219E245B0044FB9F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE56B976219E245B0044FB9F /* AppDelegate.swift */; };
-		DE56B979219E245B0044FB9F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE56B978219E245B0044FB9F /* ViewController.swift */; };
 		DE56B97C219E245B0044FB9F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE56B97A219E245B0044FB9F /* Main.storyboard */; };
 		DE56B97E219E24620044FB9F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DE56B97D219E24620044FB9F /* Assets.xcassets */; };
 		DE56B981219E24620044FB9F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE56B97F219E24620044FB9F /* LaunchScreen.storyboard */; };
 		DE56B98C219E24630044FB9F /* MemelifyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE56B98B219E24630044FB9F /* MemelifyTests.swift */; };
 		DE56B997219E24630044FB9F /* MemelifyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE56B996219E24630044FB9F /* MemelifyUITests.swift */; };
-		DEDEDC1F219EB80F00A31CFF /* MemeTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEDEDC1E219EB80F00A31CFF /* MemeTile.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,17 +37,30 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		DE24481F219FAAA3008DF45E /* share.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = share.png; path = "my-icons-collection/share.png"; sourceTree = SOURCE_ROOT; };
-		DE244820219FAAA4008DF45E /* memelify logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "memelify logo.png"; path = "my-icons-collection/memelify logo.png"; sourceTree = SOURCE_ROOT; };
-		DE244821219FAAA4008DF45E /* controls.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = controls.png; path = "my-icons-collection/controls.png"; sourceTree = SOURCE_ROOT; };
-		DE244822219FAAA4008DF45E /* 010-heart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "010-heart.png"; path = "my-icons-collection/010-heart.png"; sourceTree = SOURCE_ROOT; };
-		DE244823219FAAA5008DF45E /* 006-home-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "006-home-1.png"; path = "my-icons-collection/006-home-1.png"; sourceTree = SOURCE_ROOT; };
-		DE244824219FAAA5008DF45E /* 012-fire.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "012-fire.png"; path = "my-icons-collection/012-fire.png"; sourceTree = SOURCE_ROOT; };
-		DE24482B21A0F6D9008DF45E /* Memelify-transparent.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Memelify-transparent.png"; path = "../../images/Memelify-transparent.png"; sourceTree = "<group>"; };
-		DE24482D21A0F6EA008DF45E /* loading.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = loading.jpg; path = ../../images/loading.jpg; sourceTree = "<group>"; };
+		8A8F280121A6396B0037B9F8 /* 009-star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "009-star.png"; sourceTree = "<group>"; };
+		8A8F280221A6396B0037B9F8 /* 004-star-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "004-star-1.png"; sourceTree = "<group>"; };
+		8A8F280321A6396B0037B9F8 /* 001-fire-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "001-fire-1.png"; sourceTree = "<group>"; };
+		8A8F280421A6396B0037B9F8 /* memelify logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "memelify logo.png"; sourceTree = "<group>"; };
+		8A8F280621A6396B0037B9F8 /* license.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = license.html; sourceTree = "<group>"; };
+		8A8F280721A6396B0037B9F8 /* backup.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = backup.txt; sourceTree = "<group>"; };
+		8A8F280821A6396B0037B9F8 /* 005-settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "005-settings.png"; sourceTree = "<group>"; };
+		8A8F280921A6396B0037B9F8 /* 007-adjust.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "007-adjust.png"; sourceTree = "<group>"; };
+		8A8F280A21A6396B0037B9F8 /* monoshare.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = monoshare.png; sourceTree = "<group>"; };
+		8A8F280B21A6396B0037B9F8 /* 010-heart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "010-heart.png"; sourceTree = "<group>"; };
+		8A8F280C21A6396B0037B9F8 /* 002-home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "002-home.png"; sourceTree = "<group>"; };
+		8A8F280D21A6396B0037B9F8 /* 003-like.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "003-like.png"; sourceTree = "<group>"; };
+		8A8F280E21A6396B0037B9F8 /* share.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = share.png; sourceTree = "<group>"; };
+		8A8F280F21A6396B0037B9F8 /* 012-fire.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "012-fire.png"; sourceTree = "<group>"; };
+		8A8F281021A6396B0037B9F8 /* 006-home-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "006-home-1.png"; sourceTree = "<group>"; };
+		8A8F281121A6396B0037B9F8 /* controls.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = controls.png; sourceTree = "<group>"; };
+		8A8F281221A6396B0037B9F8 /* 008-gear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "008-gear.png"; sourceTree = "<group>"; };
+		8A8F281321A6396B0037B9F8 /* 011-controls.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "011-controls.png"; sourceTree = "<group>"; };
+		8A8F281721A63A650037B9F8 /* MemeTile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemeTile.swift; sourceTree = "<group>"; };
+		8A8F281A21A63A7C0037B9F8 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		DE24482B21A0F6D9008DF45E /* Memelify-transparent.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Memelify-transparent.png"; sourceTree = "<group>"; };
+		DE24482D21A0F6EA008DF45E /* loading.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = loading.jpg; sourceTree = "<group>"; };
 		DE56B973219E245B0044FB9F /* Memelify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Memelify.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE56B976219E245B0044FB9F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		DE56B978219E245B0044FB9F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		DE56B97B219E245B0044FB9F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DE56B97D219E24620044FB9F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DE56B980219E24620044FB9F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -64,7 +71,6 @@
 		DE56B992219E24630044FB9F /* MemelifyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MemelifyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE56B996219E24630044FB9F /* MemelifyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemelifyUITests.swift; sourceTree = "<group>"; };
 		DE56B998219E24640044FB9F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		DEDEDC1E219EB80F00A31CFF /* MemeTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemeTile.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +98,57 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8A8F280021A6396B0037B9F8 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				DE24482D21A0F6EA008DF45E /* loading.jpg */,
+				8A8F280121A6396B0037B9F8 /* 009-star.png */,
+				DE24482B21A0F6D9008DF45E /* Memelify-transparent.png */,
+				8A8F280221A6396B0037B9F8 /* 004-star-1.png */,
+				8A8F280321A6396B0037B9F8 /* 001-fire-1.png */,
+				8A8F280421A6396B0037B9F8 /* memelify logo.png */,
+				8A8F280521A6396B0037B9F8 /* license */,
+				8A8F280721A6396B0037B9F8 /* backup.txt */,
+				8A8F280821A6396B0037B9F8 /* 005-settings.png */,
+				8A8F280921A6396B0037B9F8 /* 007-adjust.png */,
+				8A8F280A21A6396B0037B9F8 /* monoshare.png */,
+				8A8F280B21A6396B0037B9F8 /* 010-heart.png */,
+				8A8F280C21A6396B0037B9F8 /* 002-home.png */,
+				8A8F280D21A6396B0037B9F8 /* 003-like.png */,
+				8A8F280E21A6396B0037B9F8 /* share.png */,
+				8A8F280F21A6396B0037B9F8 /* 012-fire.png */,
+				8A8F281021A6396B0037B9F8 /* 006-home-1.png */,
+				8A8F281121A6396B0037B9F8 /* controls.png */,
+				8A8F281221A6396B0037B9F8 /* 008-gear.png */,
+				8A8F281321A6396B0037B9F8 /* 011-controls.png */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		8A8F280521A6396B0037B9F8 /* license */ = {
+			isa = PBXGroup;
+			children = (
+				8A8F280621A6396B0037B9F8 /* license.html */,
+			);
+			path = license;
+			sourceTree = "<group>";
+		};
+		8A8F281621A63A650037B9F8 /* Supports */ = {
+			isa = PBXGroup;
+			children = (
+				8A8F281721A63A650037B9F8 /* MemeTile.swift */,
+			);
+			path = Supports;
+			sourceTree = "<group>";
+		};
+		8A8F281921A63A7C0037B9F8 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				8A8F281A21A63A7C0037B9F8 /* ViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
 		DE56B96A219E245B0044FB9F = {
 			isa = PBXGroup;
 			children = (
@@ -115,21 +172,14 @@
 		DE56B975219E245B0044FB9F /* Memelify */ = {
 			isa = PBXGroup;
 			children = (
+				8A8F281921A63A7C0037B9F8 /* ViewControllers */,
+				8A8F281621A63A650037B9F8 /* Supports */,
+				8A8F280021A6396B0037B9F8 /* Resources */,
 				DE56B976219E245B0044FB9F /* AppDelegate.swift */,
-				DE56B978219E245B0044FB9F /* ViewController.swift */,
 				DE56B97A219E245B0044FB9F /* Main.storyboard */,
-				DE244823219FAAA5008DF45E /* 006-home-1.png */,
-				DE24482D21A0F6EA008DF45E /* loading.jpg */,
-				DE244822219FAAA4008DF45E /* 010-heart.png */,
-				DE24482B21A0F6D9008DF45E /* Memelify-transparent.png */,
-				DE244824219FAAA5008DF45E /* 012-fire.png */,
-				DE244821219FAAA4008DF45E /* controls.png */,
-				DE244820219FAAA4008DF45E /* memelify logo.png */,
-				DE24481F219FAAA3008DF45E /* share.png */,
 				DE56B97D219E24620044FB9F /* Assets.xcassets */,
 				DE56B97F219E24620044FB9F /* LaunchScreen.storyboard */,
 				DE56B982219E24620044FB9F /* Info.plist */,
-				DEDEDC1E219EB80F00A31CFF /* MemeTile.swift */,
 			);
 			path = Memelify;
 			sourceTree = "<group>";
@@ -260,13 +310,7 @@
 				DE56B97E219E24620044FB9F /* Assets.xcassets in Resources */,
 				DE24482C21A0F6DB008DF45E /* Memelify-transparent.png in Resources */,
 				DE56B97C219E245B0044FB9F /* Main.storyboard in Resources */,
-				DE244829219FAAA5008DF45E /* 006-home-1.png in Resources */,
-				DE244828219FAAA5008DF45E /* 010-heart.png in Resources */,
-				DE244825219FAAA5008DF45E /* share.png in Resources */,
-				DE24482A219FAAA5008DF45E /* 012-fire.png in Resources */,
 				DE24482E21A0F6EB008DF45E /* loading.jpg in Resources */,
-				DE244826219FAAA5008DF45E /* memelify logo.png in Resources */,
-				DE244827219FAAA5008DF45E /* controls.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -291,9 +335,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DE56B979219E245B0044FB9F /* ViewController.swift in Sources */,
-				DEDEDC1F219EB80F00A31CFF /* MemeTile.swift in Sources */,
+				8A8F281B21A63A7C0037B9F8 /* ViewController.swift in Sources */,
 				DE56B977219E245B0044FB9F /* AppDelegate.swift in Sources */,
+				8A8F281821A63A660037B9F8 /* MemeTile.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
