@@ -18,6 +18,7 @@ SUPPORTED_EXTENSION = {'jpeg', 'jpg', 'gif', 'png'}
 
 class RedditMemeBot:
     """Find all meme posts in a given subreddit"""
+
     def __init__(self, subreddit_name, client_id, client_secret):
         self.bot = create_bot(subreddit_name, client_id, client_secret)
         self.latest = [p for p in self.bot.new(limit=None) if is_meme(p)]
@@ -35,9 +36,11 @@ class RedditMemeBot:
         """Returns list of hottest memes in current subreddit"""
         limit = min(limit, len(self.hottest) - offset)
         has_more = True if offset + limit < len(self.hottest) else False
-
         hottest_memes = [meme2dict(p) for p in self.hottest[offset:offset+limit]]
         return has_more, hottest_memes
+
+    def refresh(self, ):
+        return NotImplementedError
 
 
 def create_bot(name, client_id, client_secret):
