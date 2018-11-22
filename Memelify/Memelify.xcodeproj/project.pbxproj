@@ -8,8 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		8A8F281821A63A660037B9F8 /* MemeTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8F281721A63A650037B9F8 /* MemeTile.swift */; };
-		8A8F281B21A63A7C0037B9F8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8F281A21A63A7C0037B9F8 /* ViewController.swift */; };
+		8A8F281B21A63A7C0037B9F8 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8F281A21A63A7C0037B9F8 /* HomeViewController.swift */; };
 		8A8F281F21A64B650037B9F8 /* computer-guy.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A8F281E21A64B650037B9F8 /* computer-guy.png */; };
+		8A8F282121A6771C0037B9F8 /* 006-home.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A8F282021A6771B0037B9F8 /* 006-home.png */; };
+		8A8F282321A67B590037B9F8 /* TrendingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8F282221A67B590037B9F8 /* TrendingViewController.swift */; };
+		8A8F282521A67B6A0037B9F8 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8F282421A67B6A0037B9F8 /* FavoritesViewController.swift */; };
 		DE24482C21A0F6DB008DF45E /* Memelify-transparent.png in Resources */ = {isa = PBXBuildFile; fileRef = DE24482B21A0F6D9008DF45E /* Memelify-transparent.png */; };
 		DE56B977219E245B0044FB9F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE56B976219E245B0044FB9F /* AppDelegate.swift */; };
 		DE56B97C219E245B0044FB9F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE56B97A219E245B0044FB9F /* Main.storyboard */; };
@@ -51,13 +54,15 @@
 		8A8F280D21A6396B0037B9F8 /* 003-like.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "003-like.png"; sourceTree = "<group>"; };
 		8A8F280E21A6396B0037B9F8 /* share.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = share.png; sourceTree = "<group>"; };
 		8A8F280F21A6396B0037B9F8 /* 012-fire.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "012-fire.png"; sourceTree = "<group>"; };
-		8A8F281021A6396B0037B9F8 /* 006-home-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "006-home-1.png"; sourceTree = "<group>"; };
 		8A8F281121A6396B0037B9F8 /* controls.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = controls.png; sourceTree = "<group>"; };
 		8A8F281221A6396B0037B9F8 /* 008-gear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "008-gear.png"; sourceTree = "<group>"; };
 		8A8F281321A6396B0037B9F8 /* 011-controls.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "011-controls.png"; sourceTree = "<group>"; };
 		8A8F281721A63A650037B9F8 /* MemeTile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemeTile.swift; sourceTree = "<group>"; };
-		8A8F281A21A63A7C0037B9F8 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		8A8F281A21A63A7C0037B9F8 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		8A8F281E21A64B650037B9F8 /* computer-guy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "computer-guy.png"; sourceTree = "<group>"; };
+		8A8F282021A6771B0037B9F8 /* 006-home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "006-home.png"; sourceTree = "<group>"; };
+		8A8F282221A67B590037B9F8 /* TrendingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingViewController.swift; sourceTree = "<group>"; };
+		8A8F282421A67B6A0037B9F8 /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
 		DE24482B21A0F6D9008DF45E /* Memelify-transparent.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Memelify-transparent.png"; sourceTree = "<group>"; };
 		DE56B973219E245B0044FB9F /* Memelify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Memelify.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE56B976219E245B0044FB9F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -113,11 +118,11 @@
 				8A8F280921A6396B0037B9F8 /* 007-adjust.png */,
 				8A8F280A21A6396B0037B9F8 /* monoshare.png */,
 				8A8F280B21A6396B0037B9F8 /* 010-heart.png */,
+				8A8F282021A6771B0037B9F8 /* 006-home.png */,
 				8A8F280C21A6396B0037B9F8 /* 002-home.png */,
 				8A8F280D21A6396B0037B9F8 /* 003-like.png */,
 				8A8F280E21A6396B0037B9F8 /* share.png */,
 				8A8F280F21A6396B0037B9F8 /* 012-fire.png */,
-				8A8F281021A6396B0037B9F8 /* 006-home-1.png */,
 				8A8F281121A6396B0037B9F8 /* controls.png */,
 				8A8F281221A6396B0037B9F8 /* 008-gear.png */,
 				8A8F281321A6396B0037B9F8 /* 011-controls.png */,
@@ -144,7 +149,9 @@
 		8A8F281921A63A7C0037B9F8 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				8A8F281A21A63A7C0037B9F8 /* ViewController.swift */,
+				8A8F281A21A63A7C0037B9F8 /* HomeViewController.swift */,
+				8A8F282221A67B590037B9F8 /* TrendingViewController.swift */,
+				8A8F282421A67B6A0037B9F8 /* FavoritesViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -309,6 +316,7 @@
 				DE56B981219E24620044FB9F /* LaunchScreen.storyboard in Resources */,
 				DE56B97E219E24620044FB9F /* Assets.xcassets in Resources */,
 				DE24482C21A0F6DB008DF45E /* Memelify-transparent.png in Resources */,
+				8A8F282121A6771C0037B9F8 /* 006-home.png in Resources */,
 				DE56B97C219E245B0044FB9F /* Main.storyboard in Resources */,
 				8A8F281F21A64B650037B9F8 /* computer-guy.png in Resources */,
 			);
@@ -335,8 +343,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8A8F281B21A63A7C0037B9F8 /* ViewController.swift in Sources */,
+				8A8F281B21A63A7C0037B9F8 /* HomeViewController.swift in Sources */,
+				8A8F282321A67B590037B9F8 /* TrendingViewController.swift in Sources */,
 				DE56B977219E245B0044FB9F /* AppDelegate.swift in Sources */,
+				8A8F282521A67B6A0037B9F8 /* FavoritesViewController.swift in Sources */,
 				8A8F281821A63A660037B9F8 /* MemeTile.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITableViewDataSource {
+class HomeViewController: UIViewController, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
@@ -27,16 +27,12 @@ class ViewController: UIViewController, UITableViewDataSource {
         // Do any additional setup after loading the view, typically from a nib.
     }
 
+    // Shows Memelify logo on the navigation bar
     override func viewDidAppear(_ animated: Bool) {
-        // Shows Memelify logo on the navigation bar
-        //let nav = self.navigationController?.navigationBar
-        navigationController?.navigationBar.prefersLargeTitles = false
-
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
         imageView.contentMode = .scaleAspectFit
 
         imageView.image = UIImage(named: "Memelify-transparent.png")
-
         navigationItem.titleView = imageView
     }
 
