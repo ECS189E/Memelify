@@ -9,15 +9,17 @@
 import UIKit
 
 class HomeViewController: UIViewController, UITableViewDataSource {
-        @IBOutlet weak var memeTable: UITableView!
+
+    @IBOutlet weak var memeTable: UITableView!
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let temp = UITableViewCell()
-        return temp
+        let tile = MemeTile()
+        tile.displayImage(address: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Cat03.jpg/1200px-Cat03.jpg")
+        return tile
     }
 
     override func viewDidLoad() {
