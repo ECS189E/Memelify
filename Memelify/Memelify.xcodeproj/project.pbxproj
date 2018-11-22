@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		ADBBFCC321A71B8800E67796 /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADBBFCC221A71B8800E67796 /* RoundButton.swift */; };
 		DE244825219FAAA5008DF45E /* share.png in Resources */ = {isa = PBXBuildFile; fileRef = DE24481F219FAAA3008DF45E /* share.png */; };
 		DE244826219FAAA5008DF45E /* memelify logo.png in Resources */ = {isa = PBXBuildFile; fileRef = DE244820219FAAA4008DF45E /* memelify logo.png */; };
 		DE244827219FAAA5008DF45E /* controls.png in Resources */ = {isa = PBXBuildFile; fileRef = DE244821219FAAA4008DF45E /* controls.png */; };
@@ -43,6 +44,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		ADBBFCC221A71B8800E67796 /* RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
 		DE24481F219FAAA3008DF45E /* share.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = share.png; path = "my-icons-collection/share.png"; sourceTree = SOURCE_ROOT; };
 		DE244820219FAAA4008DF45E /* memelify logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "memelify logo.png"; path = "my-icons-collection/memelify logo.png"; sourceTree = SOURCE_ROOT; };
 		DE244821219FAAA4008DF45E /* controls.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = controls.png; path = "my-icons-collection/controls.png"; sourceTree = SOURCE_ROOT; };
@@ -116,6 +118,7 @@
 			isa = PBXGroup;
 			children = (
 				DE56B976219E245B0044FB9F /* AppDelegate.swift */,
+				ADBBFCC221A71B8800E67796 /* RoundButton.swift */,
 				DE56B978219E245B0044FB9F /* ViewController.swift */,
 				DE56B97A219E245B0044FB9F /* Main.storyboard */,
 				DE244823219FAAA5008DF45E /* 006-home-1.png */,
@@ -291,6 +294,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ADBBFCC321A71B8800E67796 /* RoundButton.swift in Sources */,
 				DE56B979219E245B0044FB9F /* ViewController.swift in Sources */,
 				DEDEDC1F219EB80F00A31CFF /* MemeTile.swift in Sources */,
 				DE56B977219E245B0044FB9F /* AppDelegate.swift in Sources */,
