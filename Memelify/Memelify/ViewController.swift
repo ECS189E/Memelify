@@ -14,8 +14,13 @@ class ViewController: UIViewController, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let temp = UITableViewCell()
-        return temp
+        let cell = tableView.dequeueReusableCell(withIdentifier: "memetile", for: indexPath) as! MemeTile
+        
+        
+        cell.meme?.image = UIImage(named: "loading.jpg")
+        cell.likes?.text = "Likes: " + String(Int.random(in: 10..<100))
+        //cell.meme?.image.con
+        return cell
     }
     
     
