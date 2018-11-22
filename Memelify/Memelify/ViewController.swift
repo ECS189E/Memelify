@@ -16,10 +16,21 @@ class ViewController: UIViewController, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "memetile", for: indexPath) as! MemeTile
         
+        let bordercolor = UIColor.white.cgColor
         
+        //custom cell settings
+        cell.layer.borderWidth = 3
+        cell.layer.borderColor = UIColor.blue.cgColor
+        cell.layer.cornerRadius = 20
+        
+        //uiimage meme settings
         cell.meme?.image = UIImage(named: "loading.jpg")
+        cell.meme?.layer.borderWidth = 2
+        cell.meme?.layer.borderColor = bordercolor
+        
+        //uilabel like settings
         cell.likes?.text = "Likes: " + String(Int.random(in: 10..<100))
-        //cell.meme?.image.con
+        
         return cell
     }
     
