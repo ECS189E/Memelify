@@ -111,7 +111,9 @@ the plan B).
 - How much time users spend on the app
 - Which feature the user prefers (which features they spend more time on)
 
-### Our Team Dat Nguyen - datlife
+### Our Team 
+
+Dat Nguyen - datlife
 ![pic](https://github.com/ECS189E/Memelify/blob/master/images/dat.jpg)
 
 Kauana dos Santos - kauana
