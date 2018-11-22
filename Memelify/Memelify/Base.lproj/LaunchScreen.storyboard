@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
-    <device id="retina4_7" orientation="portrait">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+    <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -14,40 +14,45 @@
             <objects>
                 <viewController id="01J-lp-oVM" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Memelify-transparent.png" translatesAutoresizingMaskIntoConstraints="NO" id="gqT-Jw-jN6">
-                                <rect key="frame" x="12.5" y="70" width="350" height="259"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="computer-guy.png" translatesAutoresizingMaskIntoConstraints="NO" id="k5S-JT-NVX">
+                                <rect key="frame" x="32" y="247" width="311" height="269"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="350" id="6E7-HK-XSr"/>
+                                    <constraint firstAttribute="width" constant="311" id="0MW-3g-GWf"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="246" id="2xE-uO-xCn"/>
+                                    <constraint firstAttribute="height" constant="269" id="8Os-4i-pxc"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="204" id="c7n-g5-vEp"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="loading.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="DYe-dy-2NO">
-                                <rect key="frame" x="87.5" y="359" width="200" height="200"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading Memes . . ." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cuQ-j2-5oQ">
+                                <rect key="frame" x="72.333333333333329" y="482" width="230.33333333333337" height="34"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="200" id="4O5-uE-9rW"/>
-                                    <constraint firstAttribute="height" constant="200" id="TeD-eI-mar"/>
+                                    <constraint firstAttribute="height" constant="34" id="ker-Om-Ee7"/>
                                 </constraints>
-                            </imageView>
+                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.67173619923857864" green="0.29656384541479675" blue="0.55137648221193425" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="DYe-dy-2NO" firstAttribute="top" secondItem="gqT-Jw-jN6" secondAttribute="bottom" constant="30" id="2hQ-VV-CHg"/>
-                            <constraint firstItem="gqT-Jw-jN6" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="50" id="Du3-A1-FJu"/>
-                            <constraint firstItem="DYe-dy-2NO" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="YAX-Ov-QIP"/>
-                            <constraint firstItem="gqT-Jw-jN6" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="xTO-Uc-Cyy"/>
+                            <constraint firstItem="k5S-JT-NVX" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="32" id="9xQ-pM-Mzp"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="cuQ-j2-5oQ" secondAttribute="bottom" constant="262" id="E53-KQ-qpz"/>
+                            <constraint firstItem="cuQ-j2-5oQ" firstAttribute="centerX" secondItem="k5S-JT-NVX" secondAttribute="centerX" id="Q6U-WS-NOo"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="k5S-JT-NVX" secondAttribute="trailing" constant="32" id="YAN-0D-AsP"/>
+                            <constraint firstItem="cuQ-j2-5oQ" firstAttribute="top" secondItem="k5S-JT-NVX" secondAttribute="bottom" constant="-34" id="lBr-Zt-SDy"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53" y="375"/>
+            <point key="canvasLocation" x="52" y="374.6305418719212"/>
         </scene>
     </scenes>
     <resources>
-        <image name="Memelify-transparent.png" width="641" height="259"/>
-        <image name="loading.jpg" width="500" height="368"/>
+        <image name="computer-guy.png" width="900" height="523"/>
     </resources>
 </document>
