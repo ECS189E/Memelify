@@ -13,9 +13,6 @@
 		8A8F282321A67B590037B9F8 /* TrendingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8F282221A67B590037B9F8 /* TrendingViewController.swift */; };
 		8A8F282521A67B6A0037B9F8 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8F282421A67B6A0037B9F8 /* FavoritesViewController.swift */; };
 		8A8F282C21A739A40037B9F8 /* meme-example1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8A8F282921A739A40037B9F8 /* meme-example1.jpg */; };
-		8A8F282D21A739A40037B9F8 /* meme-example3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8A8F282A21A739A40037B9F8 /* meme-example3.jpg */; };
-		8A8F282E21A739A40037B9F8 /* memee-xample2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8A8F282B21A739A40037B9F8 /* memee-xample2.jpg */; };
-		9BB34989154973F2CCC51B99 /* Pods_Memelify.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 341BC62F284ACBF7234A542F /* Pods_Memelify.framework */; };
 		DE24482C21A0F6DB008DF45E /* Memelify-transparent.png in Resources */ = {isa = PBXBuildFile; fileRef = DE24482B21A0F6D9008DF45E /* Memelify-transparent.png */; };
 		DE56B977219E245B0044FB9F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE56B976219E245B0044FB9F /* AppDelegate.swift */; };
 		DE56B97C219E245B0044FB9F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE56B97A219E245B0044FB9F /* Main.storyboard */; };
@@ -44,33 +41,24 @@
 
 /* Begin PBXFileReference section */
 		30CB0809821D37314BCE72A4 /* Pods-Memelify.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Memelify.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Memelify/Pods-Memelify.debug.xcconfig"; sourceTree = "<group>"; };
-		341BC62F284ACBF7234A542F /* Pods_Memelify.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Memelify.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		88CC833CDE3B2D1D65485575 /* Pods-Memelify.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Memelify.release.xcconfig"; path = "Pods/Target Support Files/Pods-Memelify/Pods-Memelify.release.xcconfig"; sourceTree = "<group>"; };
-		8A8F280121A6396B0037B9F8 /* 009-star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "009-star.png"; sourceTree = "<group>"; };
-		8A8F280221A6396B0037B9F8 /* 004-star-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "004-star-1.png"; sourceTree = "<group>"; };
-		8A8F280321A6396B0037B9F8 /* 001-fire-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "001-fire-1.png"; sourceTree = "<group>"; };
+		8A8F280121A6396B0037B9F8 /* 01-star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "01-star.png"; sourceTree = "<group>"; };
+		8A8F280221A6396B0037B9F8 /* 02-star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "02-star.png"; sourceTree = "<group>"; };
 		8A8F280421A6396B0037B9F8 /* memelify logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "memelify logo.png"; sourceTree = "<group>"; };
 		8A8F280621A6396B0037B9F8 /* license.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = license.html; sourceTree = "<group>"; };
 		8A8F280721A6396B0037B9F8 /* backup.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = backup.txt; sourceTree = "<group>"; };
-		8A8F280821A6396B0037B9F8 /* 005-settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "005-settings.png"; sourceTree = "<group>"; };
-		8A8F280921A6396B0037B9F8 /* 007-adjust.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "007-adjust.png"; sourceTree = "<group>"; };
-		8A8F280A21A6396B0037B9F8 /* monoshare.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = monoshare.png; sourceTree = "<group>"; };
-		8A8F280B21A6396B0037B9F8 /* 010-heart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "010-heart.png"; sourceTree = "<group>"; };
-		8A8F280C21A6396B0037B9F8 /* 002-home.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "002-home.png"; sourceTree = "<group>"; };
-		8A8F280D21A6396B0037B9F8 /* 003-like.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "003-like.png"; sourceTree = "<group>"; };
-		8A8F280E21A6396B0037B9F8 /* share.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = share.png; sourceTree = "<group>"; };
-		8A8F280F21A6396B0037B9F8 /* 012-fire.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "012-fire.png"; sourceTree = "<group>"; };
-		8A8F281121A6396B0037B9F8 /* controls.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = controls.png; sourceTree = "<group>"; };
-		8A8F281221A6396B0037B9F8 /* 008-gear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "008-gear.png"; sourceTree = "<group>"; };
-		8A8F281321A6396B0037B9F8 /* 011-controls.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "011-controls.png"; sourceTree = "<group>"; };
+		8A8F280821A6396B0037B9F8 /* 05-settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "05-settings.png"; sourceTree = "<group>"; };
+		8A8F280921A6396B0037B9F8 /* 07-adjust.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "07-adjust.png"; sourceTree = "<group>"; };
+		8A8F280A21A6396B0037B9F8 /* 09-monoshare.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "09-monoshare.png"; sourceTree = "<group>"; };
+		8A8F280E21A6396B0037B9F8 /* 10-monoshare.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "10-monoshare.png"; sourceTree = "<group>"; };
+		8A8F281221A6396B0037B9F8 /* 06-settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "06-settings.png"; sourceTree = "<group>"; };
+		8A8F281321A6396B0037B9F8 /* 08-adjust.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "08-adjust.png"; sourceTree = "<group>"; };
 		8A8F281721A63A650037B9F8 /* MemeTile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemeTile.swift; sourceTree = "<group>"; };
 		8A8F281A21A63A7C0037B9F8 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		8A8F281E21A64B650037B9F8 /* computer-guy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "computer-guy.png"; sourceTree = "<group>"; };
 		8A8F282221A67B590037B9F8 /* TrendingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingViewController.swift; sourceTree = "<group>"; };
 		8A8F282421A67B6A0037B9F8 /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
 		8A8F282921A739A40037B9F8 /* meme-example1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "meme-example1.jpg"; sourceTree = "<group>"; };
-		8A8F282A21A739A40037B9F8 /* meme-example3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "meme-example3.jpg"; sourceTree = "<group>"; };
-		8A8F282B21A739A40037B9F8 /* memee-xample2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "memee-xample2.jpg"; sourceTree = "<group>"; };
 		DE24482B21A0F6D9008DF45E /* Memelify-transparent.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Memelify-transparent.png"; sourceTree = "<group>"; };
 		DE56B973219E245B0044FB9F /* Memelify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Memelify.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE56B976219E245B0044FB9F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -91,7 +79,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9BB34989154973F2CCC51B99 /* Pods_Memelify.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -115,28 +102,20 @@
 		8A8F280021A6396B0037B9F8 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				8A8F280121A6396B0037B9F8 /* 009-star.png */,
 				8A8F282921A739A40037B9F8 /* meme-example1.jpg */,
-				8A8F282B21A739A40037B9F8 /* memee-xample2.jpg */,
-				8A8F282A21A739A40037B9F8 /* meme-example3.jpg */,
-				8A8F281E21A64B650037B9F8 /* computer-guy.png */,
 				DE24482B21A0F6D9008DF45E /* Memelify-transparent.png */,
-				8A8F280221A6396B0037B9F8 /* 004-star-1.png */,
-				8A8F280321A6396B0037B9F8 /* 001-fire-1.png */,
+				8A8F281E21A64B650037B9F8 /* computer-guy.png */,
 				8A8F280421A6396B0037B9F8 /* memelify logo.png */,
+				8A8F280121A6396B0037B9F8 /* 01-star.png */,
+				8A8F280221A6396B0037B9F8 /* 02-star.png */,
+				8A8F280821A6396B0037B9F8 /* 05-settings.png */,
+				8A8F281221A6396B0037B9F8 /* 06-settings.png */,
+				8A8F280921A6396B0037B9F8 /* 07-adjust.png */,
+				8A8F281321A6396B0037B9F8 /* 08-adjust.png */,
+				8A8F280A21A6396B0037B9F8 /* 09-monoshare.png */,
+				8A8F280E21A6396B0037B9F8 /* 10-monoshare.png */,
 				8A8F280521A6396B0037B9F8 /* license */,
 				8A8F280721A6396B0037B9F8 /* backup.txt */,
-				8A8F280821A6396B0037B9F8 /* 005-settings.png */,
-				8A8F280921A6396B0037B9F8 /* 007-adjust.png */,
-				8A8F280A21A6396B0037B9F8 /* monoshare.png */,
-				8A8F280B21A6396B0037B9F8 /* 010-heart.png */,
-				8A8F280C21A6396B0037B9F8 /* 002-home.png */,
-				8A8F280D21A6396B0037B9F8 /* 003-like.png */,
-				8A8F280E21A6396B0037B9F8 /* share.png */,
-				8A8F280F21A6396B0037B9F8 /* 012-fire.png */,
-				8A8F281121A6396B0037B9F8 /* controls.png */,
-				8A8F281221A6396B0037B9F8 /* 008-gear.png */,
-				8A8F281321A6396B0037B9F8 /* 011-controls.png */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -184,7 +163,6 @@
 				DE56B995219E24630044FB9F /* MemelifyUITests */,
 				DE56B974219E245B0044FB9F /* Products */,
 				8BA501DC8D86FA04426248CF /* Pods */,
-				F906F1A6183B7D25D98457B1 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -229,14 +207,6 @@
 				DE56B998219E24640044FB9F /* Info.plist */,
 			);
 			path = MemelifyUITests;
-			sourceTree = "<group>";
-		};
-		F906F1A6183B7D25D98457B1 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				341BC62F284ACBF7234A542F /* Pods_Memelify.framework */,
-			);
-			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -351,8 +321,6 @@
 				DE56B97C219E245B0044FB9F /* Main.storyboard in Resources */,
 				8A8F282C21A739A40037B9F8 /* meme-example1.jpg in Resources */,
 				8A8F281F21A64B650037B9F8 /* computer-guy.png in Resources */,
-				8A8F282D21A739A40037B9F8 /* meme-example3.jpg in Resources */,
-				8A8F282E21A739A40037B9F8 /* memee-xample2.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
