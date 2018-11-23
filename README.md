@@ -10,20 +10,21 @@ the user to the best memes UC davis has to offer and with a quick tap as soon as
 the app is opened the meme magic will begin!**
 
 ### Features:
-- Share feature
-- Notifications
+- Share cool memes with your friends
+- Save your favorite memes
+- Get notified about the latest and best memes
 
 # Milestone 1 - Design:
 
 ### 3rd party libraries:
-- Graph QL or Reddit API
+- Reddit API
 - Alamofire
 - Possibly Apple's App Analytics
 
 ### Server Support for the app: 
 We are going to use Heroku for our Platform as a Service and Alamofire for out 
 networking library. The API will be hosted on Heroku and it will make API 
-calls to either Facebook or Reddit API. We will use Alamofire will make 
+calls to Reddit API. We will use Alamofire will make 
 requests, wait for response, and parse JSON.
 
 ### Listing of all of the models (data structures): 
@@ -57,7 +58,7 @@ how many likes the meme had on Facebook and this value will be used to display
 the “Hot” memes.
 
 At the bottom of the home view controller, we will have 3 buttons:
-1. **Hot**: Shows a list of memes that have the most likes on Facebook during the
+1. **Trending**: Shows a list of memes that have the most likes on Facebook during the
 week.
 2. **Home (New)**: Shows the latest memes that were posted
 3. **Favorites**: Shows the user’s favorite memes
@@ -91,7 +92,6 @@ https://trello.com/b/IvjtEJzZ/memelify
 
 ### A trello board that includes all of the tasks and their state:
 https://trello.com/b/IvjtEJzZ/memelify
-
 
 ### A testing plan:
 
