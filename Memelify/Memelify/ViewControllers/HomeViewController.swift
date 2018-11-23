@@ -7,8 +7,10 @@
 //
 
 import UIKit
+import Alamofire
 
 class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+    private let apiServer = "https://memelify.herokuapp.com/api/memes/latest"
 
     @IBOutlet weak var memeTable: UITableView!
 
@@ -39,13 +41,24 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         memeTable.dataSource = self
         memeTable.delegate = self
 
-        // https://memelify.herokuapp.com/api/memes/latest
-        if let url = URL(string: "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Cat03.jpg/1200px-Cat03.jpg") {
-            getData(from: url) { data, response, error in
-                guard let data = data, error == nil else { return }
-                DispatchQueue.main.async() {
-                    self.memes.append(UIImage(data: data)!)
-                    self.memeTable.reloadData()
+        Alamofire.request(apiServer).responseJSON { response in
+            if let json = response.result.value as? [String: Any] {
+                guard let memes = json["memes"] as? [[String: Any]] else {
+                    return
+                }
+
+                for meme in memes {
+                    guard let url = URL(string: meme["url"] as! String) else {
+                        continue
+                    }
+
+                    self.getData(from: url) { data, response, error in
+                        guard let data = data, error == nil else { return }
+                        DispatchQueue.main.async() {
+                            self.memes.append(UIImage(data: data)!)
+                            self.memeTable.reloadData()
+                        }
+                    }
                 }
             }
         }

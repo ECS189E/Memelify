@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8A4A8BF721A785A4004C99D3 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A4A8BF621A785A4004C99D3 /* Alamofire.framework */; };
 		8A8F281821A63A660037B9F8 /* MemeTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8F281721A63A650037B9F8 /* MemeTile.swift */; };
 		8A8F281B21A63A7C0037B9F8 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8F281A21A63A7C0037B9F8 /* HomeViewController.swift */; };
 		8A8F281F21A64B650037B9F8 /* computer-guy.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A8F281E21A64B650037B9F8 /* computer-guy.png */; };
@@ -16,6 +15,7 @@
 		8A8F282C21A739A40037B9F8 /* meme-example1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8A8F282921A739A40037B9F8 /* meme-example1.jpg */; };
 		8A8F282D21A739A40037B9F8 /* meme-example3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8A8F282A21A739A40037B9F8 /* meme-example3.jpg */; };
 		8A8F282E21A739A40037B9F8 /* memee-xample2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8A8F282B21A739A40037B9F8 /* memee-xample2.jpg */; };
+		9BB34989154973F2CCC51B99 /* Pods_Memelify.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 341BC62F284ACBF7234A542F /* Pods_Memelify.framework */; };
 		DE24482C21A0F6DB008DF45E /* Memelify-transparent.png in Resources */ = {isa = PBXBuildFile; fileRef = DE24482B21A0F6D9008DF45E /* Memelify-transparent.png */; };
 		DE56B977219E245B0044FB9F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE56B976219E245B0044FB9F /* AppDelegate.swift */; };
 		DE56B97C219E245B0044FB9F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DE56B97A219E245B0044FB9F /* Main.storyboard */; };
@@ -44,8 +44,8 @@
 
 /* Begin PBXFileReference section */
 		30CB0809821D37314BCE72A4 /* Pods-Memelify.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Memelify.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Memelify/Pods-Memelify.debug.xcconfig"; sourceTree = "<group>"; };
+		341BC62F284ACBF7234A542F /* Pods_Memelify.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Memelify.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		88CC833CDE3B2D1D65485575 /* Pods-Memelify.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Memelify.release.xcconfig"; path = "Pods/Target Support Files/Pods-Memelify/Pods-Memelify.release.xcconfig"; sourceTree = "<group>"; };
-		8A4A8BF621A785A4004C99D3 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
 		8A8F280121A6396B0037B9F8 /* 009-star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "009-star.png"; sourceTree = "<group>"; };
 		8A8F280221A6396B0037B9F8 /* 004-star-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "004-star-1.png"; sourceTree = "<group>"; };
 		8A8F280321A6396B0037B9F8 /* 001-fire-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "001-fire-1.png"; sourceTree = "<group>"; };
@@ -91,7 +91,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8A4A8BF721A785A4004C99D3 /* Alamofire.framework in Frameworks */,
+				9BB34989154973F2CCC51B99 /* Pods_Memelify.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -234,7 +234,7 @@
 		F906F1A6183B7D25D98457B1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				8A4A8BF621A785A4004C99D3 /* Alamofire.framework */,
+				341BC62F284ACBF7234A542F /* Pods_Memelify.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -605,10 +605,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = Memelify/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -627,10 +624,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
+				FRAMEWORK_SEARCH_PATHS = "${inherited}";
 				INFOPLIST_FILE = Memelify/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
