@@ -1,0 +1,6 @@
+framework module Pods_Memelify {
+  umbrella header "Pods-Memelify-umbrella.h"
+
+  export *
+  module * { export * }
+}
