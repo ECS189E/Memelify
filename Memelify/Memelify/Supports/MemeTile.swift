@@ -16,6 +16,9 @@ class MemeTile: UITableViewCell {
     @IBOutlet weak var favorite: UIButton!
     @IBOutlet weak var buttons: UIView!
     
+    var obj: MemeObject?
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

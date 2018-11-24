@@ -55,7 +55,7 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="414" height="324.66666666666669"/>
                                                     <subviews>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="imageView:6cs-aQ-aSY:image" translatesAutoresizingMaskIntoConstraints="NO" id="6cs-aQ-aSY">
-                                                            <rect key="frame" x="0.0" y="0.0" width="414" height="284.66666666666669"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="409" height="284.66666666666669"/>
                                                         </imageView>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ec6-6L-J4Z">
                                                             <rect key="frame" x="0.0" y="284.66666666666669" width="414" height="40"/>
@@ -67,6 +67,20 @@
                                                                         <constraint firstAttribute="height" constant="28" id="Tee-vz-Lo0"/>
                                                                     </constraints>
                                                                     <state key="normal" image="unselected-heart"/>
+                                                                    <userDefinedRuntimeAttributes>
+                                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                            <real key="value" value="20"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                                            <real key="value" value="2"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                        <userDefinedRuntimeAttribute type="number" keyPath="verticalInset">
+                                                                            <real key="value" value="10"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                        <userDefinedRuntimeAttribute type="number" keyPath="horizontalInset">
+                                                                            <real key="value" value="20"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                    </userDefinedRuntimeAttributes>
                                                                 </button>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="karma" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Ir-Um-YUJ">
                                                                     <rect key="frame" x="340" y="7" width="54" height="24"/>
@@ -83,6 +97,20 @@
                                                                         <constraint firstAttribute="width" constant="30" id="vxw-Pm-lEg"/>
                                                                     </constraints>
                                                                     <state key="normal" image="share-unselected"/>
+                                                                    <userDefinedRuntimeAttributes>
+                                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                            <real key="value" value="10"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                                            <real key="value" value="2"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                        <userDefinedRuntimeAttribute type="number" keyPath="verticalInset">
+                                                                            <real key="value" value="10"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                        <userDefinedRuntimeAttribute type="number" keyPath="horizontalInset">
+                                                                            <real key="value" value="20"/>
+                                                                        </userDefinedRuntimeAttribute>
+                                                                    </userDefinedRuntimeAttributes>
                                                                 </button>
                                                             </subviews>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -102,7 +130,7 @@
                                                     <constraints>
                                                         <constraint firstAttribute="bottom" secondItem="ec6-6L-J4Z" secondAttribute="bottom" id="7lI-oG-OIg"/>
                                                         <constraint firstItem="6cs-aQ-aSY" firstAttribute="top" secondItem="xuC-44-nAM" secondAttribute="top" id="L00-ki-0F7"/>
-                                                        <constraint firstAttribute="trailing" secondItem="6cs-aQ-aSY" secondAttribute="trailing" id="YpS-q3-e8O"/>
+                                                        <constraint firstAttribute="trailing" secondItem="6cs-aQ-aSY" secondAttribute="trailing" constant="5" id="YpS-q3-e8O"/>
                                                         <constraint firstAttribute="trailing" secondItem="ec6-6L-J4Z" secondAttribute="trailing" id="i86-wm-F7o"/>
                                                         <constraint firstItem="6cs-aQ-aSY" firstAttribute="leading" secondItem="xuC-44-nAM" secondAttribute="leading" id="pEi-hp-EaO"/>
                                                         <constraint firstItem="ec6-6L-J4Z" firstAttribute="leading" secondItem="xuC-44-nAM" secondAttribute="leading" id="xYO-Bg-NNf"/>
@@ -260,8 +288,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="home-selected" width="6.8010077476501465" height="6.8010077476501465"/>
-        <image name="home-unselected" width="60" height="60"/>
+        <image name="home-selected" width="25" height="25"/>
+        <image name="home-unselected" width="25" height="25"/>
         <image name="imageView:6cs-aQ-aSY:image" width="948" height="960">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGUlNYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK8QEQcI
@@ -45919,10 +45947,10 @@ uIAAKcnsACnJ7gApyfMAKcoBACnKBQApygwAKcoRACnKHgApyiEAKcouACnKMwApyjsAKco+ACnKQwAp
 yksAKcpOACnKYAApymMAKcpoAAAAAAAABAEAAAAAAAAAVgAAAAAAAAAAAAAAAAApymo
 </mutableData>
         </image>
-        <image name="selected-heart" width="5.8568329811096191" height="5.8568329811096191"/>
-        <image name="share-unselected" width="60" height="60"/>
-        <image name="trending-selected" width="60" height="60"/>
-        <image name="trending-unselected" width="60" height="60"/>
-        <image name="unselected-heart" width="60" height="60"/>
+        <image name="selected-heart" width="25" height="25"/>
+        <image name="share-unselected" width="25" height="25"/>
+        <image name="trending-selected" width="25" height="25"/>
+        <image name="trending-unselected" width="25" height="25"/>
+        <image name="unselected-heart" width="25" height="25"/>
     </resources>
 </document>

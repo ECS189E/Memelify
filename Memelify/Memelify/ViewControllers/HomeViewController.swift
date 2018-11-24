@@ -14,15 +14,15 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
     @IBOutlet weak var memeTable: UITableView!
 
-    var memes = [UIImage]()
+    var memes = [MemeObject]()
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return memes.count
     }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let currentImage = memes[indexPath.row]
-        let ratio = currentImage.cropRatio()
+        let currentImage = memes[indexPath.row].image
+        let ratio = currentImage!.cropRatio()
         return (tableView.frame.width / ratio) + 40
     }
 
@@ -32,7 +32,8 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MemeTilePrototype", for: indexPath) as! MemeTile
-        cell.meme.image = memes[indexPath.row]
+        cell.obj = memes[indexPath.row]
+        cell.meme.image = cell.obj?.image
         return cell
     }
 
@@ -46,22 +47,31 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 guard let memes = json["memes"] as? [[String: Any]] else {
                     return
                 }
-
+                
                 for meme in memes {
                     guard let url = URL(string: meme["url"] as! String) else {
                         continue
                     }
-
+                    let id = meme["id"] as? String
+                    let date = meme["created"] as? String
+                    let title = meme["title"] as? String
+                    let likes = meme["likes"] as? Int
+                    
+                    
                     self.getData(from: url) { data, response, error in
                         guard let data = data, error == nil else { return }
                         DispatchQueue.main.async() {
-                            self.memes.append(UIImage(data: data)!)
+                            let newMeme = MemeObject(id: id!,created: date!,title: title!,likes: likes!,pic: data)
+                            
+                            self.memes.append(newMeme)
                             self.memeTable.reloadData()
                         }
                     }
                 }
+                
             }
         }
+    
     }
 
     // Shows Memelify logo on the navigation bar
