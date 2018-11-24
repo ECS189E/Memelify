@@ -18,7 +18,6 @@ class MemeTile: UITableViewCell {
     
     var obj: MemeObject?
     
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

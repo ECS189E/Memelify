@@ -13,7 +13,7 @@ class MemeObject {
     var id: String?
     var date: String?
     var title: String?
-    var likes: Int = 0
+    var likes: Int
     var url: String?
     var image: UIImage?
     

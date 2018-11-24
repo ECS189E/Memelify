@@ -34,6 +34,8 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let cell = tableView.dequeueReusableCell(withIdentifier: "MemeTilePrototype", for: indexPath) as! MemeTile
         cell.obj = memes[indexPath.row]
         cell.meme.image = cell.obj?.image
+        cell.karma.text = "Karma: " + String(cell.obj?.likes ?? 0)
+        
         return cell
     }
 
