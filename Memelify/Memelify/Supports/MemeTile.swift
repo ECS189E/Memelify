@@ -17,13 +17,11 @@ class MemeTile: UITableViewCell {
     @IBOutlet weak var buttons: UIView!
     
     @IBAction func addToFavorites(_ sender: Any) {
-        let image = UIImage(named: "selected-heart")
-        self.favorite.setImage(image, for: .normal)
-        if UserDefaults.standard.object(forKey: "saved") == nil {
-            UserDefaults.standard.set([MemeObject](), forKey: "saved")
-        }
         
         var favs = [MemeObject]()
+        let image = UIImage(named: "selected-heart")
+        
+        self.favorite.setImage(image, for: .normal)
         
         for meme in NSKeyedUnarchiver.unarchiveObject(with: UserDefaults.standard.object(forKey: "saved") as! Data) as! [MemeObject] {
             if self.obj?.id == meme.id {
