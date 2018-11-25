@@ -44,7 +44,7 @@ class RedditMemeBot:
 
 
 def create_bot(name, client_id, client_secret):
-    """Create a subreddit bot instance"""
+    """Create a new subreddit bot instance"""
     return praw.Reddit(client_id=client_id, 
                         client_secret=client_secret,
                         user_agent='%s Bot'%name).subreddit(name)
@@ -59,7 +59,7 @@ def is_meme(submission):
 
 
 def meme2dict(meme):
-    """Convert a meme to dictionary object to parse into json easier"""
+    """Convert a meme to dictionary object to parse into JSON easier"""
     meme_dict = {
         'id': meme.id,
         'title': meme.title,
