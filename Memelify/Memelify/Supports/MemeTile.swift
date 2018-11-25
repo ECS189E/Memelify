@@ -17,8 +17,8 @@ class MemeTile: UITableViewCell {
     @IBOutlet weak var buttons: UIView!
     
     @IBAction func addToFavorites(_ sender: Any) {
-        
-        favorite.currentImage = UIImage(selected-heart.)
+        let image = UIImage(named: "selected-heart")
+        self.favorite.setImage(image, for: .normal)
         if UserDefaults.standard.object(forKey: "saved") == nil {
             UserDefaults.standard.set([MemeObject](), forKey: "saved")
         }
