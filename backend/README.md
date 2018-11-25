@@ -12,7 +12,7 @@ This directory contains code for Memelify API service
 * Extra parameters
 
 | Parameter  |  Detail                                 |
-|:------x-----|:----------------------------------------|
+|:-----------|:----------------------------------------|
 |`offset`    |  Integer - offset index starting from 0 |
 | `limit`    |  Integer - number of items to return    |
 
