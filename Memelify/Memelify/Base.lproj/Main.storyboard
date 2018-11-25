@@ -81,6 +81,9 @@
                                                                             <real key="value" value="20"/>
                                                                         </userDefinedRuntimeAttribute>
                                                                     </userDefinedRuntimeAttributes>
+                                                                    <connections>
+                                                                        <action selector="addToFavorites:" destination="bFg-EE-3sU" eventType="touchUpInside" id="KQE-ri-j6C"/>
+                                                                    </connections>
                                                                 </button>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="karma" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Ir-Um-YUJ">
                                                                     <rect key="frame" x="340" y="7" width="54" height="24"/>

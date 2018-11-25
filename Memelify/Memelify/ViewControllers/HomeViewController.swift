@@ -15,7 +15,8 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     @IBOutlet weak var memeTable: UITableView!
 
     var memes = [MemeObject]()
-
+    var favorites = [MemeObject]()
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return memes.count
     }
@@ -43,7 +44,13 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         super.viewDidLoad()
         memeTable.dataSource = self
         memeTable.delegate = self
+        
+        //save the favorite memes
+        //TODO: need to make sure this runs only ever once
+        let encodedData = NSKeyedArchiver.archivedData(withRootObject: self.favorites)
+        UserDefaults.standard.set(encodedData, forKey: "saved")
 
+        
         Alamofire.request(apiServer).responseJSON { response in
             if let json = response.result.value as? [String: Any] {
                 guard let memes = json["memes"] as? [[String: Any]] else {
@@ -59,12 +66,10 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
                     let title = meme["title"] as? String
                     let likes = meme["likes"] as? Int
                     
-                    
                     self.getData(from: url) { data, response, error in
                         guard let data = data, error == nil else { return }
                         DispatchQueue.main.async() {
                             let newMeme = MemeObject(id: id!,created: date!,title: title!,likes: likes!,pic: data)
-                            
                             self.memes.append(newMeme)
                             self.memeTable.reloadData()
                         }
