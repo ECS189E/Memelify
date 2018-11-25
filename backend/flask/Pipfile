@@ -11,7 +11,7 @@ praw = "*"
 gunicorn = "*"
 python-dotenv = "*"
 flask-sqlalchemy = "*"
-flask-migrate = "*"
+flask-admin = "*"
 
 [requires]
 python_version = "3.7"

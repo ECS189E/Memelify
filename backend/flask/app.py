@@ -1,7 +1,7 @@
-
-"""Create an application instance."""
+"""
+Create a Memelify Service instance.
+"""
 from flask.helpers import get_debug_flag
-
 from memelify.app import create_app
 from memelify.settings import DevConfig, ProdConfig
 
