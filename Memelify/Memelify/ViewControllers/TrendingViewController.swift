@@ -10,7 +10,7 @@ import UIKit
 import Alamofire
 
 class TrendingViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    private let apiServer = "https://memelify.herokuapp.com/api/memes/hot"
+    private let apiServer = "https://memelify.herokuapp.com/api/memes/top"
     
     @IBOutlet weak var memeTable: UITableView!
     
@@ -37,7 +37,8 @@ class TrendingViewController: UIViewController, UITableViewDataSource, UITableVi
         cell.obj = memes[indexPath.row]
         cell.meme.image = cell.obj?.image
         cell.karma.text = "Karma: " + String(cell.obj?.likes ?? 0)
-        
+        cell.layer.borderWidth = 1
+        cell.layer.cornerRadius = 10
         return cell
     }
     
@@ -45,12 +46,6 @@ class TrendingViewController: UIViewController, UITableViewDataSource, UITableVi
         super.viewDidLoad()
         memeTable.dataSource = self
         memeTable.delegate = self
-        
-        //save the favorite memes
-        //TODO: need to make sure this runs only ever once
-        let encodedData = NSKeyedArchiver.archivedData(withRootObject: self.favorites)
-        UserDefaults.standard.set(encodedData, forKey: "saved")
-        
         
         Alamofire.request(apiServer).responseJSON { response in
             if let json = response.result.value as? [String: Any] {

@@ -23,11 +23,15 @@ class MemeTile: UITableViewCell {
         
         self.favorite.setImage(image, for: .normal)
         
-        for meme in NSKeyedUnarchiver.unarchiveObject(with: UserDefaults.standard.object(forKey: "saved") as! Data) as! [MemeObject] {
-            if self.obj?.id == meme.id {
-                return
+        var favorites = NSKeyedUnarchiver.unarchiveObject(with: UserDefaults.standard.object(forKey: "saved") as! Data) as! [MemeObject]
+        
+        if favorites.count>0 {
+            for meme in favorites {
+                if self.obj?.id == meme.id {
+                    return
+                }
+                favs.append(meme)
             }
-            favs.append(meme)
         }
         
         favs.append(self.obj!)

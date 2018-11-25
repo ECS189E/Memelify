@@ -45,12 +45,6 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         memeTable.dataSource = self
         memeTable.delegate = self
         
-        //save the favorite memes
-        //TODO: need to make sure this runs only ever once
-        let encodedData = NSKeyedArchiver.archivedData(withRootObject: self.favorites)
-        UserDefaults.standard.set(encodedData, forKey: "saved")
-
-        
         Alamofire.request(apiServer).responseJSON { response in
             if let json = response.result.value as? [String: Any] {
                 guard let memes = json["memes"] as? [[String: Any]] else {
