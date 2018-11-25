@@ -1,20 +1,18 @@
-"""A Flask Microservice"""
-import json
-from meme_bot.reddit import RedditMemeBot
-from flask import Flask, request, jsonify
+"""Handle all Meme requests"""
+from .model import Meme
+from flask import Blueprint, request
 
-app = Flask(__name__)
-bot = RedditMemeBot('UCDavis', 'ClShg45mn9UHxw', 'h9TDXwNUT3X5xUUVI3WgIficOKA')
+meme_blueprint = Blueprint('meme', __name__)
 
-@app.route('/api/memes', methods=('GET',))
-def get_memes():
-    """Return all memes data"""
-    return json.dumps(bot.get_latest_memes(0, limit=1000))
+@meme_blueprint.route('/api/memes/latest', methods=('GET', ))
+def get_meme_latest_feed():
+    """Query latest memes from PosgreSQL database
 
-
-@app.route('/api/memes/latest', methods=('GET', ))
-def meme_latest_feed():
-    """Return latest memes"""
+    Arguments:
+        
+    Returns:
+        JSON object: all memes data
+    """
     offset = request.args.get('offset', default=0, type=int)
     limit  = request.args.get('limit', default=10, type=int)
     has_more, memes = bot.get_latest_memes(offset, limit)
@@ -24,8 +22,8 @@ def meme_latest_feed():
                    memes=memes)
 
 
-@app.route('/api/memes/hot', methods=('GET', ))
-def meme_hottest_feed():
+@meme_blueprint.route('/api/memes/hot', methods=('GET', ))
+def get_meme_hottest_feed():
     """Return hottest memes"""
     offset = request.args.get('offset', default=0, type=int)
     limit  = request.args.get('limit', default=10, type=int)
@@ -36,5 +34,6 @@ def meme_hottest_feed():
                    memes=memes)
 
 
-if __name__ == '__main__':
-    app.run(debug=True)
+@meme_blueprint.route('/api/memes/refresh', methods=('POST', ))
+def refresh():
+    """Ask Reddit Meme bot to load latest meme"""
