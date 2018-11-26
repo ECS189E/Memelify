@@ -7,8 +7,7 @@ different views to guide the user to the best memes UC Davis has to offer such
 as hot and trending memes. With a quick tap, as soon as the app is opened, the
 meme magic begins!
 
-##### See our progress in our [Trello](https://trello.com/b/IvjtEJzZ/memelify)
-board.
+##### See our progress in our [Trello](https://trello.com/b/IvjtEJzZ/memelify) board.
 
 ## What we did:
 
@@ -69,14 +68,14 @@ board.
 
 ## Issues we had this week:
 
-Implementing the tab bar controller was a bit harder than previously expected so
+- Implementing the tab bar controller was a bit harder than previously expected so
 it delayed things a little. We were able to implement is successfully though.
-Saving custom objects to the device storage was more complicated than previously
+- Saving custom objects to the device storage was more complicated than previously
 thought. It now works but with custom objects they must be encoded and decoded
-before they can be cast to their original types.  Refresh feature requires
-architectural change in the backend server.  Facebook initially blocked our
-request due to not having a clear detail on how we are going to handle user
-data. It turned out that Memelify is a
+before they can be cast to their original types.
+- Refresh feature requires architectural change in the backend server.
+- Facebook initially blocked our request due to not having a clear detail on how
+we are going to handle user data. It turned out that Memelify is a
 [“server-to-server”](https://developers.facebook.com/docs/apps/review/server-to-server-apps/)
 service which does not require any user information. We have clarified that
 through our webcast. Unfortunately, we might not be able to use Facebook API for
