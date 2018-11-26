@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+
+  database:
+    image: postgres:10.5
+    restart: always
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+  memelify_api:
+    restart: always
+    build: ./flask
+    depends_on:
+      - "database"
+    ports:
+      - "8000:8000"
+    environments:
+      DATABASE_URL: postgres://postgres:@postgres:5432/postgres
+    command: gunicorn -w 1 -b :8000 app:app
+
+  nginx:
+    restart: always
+    build: ./nginx
+    depends_on:
+      - "memelify_api"
+    ports:
+      - "80:80"
