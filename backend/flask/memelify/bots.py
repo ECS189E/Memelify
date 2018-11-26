@@ -1,12 +1,8 @@
-"""Memelify's Reddit Bot listens on /r/UCDavis for potential new memes. Whenever
- it found a new meme, it will:
-    * Download post meta data (title,  image_url) to our server.
-    * Create an `INSERT` query the meta data into PostgreSQL.
-    * Track number of upvotes/downvotes to update the metadata.
+"""Memelify's Reddit Bot listens on /r/UCDavis for potential new memes. 
 
-## TODO:
--------
-* Make it work
+Whenever bot recognizes a new meme, it will:
+    * Load meme meta-data to our Redis Server.
+    * Track number of upvotes/downvotes to update the metadata.
 """
 import praw
 from datetime import datetime
