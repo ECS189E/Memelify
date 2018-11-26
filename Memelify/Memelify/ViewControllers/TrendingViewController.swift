@@ -37,8 +37,11 @@ class TrendingViewController: UIViewController, UITableViewDataSource, UITableVi
         cell.obj = memes[indexPath.row]
         cell.meme.image = cell.obj?.image
         cell.karma.text = "Karma: " + String(cell.obj?.likes ?? 0)
-        cell.layer.borderWidth = 1
-        cell.layer.cornerRadius = 10
+        if cell.findOutFav() {
+            cell.favorite.setImage(UIImage(named: "selected-heart"), for: .normal)
+        }else {
+            cell.favorite.setImage(UIImage(named: "unselected-heart"), for: .normal)
+        }
         return cell
     }
     

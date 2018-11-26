@@ -10,7 +10,7 @@ import UIKit
 
 class FavoritesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     private let apiServer = "https://memelify.herokuapp.com/api/memes/latest"
-    
+   
     @IBOutlet weak var memeTable: UITableView!
     
     var memes = [MemeObject]()
@@ -29,9 +29,10 @@ class FavoritesViewController: UIViewController, UITableViewDataSource, UITableV
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MemeTilePrototype", for: indexPath) as! MemeTile
         
+        cell.obj = favorites[indexPath.row]
         cell.meme.image = favorites[indexPath.row].image
         cell.karma.text = "Karma: " + String(favorites[indexPath.row].likes ?? 0)
-        
+        cell.favorite.setImage(UIImage(named: "selected-heart"), for: .normal)
         return cell
     }
     
@@ -40,6 +41,7 @@ class FavoritesViewController: UIViewController, UITableViewDataSource, UITableV
         memeTable.dataSource = self
         memeTable.delegate = self
         
+        favorites = try! NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(UserDefaults.standard.object(forKey: "saved") as! Data) as! [MemeObject]
     }
     
     // Shows Memelify logo on the navigation bar
@@ -50,7 +52,7 @@ class FavoritesViewController: UIViewController, UITableViewDataSource, UITableV
         imageView.image = UIImage(named: "Memelify-transparent.png")
         navigationItem.titleView = imageView
         
-        favorites = NSKeyedUnarchiver.unarchiveObject(with: UserDefaults.standard.object(forKey: "saved") as! Data) as! [MemeObject]
+        favorites = try! NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(UserDefaults.standard.object(forKey: "saved") as! Data) as! [MemeObject]
         
         print(favorites)
         self.memeTable.reloadData()
