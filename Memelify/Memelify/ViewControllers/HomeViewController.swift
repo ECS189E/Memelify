@@ -48,6 +48,9 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         super.viewDidLoad()
         memeTable.dataSource = self
         memeTable.delegate = self
+
+        let encodedData = try! NSKeyedArchiver.archivedData(withRootObject: self.favorites, requiringSecureCoding: false)
+        UserDefaults.standard.register(defaults: ["saved" : encodedData])
         
         Alamofire.request(apiServer).responseJSON { response in
             if let json = response.result.value as? [String: Any] {
