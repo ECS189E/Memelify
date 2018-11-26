@@ -1,28 +1,43 @@
-version: '3'
+# Last Updated: November 2018
+# Define required services in order for Memelify's backend to run.
 
+version: '3'
 services:
 
-  database:
-    image: postgres:10.5
+  database:  # Store meme meta-data from multiple providers (subreddits)
     restart: always
+    image: postgres:10.5
     volumes:
       - db_data:/var/lib/postgresql/data
+    env_file:
+      - env_file
+    networks:
+      - db_nw
 
-  memelify_api:
+  memelify_api:  # Handle GET/POST requests from iOS clients.
     restart: always
     build: ./flask
-    depends_on:
-      - "database"
     ports:
       - "8000:8000"
-    environments:
-      DATABASE_URL: postgres://postgres:@postgres:5432/postgres
+    depends_on:
+      - database
+    networks:
+      - db_nw
+      - web_nw
     command: gunicorn -w 1 -b :8000 app:app
 
-  nginx:
+  nginx:   # Reverse-proxy, scalable web server
     restart: always
     build: ./nginx
-    depends_on:
-      - "memelify_api"
     ports:
       - "80:80"
+    depends_on:
+      - memelify_api
+
+networks:
+  db_nw:
+    driver: bridge
+  web_nw:
+    driver: bridge
+volumes:  # allow data persist on disk when db container is down.
+  db_data:
