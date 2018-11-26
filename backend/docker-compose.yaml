@@ -9,8 +9,6 @@ services:
     image: postgres:10.5
     volumes:
       - db_data:/var/lib/postgresql/data
-    env_file:
-      - env_file
     networks:
       - db_nw
 
