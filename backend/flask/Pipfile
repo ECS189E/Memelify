@@ -10,6 +10,8 @@ pylint = "*"
 flask = "*"
 praw = "*"
 gunicorn = "*"
+redis = "*"
+flask-apscheduler = "*"
 
 [requires]
 python_version = "3.7"

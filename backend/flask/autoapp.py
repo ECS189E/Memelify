@@ -2,7 +2,8 @@
 Create a Memelify Service instance.
 """
 from flask.helpers import get_debug_flag
-from memelify import create_app, config
+from memelify.app import create_app
+from memelify.config import DevConfig, ProdConfig
 
-CONFIG = config.DevConfig if get_debug_flag() else config.ProdConfig
+CONFIG = DevConfig if get_debug_flag() else ProdConfig
 app = create_app(CONFIG)
