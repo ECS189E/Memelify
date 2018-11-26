@@ -10,7 +10,7 @@ import UIKit
 import Alamofire
 
 class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    private let apiServer = "https://memelify.herokuapp.com/api/memes/latest"
+    private let apiServer = "https://memelify.herokuapp.com/api/memes/latest?offset=20&limit=20"
 
     @IBOutlet weak var memeTable: UITableView!
 
@@ -36,7 +36,11 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         cell.obj = memes[indexPath.row]
         cell.meme.image = cell.obj?.image
         cell.karma.text = "Karma: " + String(cell.obj?.likes ?? 0)
-        
+        if cell.findOutFav() {
+            cell.favorite.setImage(UIImage(named: "selected-heart"), for: .normal)
+        }else {
+            cell.favorite.setImage(UIImage(named: "unselected-heart"), for: .normal)
+        }
         return cell
     }
 
