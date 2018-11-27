@@ -2,7 +2,7 @@
 //  FancyButton.swift
 //  Memelify
 //
-//  Created by David Garwood on 11/22/18.
+//  Created by Kauana, William and Dat.
 //  Copyright © 2018 Memelify. All rights reserved.
 //
 
@@ -16,36 +16,41 @@ class FancyButton: UIButton {
             layer.masksToBounds = true
         }
     }
+
     @IBInspectable dynamic var borderWidth: CGFloat = 1.0 {
         didSet {
             layer.borderWidth = borderWidth
         }
     }
+
     @IBInspectable dynamic var verticalInset: CGFloat = 10.0 {
         didSet {
             contentEdgeInsets.top = verticalInset
             contentEdgeInsets.bottom = verticalInset
         }
     }
+
     @IBInspectable dynamic var horizontalInset: CGFloat = 20.0 {
         didSet {
             contentEdgeInsets.left = horizontalInset
             contentEdgeInsets.right = horizontalInset
         }
     }
-    
+
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         _init()
     }
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         _init()
     }
+    
     func _init() {
         clipsToBounds = true
         layer.borderColor = UIColor.black.cgColor
-        
+
         layer.cornerRadius = cornerRadius
         layer.borderWidth = borderWidth
         contentEdgeInsets.top = verticalInset
@@ -53,7 +58,7 @@ class FancyButton: UIButton {
         contentEdgeInsets.left = horizontalInset
         contentEdgeInsets.right = horizontalInset
     }
-    
+
     private var normalAlpha: CGFloat = 1
     private var highlightedAlpha: CGFloat = 0.2
 //    private var borderColorAlpha: CGFloat? {
@@ -67,10 +72,10 @@ class FancyButton: UIButton {
 //            }
 //        }
 //    }
-    
+
     override func layoutSubviews() {
         super.layoutSubviews()
-        
+
     }
 
 }

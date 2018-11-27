@@ -13,6 +13,7 @@
 		8A8F282321A67B590037B9F8 /* TrendingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8F282221A67B590037B9F8 /* TrendingViewController.swift */; };
 		8A8F282521A67B6A0037B9F8 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8F282421A67B6A0037B9F8 /* FavoritesViewController.swift */; };
 		8A8F282C21A739A40037B9F8 /* meme-example1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8A8F282921A739A40037B9F8 /* meme-example1.jpg */; };
+		8AAE476621ACFC1D005B1E3A /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAE476521ACFC1D005B1E3A /* SettingsViewController.swift */; };
 		AD2BDCB921A7A2FF00A9B57F /* FancyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2BDCB821A7A2FF00A9B57F /* FancyButton.swift */; };
 		AD2BDCBB21A7B4E500A9B57F /* MemeObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2BDCBA21A7B4E500A9B57F /* MemeObject.swift */; };
 		C1C025F6CF75D6F6F39846E3 /* Pods_Memelify.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 962A3D60283F54816F76661B /* Pods_Memelify.framework */; };
@@ -62,6 +63,7 @@
 		8A8F282221A67B590037B9F8 /* TrendingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingViewController.swift; sourceTree = "<group>"; };
 		8A8F282421A67B6A0037B9F8 /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
 		8A8F282921A739A40037B9F8 /* meme-example1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "meme-example1.jpg"; sourceTree = "<group>"; };
+		8AAE476521ACFC1D005B1E3A /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		962A3D60283F54816F76661B /* Pods_Memelify.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Memelify.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD2BDCB821A7A2FF00A9B57F /* FancyButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FancyButton.swift; sourceTree = "<group>"; };
 		AD2BDCBA21A7B4E500A9B57F /* MemeObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemeObject.swift; sourceTree = "<group>"; };
@@ -159,6 +161,7 @@
 				8A8F281A21A63A7C0037B9F8 /* HomeViewController.swift */,
 				8A8F282221A67B590037B9F8 /* TrendingViewController.swift */,
 				8A8F282421A67B6A0037B9F8 /* FavoritesViewController.swift */,
+				8AAE476521ACFC1D005B1E3A /* SettingsViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -417,6 +420,7 @@
 				AD2BDCB921A7A2FF00A9B57F /* FancyButton.swift in Sources */,
 				8A8F282521A67B6A0037B9F8 /* FavoritesViewController.swift in Sources */,
 				8A8F281821A63A660037B9F8 /* MemeTile.swift in Sources */,
+				8AAE476621ACFC1D005B1E3A /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

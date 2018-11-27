@@ -24,7 +24,7 @@ class MemeTile: UITableViewCell {
         var favs = [MemeObject]()
         favs = try! NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(UserDefaults.standard.object(forKey: "saved") as! Data) as! [MemeObject]
         
-        //add favorite
+        // add favorite
         if(fav == false){
             fav = true
             
@@ -42,7 +42,7 @@ class MemeTile: UITableViewCell {
             
             print(favs)
             
-        //remove favorite
+        // remove favorite
         } else {
             fav = false
             
@@ -55,20 +55,19 @@ class MemeTile: UITableViewCell {
         let updatedFavs = try? NSKeyedArchiver.archivedData(withRootObject: favs, requiringSecureCoding: false)
         UserDefaults.standard.set(updatedFavs, forKey: "saved")
         print(favs)
-        
     }
     
-    func findOutFav () -> Bool{
+    func findOutFav () -> Bool {
         var favs = [MemeObject]()
         favs = try! NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(UserDefaults.standard.object(forKey: "saved") as! Data) as! [MemeObject]
         if favs.contains(where: {$0.id == self.obj!.id} ){
             return true
         }
+
         return false
-        
     }
+
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 }

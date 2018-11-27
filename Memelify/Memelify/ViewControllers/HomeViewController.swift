@@ -1,8 +1,8 @@
 //
-//  ViewController.swift
+//  HomeViewController.swift
 //  Memelify
 //
-//  Created by Will J on 11/15/18.
+//  Created by Kauana, William and Dat.
 //  Copyright © 2018 Memelify. All rights reserved.
 //
 
@@ -16,7 +16,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
     var memes = [MemeObject]()
     var favorites = [MemeObject]()
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return memes.count
     }
@@ -38,7 +38,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         cell.karma.text = "Karma: " + String(cell.obj?.likes ?? 0)
         if cell.findOutFav() {
             cell.favorite.setImage(UIImage(named: "selected-heart"), for: .normal)
-        }else {
+        } else {
             cell.favorite.setImage(UIImage(named: "unselected-heart"), for: .normal)
         }
         return cell
@@ -50,36 +50,35 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         memeTable.delegate = self
 
         let encodedData = try! NSKeyedArchiver.archivedData(withRootObject: self.favorites, requiringSecureCoding: false)
-        UserDefaults.standard.register(defaults: ["saved" : encodedData])
-        
+        UserDefaults.standard.register(defaults: ["saved": encodedData])
+
         Alamofire.request(apiServer).responseJSON { response in
             if let json = response.result.value as? [String: Any] {
                 guard let memes = json["memes"] as? [[String: Any]] else {
                     return
                 }
-                
+
                 for meme in memes {
                     guard let url = URL(string: meme["url"] as! String) else {
                         continue
                     }
+
                     let id = meme["id"] as? String
                     let date = meme["created"] as? String
                     let title = meme["title"] as? String
                     let likes = meme["likes"] as? Int
-                    
+
                     self.getData(from: url) { data, response, error in
                         guard let data = data, error == nil else { return }
                         DispatchQueue.main.async() {
-                            let newMeme = MemeObject(id: id!,created: date!,title: title!,likes: likes!,pic: data)
+                            let newMeme = MemeObject(id: id!, created: date!, title: title!, likes: likes!, pic: data)
                             self.memes.append(newMeme)
                             self.memeTable.reloadData()
                         }
                     }
                 }
-                
             }
         }
-    
     }
 
     // Shows Memelify logo on the navigation bar
