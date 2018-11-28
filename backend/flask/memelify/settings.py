@@ -1,29 +1,31 @@
 # -*- coding: utf-8 -*-
 """Application configuration."""
 import os
-
+from memelify.tasks import get_memes
 
 class Config(object):
-    """Base configuration."""
-    SQLALCHEMY_TRACK_MODIFICATIONS = False
-    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL')
-    DEBUG_TB_INTERCEPT_REDIRECTS = False
-    # SECRET_KEY = os.environ.get('MEMELIFY_SECRET') 
-    # CACHE_TYPE = 'simple'  # Can be "memcached", "redis".
+    JOBS = [
+        {
+            'id': 'update-memes-every-20-secs',
+            'func': get_memes,
+            'trigger': 'interval',
+            'seconds': 30,
+        }
+    ]
+    SCHEDULER_JOB_DEFAULTS = {'coalesce': False,  'max_instances': 1 }
+    SCHEDULER_API_ENABLED = True
 
 
 class DevConfig(Config):
     """Development configuration."""
-
     ENV = 'dev'
     DEBUG = True
-    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL', 
-                                             'sqlite:///database.db')
+    TESTING = False
+    SECRET_KEY = "please_let_my_cookies_live_while_developing"
 
 
 class ProdConfig(Config):
     """Production configuration."""
-
     ENV = 'prod'
     DEBUG = False
-    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL')
+    SECRET_KEY = None  # To be overwritten by a YAML file

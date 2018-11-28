@@ -7,9 +7,9 @@ This directory contains code for Memelify API service
 | API               |  Return                            |
 |:------------------|:-----------------------------------|
 |`/api/meme/latest`| list of latest memes (default=10)   |
-| `/api/meme/hot`  | list of trending memes (default=10) |
+|`/api/meme/hot`  | list of trending memes (default=10) |
 
-* Extra parameters
+* Extra parameters (for pagination)
 
 | Parameter  |  Detail                                 |
 |:-----------|:----------------------------------------|
@@ -19,7 +19,7 @@ This directory contains code for Memelify API service
 
 For example, I would like to make an API call to returns a list of 2 latest memes starting from index 3.
 ```
-http://206.189.218.125/api/memes/latest?offset=3&limit=5
+http://host.domain/api/memes/latest?offset=3&limit=5
 ```
 The response is a json object.
 
@@ -55,9 +55,13 @@ The response is a json object.
     memes:    []    --- collection of memes object
 }
 ```
-
-### Limitations
+## Limitations
 
 * No HTTPS.
 * The current implementation does not know if there is a new meme appeared.
 Therefore, we need to manually restart docker container to reload the bot.
+
+
+## Reference:
+
+[1] How Instagram Feed works [Article](https://blogs.vmware.com/vfabric/2013/04/how-instagram-feeds-work-celery-and-rabbitmq.html)
