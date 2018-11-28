@@ -27,7 +27,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading Memes . . ." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cuQ-j2-5oQ">
-                                <rect key="frame" x="72.333333333333329" y="482" width="230.33333333333337" height="34"/>
+                                <rect key="frame" x="72.666666666666686" y="482" width="230" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34" id="ker-Om-Ee7"/>
                                 </constraints>
@@ -35,9 +35,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="REh-Lu-U9p">
-                                <rect key="frame" x="178" y="754" width="20" height="20"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="REh-Lu-U9p">
+                                <rect key="frame" x="178" y="754" width="19" height="20"/>
                                 <color key="color" red="0.0" green="0.56904578210000001" blue="0.57461684940000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </activityIndicatorView>
                         </subviews>
@@ -45,7 +44,11 @@
                         <constraints>
                             <constraint firstItem="k5S-JT-NVX" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="32" id="9xQ-pM-Mzp"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="cuQ-j2-5oQ" secondAttribute="bottom" constant="262" id="E53-KQ-qpz"/>
+                            <constraint firstItem="REh-Lu-U9p" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="178" id="Jae-BI-Edn"/>
                             <constraint firstItem="cuQ-j2-5oQ" firstAttribute="centerX" secondItem="k5S-JT-NVX" secondAttribute="centerX" id="Q6U-WS-NOo"/>
+                            <constraint firstItem="REh-Lu-U9p" firstAttribute="top" secondItem="k5S-JT-NVX" secondAttribute="bottom" constant="238" id="R1W-nn-eD2"/>
+                            <constraint firstItem="REh-Lu-U9p" firstAttribute="centerX" secondItem="k5S-JT-NVX" secondAttribute="centerX" id="SfK-K0-9B6"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="REh-Lu-U9p" secondAttribute="bottom" constant="4" id="XJ9-W3-pGN"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="k5S-JT-NVX" secondAttribute="trailing" constant="32" id="YAN-0D-AsP"/>
                             <constraint firstItem="cuQ-j2-5oQ" firstAttribute="top" secondItem="k5S-JT-NVX" secondAttribute="bottom" constant="-34" id="lBr-Zt-SDy"/>
                         </constraints>

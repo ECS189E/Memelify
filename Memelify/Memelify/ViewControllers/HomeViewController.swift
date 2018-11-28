@@ -15,7 +15,8 @@ class HomeViewController:
     UITableViewDelegate,
     MemeSharingProtocol {
 
-    private let apiServer = "https://memelify.herokuapp.com/api/memes/latest?offset=20&limit=20"
+class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+    private let apiServer = "https://memelify.herokuapp.com/api/memes/latest"
 
     @IBOutlet weak var memeTable: UITableView!
 
@@ -46,7 +47,7 @@ class HomeViewController:
         } else {
             cell.favorite.setImage(UIImage(named: "unselected-heart"), for: .normal)
         }
-        
+
         cell.memeSharingDelegate = self
         return cell
     }
@@ -55,7 +56,7 @@ class HomeViewController:
         super.viewDidLoad()
         memeTable.dataSource = self
         memeTable.delegate = self
-        
+
         let encodedData = try! NSKeyedArchiver.archivedData(withRootObject: self.favorites, requiringSecureCoding: false)
         UserDefaults.standard.register(defaults: ["saved": encodedData])
 
