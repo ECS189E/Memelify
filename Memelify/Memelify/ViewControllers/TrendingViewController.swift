@@ -9,7 +9,7 @@
 import UIKit
 import Alamofire
 
-class TrendingViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class TrendingViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, MemeSharingProtocol {
     private let apiServer = "https://memelify.herokuapp.com/api/memes/hot"
 
     @IBOutlet weak var memeTable: UITableView!

@@ -8,8 +8,7 @@
 
 import UIKit
 
-class FavoritesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate,MemeSharingProtocol {
-    private let apiServer = "https://memelify.herokuapp.com/api/memes/latest"
+class FavoritesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, MemeSharingProtocol {
 
     @IBOutlet weak var memeTable: UITableView!
 

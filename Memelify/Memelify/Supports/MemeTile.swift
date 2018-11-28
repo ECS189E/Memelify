@@ -8,10 +8,8 @@
 
 import UIKit
 
-
 protocol MemeSharingProtocol {
     func share(meme: UIImage, message: String)
-    
 }
 
 class MemeTile: UITableViewCell {

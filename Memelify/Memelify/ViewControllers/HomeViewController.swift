@@ -9,13 +9,8 @@
 import UIKit
 import Alamofire
 
-class HomeViewController:
-    UIViewController,
-    UITableViewDataSource,
-    UITableViewDelegate,
-    MemeSharingProtocol {
+class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, MemeSharingProtocol {
 
-class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     private let apiServer = "https://memelify.herokuapp.com/api/memes/latest"
 
     @IBOutlet weak var memeTable: UITableView!
