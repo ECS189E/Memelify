@@ -1,17 +1,18 @@
 # -*- coding: utf-8 -*-
 """Application configuration."""
 import os
-from memelify.tasks import wait_task
+from memelify.tasks import get_memes
 
 class Config(object):
     JOBS = [
         {
-            'id': 'test-update-date',
-            'func': wait_task,
+            'id': 'update-memes-every-20-secs',
+            'func': get_memes,
             'trigger': 'interval',
-            'seconds': 10,
+            'seconds': 30,
         }
     ]
+    SCHEDULER_JOB_DEFAULTS = {'coalesce': False,  'max_instances': 1 }
     SCHEDULER_API_ENABLED = True
 
 

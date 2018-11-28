@@ -14,10 +14,13 @@ def get_latest_feed():
     offset = request.args.get('offset', default=0, type=int)
     limit  = request.args.get('limit', default=10, type=int)
     has_more, memes = bot.get_latest_memes(offset, limit)
-    return jsonify(has_more=has_more,
-                   offset=offset,
-                   size=len(bot.latest), 
-                   memes=memes)
+    meta = {
+        "has_more": has_more,
+        "offset": offset,
+        "size":len(bot.latest),   
+        "last_updated":bot.last_updated 
+    }
+    return jsonify(_meta=meta, memes=memes)
 
 
 @blueprint.route('memes/hot', methods=('GET', ))
@@ -26,10 +29,13 @@ def get_hottest_feed():
     offset = request.args.get('offset', default=0, type=int)
     limit  = request.args.get('limit', default=10, type=int)
     has_more, memes = bot.get_hottest_memes(offset, limit)
-    return jsonify(has_more=has_more,
-                   offset=offset,
-                   size=len(bot.hottest), 
-                   memes=memes)
+    meta = {
+        "has_more": has_more,
+        "offset": offset,
+        "size":len(bot.hottest),   
+        "last_updated":bot.last_updated 
+    }
+    return jsonify(_meta=meta, memes=memes)
 
 
 @blueprint.route('memes/refresh', methods=('POST', ))

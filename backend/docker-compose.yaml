@@ -3,39 +3,19 @@
 
 version: '3'
 services:
-
-  database:  # Store meme meta-data from multiple providers (subreddits)
-    restart: always
-    image: postgres:10.5
-    volumes:
-      - db_data:/var/lib/postgresql/data
-    networks:
-      - db_nw
-
-  memelify_api:  # Handle GET/POST requests from iOS clients.
+  memelify:  # Handle GET/POST requests from iOS clients.
     restart: always
     build: ./flask
-    ports:
+    ports: 
       - "8000:8000"
-    depends_on:
-      - database
-    networks:
-      - db_nw
-      - web_nw
-    command: gunicorn -w 1 -b :8000 app:app
+    environment:
+    command: gunicorn -w 1 -b :8000 autoapp:app --log-level=debug --log-file=-
 
-  nginx:   # Reverse-proxy, scalable web server
-    restart: always
-    build: ./nginx
-    ports:
-      - "80:80"
-    depends_on:
-      - memelify_api
 
-networks:
-  db_nw:
-    driver: bridge
-  web_nw:
-    driver: bridge
-volumes:  # allow data persist on disk when db container is down.
-  db_data:
+  # nginx:   # web server
+  #   restart: always
+  #   build: ./nginx
+  #   ports: 
+  #     - "80:80"
+  #   depends_on:
+  #     - memelify

@@ -4,8 +4,8 @@ Whenever bot recognizes a new meme, it will:
     * Load meme meta-data to our Redis Server.
     * Track number of upvotes/downvotes to update the metadata.
 """
-import praw
 from datetime import datetime
+import praw
 from urllib.parse import urlparse
 
 # A set of supported meme extensions
@@ -16,17 +16,19 @@ class RedditMemeBot:
     """Find all meme posts in a given subreddit"""
 
     def __init__(self, subreddit_name, client_id, client_secret):
+        self.last_updated = datetime.now()
         self.bot = create_bot(subreddit_name, client_id, client_secret)
-        self.latest = [p for p in self.bot.new(limit=None) if is_meme(p)]
-        self.hottest = [p for p in self.bot.hot(limit=None) if is_meme(p)]
+        self.latest = []
+        self.hottest = []
+
 
     def get_latest_memes(self, offset=0, limit=10):
         """Return list of latest memes in current subreddit"""
         limit = min(limit, len(self.latest) - offset)
         has_more = True if offset + limit < len(self.latest) else False
-
         latest_memes = [meme2dict(p) for p in self.latest[offset:offset+limit]]
         return has_more, latest_memes
+
 
     def get_hottest_memes(self, offset=0, limit=10):
         """Returns list of hottest memes in current subreddit"""
@@ -34,9 +36,16 @@ class RedditMemeBot:
         has_more = True if offset + limit < len(self.hottest) else False
         hottest_memes = [meme2dict(p) for p in self.hottest[offset:offset+limit]]
         return has_more, hottest_memes
+        
 
-    def refresh(self, ):
-        return NotImplementedError
+    def refresh(self):
+        self.last_updated = datetime.now().isoformat()
+        self._find_new_memes()
+
+
+    def _find_new_memes(self):
+        self.latest = [p for p in self.bot.new(limit=None) if is_meme(p)]
+        self.hottest = [p for p in self.bot.top(limit=None) if is_meme(p)]
 
 
 def create_bot(name, client_id, client_secret):

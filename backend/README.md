@@ -55,15 +55,6 @@ The response is a json object.
     memes:    []    --- collection of memes object
 }
 ```
-## Backend Overview
-
-```shell
-
-              |============|         |===========|        |=========|     
-Clients <---->|Nginx Server|<------->|Memlify API|<------>|Database |   
-              |============|  web_nw |===========|  db_nw |=========|
-
-```
 ## Limitations
 
 * No HTTPS.
@@ -71,3 +62,6 @@ Clients <---->|Nginx Server|<------->|Memlify API|<------>|Database |
 Therefore, we need to manually restart docker container to reload the bot.
 
 
+## Reference:
+
+[1] How Instagram Feed works [Article](https://blogs.vmware.com/vfabric/2013/04/how-instagram-feeds-work-celery-and-rabbitmq.html)

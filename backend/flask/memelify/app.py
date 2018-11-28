@@ -1,5 +1,6 @@
 """Holds the create_app() Flask application factory."""
-import os
+import os, sys
+import logging
 from flask import Flask
 
 
@@ -7,6 +8,7 @@ def create_app(config_object):
     """Flask application factory. Initializes and returns the Flask application.
     http://flask.pocoo.org/docs/patterns/appfactories/.
     """ 
+
     app = Flask(__name__)
     app.url_map.strict_slashes = False   # allows both '/api' and '/api/'
     app.config.from_object(config_object)
@@ -28,8 +30,8 @@ def register_blueprints(app):
 
 def register_extensions(app):
     """Register Flask extensions."""
-
     from flask_apscheduler import APScheduler
     scheduler = APScheduler()
+
     scheduler.init_app(app)  # jobs are defined under app.config
     scheduler.start()
