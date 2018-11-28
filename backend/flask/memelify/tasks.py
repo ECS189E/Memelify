@@ -4,7 +4,7 @@ from memelify.api.memes import bot
 
 LOG = getLogger(__name__)
 
-def get_memes():
+def update_memes():
     global bot
     t = time.time()
     LOG.info('Looking for new meme....')

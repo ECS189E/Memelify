@@ -20,3 +20,4 @@ tzlocal==1.5.1
 update-checker==0.16
 urllib3==1.24.1
 werkzeug==0.14.1
+wtforms==2.2.1

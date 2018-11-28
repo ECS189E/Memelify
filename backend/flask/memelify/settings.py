@@ -1,20 +1,22 @@
 # -*- coding: utf-8 -*-
 """Application configuration."""
 import os
-from memelify.tasks import get_memes
+from memelify.tasks import update_memes
 
 class Config(object):
     JOBS = [
         {
-            'id': 'update-memes-every-20-secs',
-            'func': get_memes,
+            'id': 'update-memes-every-1-minutes',
+            'func': update_memes,
             'trigger': 'interval',
-            'seconds': 30,
+            'seconds': 1,
         }
     ]
-    SCHEDULER_JOB_DEFAULTS = {'coalesce': False,  'max_instances': 1 }
     SCHEDULER_API_ENABLED = True
-
+    SCHEDULER_JOB_DEFAULTS = {
+        'coalesce': False,  
+        'max_instances': 1
+    }
 
 class DevConfig(Config):
     """Development configuration."""

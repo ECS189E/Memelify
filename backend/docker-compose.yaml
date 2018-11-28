@@ -4,18 +4,11 @@
 version: '3'
 services:
   memelify:  # Handle GET/POST requests from iOS clients.
-    restart: always
+    restart: always  # to make sure service is always on.
     build: ./flask
     ports: 
-      - "8000:8000"
+      - "8000:8000"  # forward port 8000 from docker to port's host 8000
     environment:
+      - FLASK_DEBUG=0
+      - TZ=America/Los_Angeles
     command: gunicorn -w 1 -b :8000 autoapp:app --log-level=debug --log-file=-
-
-
-  # nginx:   # web server
-  #   restart: always
-  #   build: ./nginx
-  #   ports: 
-  #     - "80:80"
-  #   depends_on:
-  #     - memelify
