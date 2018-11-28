@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FavoritesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class FavoritesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate,MemeSharingProtocol {
     private let apiServer = "https://memelify.herokuapp.com/api/memes/latest"
 
     @IBOutlet weak var memeTable: UITableView!
@@ -28,7 +28,7 @@ class FavoritesViewController: UIViewController, UITableViewDataSource, UITableV
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MemeTilePrototype", for: indexPath) as! MemeTile
-
+        cell.memeSharingDelegate = self
         cell.obj = favorites[indexPath.row]
         cell.meme.image = favorites[indexPath.row].image
         cell.karma.text = "Karma: " + String(favorites[indexPath.row].likes ?? 0)

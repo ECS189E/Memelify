@@ -8,6 +8,12 @@
 
 import UIKit
 
+
+protocol MemeSharingProtocol {
+    func share(meme: UIImage, message: String)
+    
+}
+
 class MemeTile: UITableViewCell {
 
     @IBOutlet weak var meme: UIImageView!
@@ -18,7 +24,11 @@ class MemeTile: UITableViewCell {
     
     var fav = false
     var obj: MemeObject?
+    var memeSharingDelegate: MemeSharingProtocol?
     
+    /// Adds current MemeTile object to local storage as a favorite Meme.
+    /// - Parameters: sender: Any
+    /// - Returns: None
     @IBAction func addToFavorites(_ sender: Any) {
         
         var favs = [MemeObject]()
@@ -69,5 +79,13 @@ class MemeTile: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
+    }
+
+    /// Pop-up a UIActivityViewController to share Meme object to other app
+    /// - Parameters: sender: Any
+    /// - Returns: None
+    @IBAction func shareMeme(_ sender: Any){
+        print("Sharing Meme...")
+        self.memeSharingDelegate?.share(meme: self.meme.image!, message: "From Memelify with ❤️")
     }
 }

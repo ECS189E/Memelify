@@ -9,8 +9,8 @@
 import UIKit
 import Alamofire
 
-class TrendingViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    private let apiServer = "https://memelify.herokuapp.com/api/memes/top"
+class TrendingViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, MemeSharingProtocol{
+    private let apiServer = "https://memelify.herokuapp.com/api/memes/hot?offset=0&limit=20"
 
     @IBOutlet weak var memeTable: UITableView!
 
@@ -34,6 +34,7 @@ class TrendingViewController: UIViewController, UITableViewDataSource, UITableVi
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MemeTilePrototype", for: indexPath) as! MemeTile
+        cell.memeSharingDelegate = self
         cell.obj = memes[indexPath.row]
         cell.meme.image = cell.obj?.image
         cell.karma.text = "Karma: " + String(cell.obj?.likes ?? 0)
@@ -87,5 +88,12 @@ class TrendingViewController: UIViewController, UITableViewDataSource, UITableVi
 
         imageView.image = UIImage(named: "Memelify-transparent.png")
         navigationItem.titleView = imageView
+    }
+    
+    func share(meme: UIImage, message: String) {
+        print("Sharing in VC")
+        let shareMemeVC = UIActivityViewController(activityItems: [meme, message], applicationActivities: nil)
+        shareMemeVC.popoverPresentationController?.sourceView = self.view
+        self.present(shareMemeVC, animated: true, completion: nil)
     }
 }

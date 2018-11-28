@@ -9,7 +9,12 @@
 import UIKit
 import Alamofire
 
-class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class HomeViewController:
+    UIViewController,
+    UITableViewDataSource,
+    UITableViewDelegate,
+    MemeSharingProtocol {
+
     private let apiServer = "https://memelify.herokuapp.com/api/memes/latest?offset=20&limit=20"
 
     @IBOutlet weak var memeTable: UITableView!
@@ -41,6 +46,8 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         } else {
             cell.favorite.setImage(UIImage(named: "unselected-heart"), for: .normal)
         }
+        
+        cell.memeSharingDelegate = self
         return cell
     }
 
@@ -48,7 +55,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         super.viewDidLoad()
         memeTable.dataSource = self
         memeTable.delegate = self
-
+        
         let encodedData = try! NSKeyedArchiver.archivedData(withRootObject: self.favorites, requiringSecureCoding: false)
         UserDefaults.standard.register(defaults: ["saved": encodedData])
 
@@ -85,15 +92,24 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     override func viewDidAppear(_ animated: Bool) {
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
         imageView.contentMode = .scaleAspectFit
-
         imageView.image = UIImage(named: "Memelify-transparent.png")
         navigationItem.titleView = imageView
     }
+
 }
+
 
 extension UIImage {
     func cropRatio() -> CGFloat {
         let widthRatio = CGFloat(self.size.width / self.size.height)
         return widthRatio
+    }
+}
+
+extension MemeSharingProtocol where Self: UIViewController {
+    func share(meme: UIImage, message: String) {
+        let shareMemeVC = UIActivityViewController(activityItems: [meme, message], applicationActivities: nil)
+        shareMemeVC.popoverPresentationController?.sourceView = self.view
+        self.present(shareMemeVC, animated: true, completion: nil)
     }
 }
