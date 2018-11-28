@@ -21,7 +21,6 @@ class RedditMemeBot:
         self.latest = []
         self.hottest = []
 
-
     def get_latest_memes(self, offset=0, limit=10):
         """Return list of latest memes in current subreddit"""
         limit = min(limit, len(self.latest) - offset)
@@ -45,7 +44,7 @@ class RedditMemeBot:
 
     def _find_new_memes(self):
         self.latest = [p for p in self.bot.new(limit=None) if is_meme(p)]
-        self.hottest = [p for p in self.bot.top(limit=None) if is_meme(p)]
+        self.hottest = [p for p in self.bot.top(limit=None, time_limit='week') if is_meme(p)]
 
 
 def create_bot(name, client_id, client_secret):
