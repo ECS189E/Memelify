@@ -39,16 +39,16 @@ class MemeTile: UITableViewCell {
             let image = UIImage(named: "selected-heart")
             self.favorite.setImage(image, for: .normal)
             
-            if favs.contains(where: {$0.id == self.obj!.id} ){
-                return
-            }
+//            if favs.contains(where: {$0.id == self.obj!.id} ){
+//                return
+//            }
             
             favs.append(self.obj!)
             
-            let updatedFavs = try? NSKeyedArchiver.archivedData(withRootObject: favs, requiringSecureCoding: false)
-            UserDefaults.standard.set(updatedFavs, forKey: "saved")
+//            let updatedFavs = try? NSKeyedArchiver.archivedData(withRootObject: favs, requiringSecureCoding: false)
+//            UserDefaults.standard.set(updatedFavs, forKey: "saved")
             
-            print(favs)
+//            print(favs)
             
         // remove favorite
         } else {
