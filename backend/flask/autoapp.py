@@ -1,9 +1,3 @@
-"""
-Create a Memelify Service instance.
-"""
-from flask.helpers import get_debug_flag
-from memelify.app import create_app
-from memelify.settings import DevConfig, ProdConfig
-
-CONFIG = DevConfig if get_debug_flag() else ProdConfig
-app = create_app(CONFIG)
+"""Create a Memelify API service."""
+from memelify import create_app, Config
+app = create_app(Config)
