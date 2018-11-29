@@ -40,6 +40,7 @@ class TrendingViewController: UIViewController, UITableViewDataSource, UITableVi
         cell.karma.text = String(cell.obj?.likes ?? 0)
         if favorites.contains(where: { $0.id == cell.obj?.id}) {
             cell.favorite.setImage(UIImage(named: "selected-heart"), for: .normal)
+            cell.fav = true
         } else {
             cell.favorite.setImage(UIImage(named: "unselected-heart"), for: .normal)
         }

@@ -33,7 +33,7 @@ class MemeTile: UITableViewCell {
         favs = try! NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(UserDefaults.standard.object(forKey: "saved") as! Data) as! [MemeObject]
         
         // add favorite
-        if(fav == false){
+        if fav == false {
             fav = true
             
             let image = UIImage(named: "selected-heart")

@@ -29,6 +29,7 @@ class FavoritesViewController: UIViewController, UITableViewDataSource, UITableV
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MemeTilePrototype", for: indexPath) as! MemeTile
         cell.memeSharingDelegate = self
+        cell.fav = true
         cell.obj = favorites[indexPath.row]
         cell.meme.image = favorites[indexPath.row].image
         cell.karma.text = String(favorites[indexPath.row].likes ?? 0)
@@ -50,7 +51,7 @@ class FavoritesViewController: UIViewController, UITableViewDataSource, UITableV
     override func viewDidAppear(_ animated: Bool) {
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
         imageView.contentMode = .scaleAspectFit
-
+        memeTable.reloadData()
         imageView.image = UIImage(named: "Memelify-transparent.png")
         imageView.tintColor = UIColor.white
         navigationItem.titleView = imageView
