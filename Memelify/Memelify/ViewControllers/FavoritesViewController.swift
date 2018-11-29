@@ -14,6 +14,7 @@ class FavoritesViewController: UIViewController, UITableViewDataSource, UITableV
 
     var memes = [MemeObject]()
     var favorites = [MemeObject]()
+    var darkMode : DarkMode?
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return favorites.count
@@ -37,6 +38,8 @@ class FavoritesViewController: UIViewController, UITableViewDataSource, UITableV
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.darkMode = DarkMode(navigationController: navigationController!, tabBarController: tabBarController!, views: [memeTable])
+
         memeTable.dataSource = self
         memeTable.delegate = self
 
@@ -49,6 +52,7 @@ class FavoritesViewController: UIViewController, UITableViewDataSource, UITableV
         imageView.contentMode = .scaleAspectFit
 
         imageView.image = UIImage(named: "Memelify-transparent.png")
+        imageView.tintColor = UIColor.white
         navigationItem.titleView = imageView
 
         favorites = try! NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(UserDefaults.standard.object(forKey: "saved") as! Data) as! [MemeObject]

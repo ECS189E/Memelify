@@ -17,6 +17,8 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
     var memes = [MemeObject]()
     var favorites = [MemeObject]()
+    var darkMode : DarkMode?
+
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return memes.count
@@ -37,7 +39,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         cell.obj = memes[indexPath.row]
         cell.meme.image = cell.obj?.image
         cell.karma.text = String(cell.obj?.likes ?? 0)
-        if cell.findOutFav() {
+        if favorites.contains(where: { $0.id == cell.obj?.id}){
             cell.favorite.setImage(UIImage(named: "selected-heart"), for: .normal)
         } else {
             cell.favorite.setImage(UIImage(named: "unselected-heart"), for: .normal)
@@ -49,6 +51,8 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.darkMode = DarkMode(navigationController: navigationController!, tabBarController: tabBarController!, views: [memeTable])
+
         memeTable.dataSource = self
         memeTable.delegate = self
 
@@ -91,9 +95,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         imageView.image = UIImage(named: "Memelify-transparent.png")
         navigationItem.titleView = imageView
     }
-
 }
-
 
 extension UIImage {
     func cropRatio() -> CGFloat {

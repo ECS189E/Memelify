@@ -19,11 +19,11 @@ class MemeTile: UITableViewCell {
     @IBOutlet weak var share: UIButton!
     @IBOutlet weak var favorite: UIButton!
     @IBOutlet weak var buttons: UIView!
-    
+
     var fav = false
     var obj: MemeObject?
     var memeSharingDelegate: MemeSharingProtocol?
-    
+
     /// Adds current MemeTile object to local storage as a favorite Meme.
     /// - Parameters: sender: Any
     /// - Returns: None
@@ -75,7 +75,34 @@ class MemeTile: UITableViewCell {
         return false
     }
 
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)!
+
+        // Add Observers for dark theme
+        NotificationCenter.default.addObserver(self, selector: #selector(darkModeEnabled(_:)), name: .darkModeEnabled, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(darkModeDisabled(_:)), name: .darkModeDisabled, object: nil)
+    }
+
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: .darkModeEnabled, object: nil)
+        NotificationCenter.default.removeObserver(self, name: .darkModeDisabled, object: nil)
+    }
+
+    @objc private func darkModeEnabled(_ notification: Notification) {
+        self.buttons.backgroundColor = UIColor.black
+    }
+
+    @objc private func darkModeDisabled(_ notification: Notification) {
+        self.buttons.backgroundColor = UIColor.white
+    }
+
     override func awakeFromNib() {
+        if DarkMode.isEnabled() {
+            self.buttons.backgroundColor = UIColor.black
+        } else {
+            self.buttons.backgroundColor = UIColor.white
+        }
+
         super.awakeFromNib()
     }
 

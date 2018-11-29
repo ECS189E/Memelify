@@ -14,9 +14,9 @@ class TrendingViewController: UIViewController, UITableViewDataSource, UITableVi
 
     @IBOutlet weak var memeTable: UITableView!
 
-
     var memes = [MemeObject]()
     var favorites = [MemeObject]()
+    var darkMode : DarkMode?
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return memes.count
@@ -38,7 +38,7 @@ class TrendingViewController: UIViewController, UITableViewDataSource, UITableVi
         cell.obj = memes[indexPath.row]
         cell.meme.image = cell.obj?.image
         cell.karma.text = String(cell.obj?.likes ?? 0)
-        if cell.findOutFav() {
+        if favorites.contains(where: { $0.id == cell.obj?.id}) {
             cell.favorite.setImage(UIImage(named: "selected-heart"), for: .normal)
         } else {
             cell.favorite.setImage(UIImage(named: "unselected-heart"), for: .normal)
@@ -48,6 +48,8 @@ class TrendingViewController: UIViewController, UITableViewDataSource, UITableVi
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.darkMode = DarkMode(navigationController: navigationController!, tabBarController: tabBarController!, views: [memeTable])
+
         memeTable.dataSource = self
         memeTable.delegate = self
 
@@ -85,7 +87,6 @@ class TrendingViewController: UIViewController, UITableViewDataSource, UITableVi
     override func viewDidAppear(_ animated: Bool) {
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
         imageView.contentMode = .scaleAspectFit
-
         imageView.image = UIImage(named: "Memelify-transparent.png")
         navigationItem.titleView = imageView
     }
