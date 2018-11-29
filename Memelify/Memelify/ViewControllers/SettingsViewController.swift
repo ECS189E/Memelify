@@ -10,6 +10,8 @@ import UIKit
 
 class SettingsViewController: UITableViewController {
 
+    @IBOutlet weak var darkTheme: UISegmentedControl!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title = "Settings"

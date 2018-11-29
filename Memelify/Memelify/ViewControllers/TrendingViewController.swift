@@ -37,7 +37,7 @@ class TrendingViewController: UIViewController, UITableViewDataSource, UITableVi
         cell.memeSharingDelegate = self
         cell.obj = memes[indexPath.row]
         cell.meme.image = cell.obj?.image
-        cell.karma.text = "Karma: " + String(cell.obj?.likes ?? 0)
+        cell.karma.text = String(cell.obj?.likes ?? 0)
         if cell.findOutFav() {
             cell.favorite.setImage(UIImage(named: "selected-heart"), for: .normal)
         } else {

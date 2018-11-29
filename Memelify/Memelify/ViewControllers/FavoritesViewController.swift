@@ -30,7 +30,7 @@ class FavoritesViewController: UIViewController, UITableViewDataSource, UITableV
         cell.memeSharingDelegate = self
         cell.obj = favorites[indexPath.row]
         cell.meme.image = favorites[indexPath.row].image
-        cell.karma.text = "Karma: " + String(favorites[indexPath.row].likes ?? 0)
+        cell.karma.text = String(favorites[indexPath.row].likes ?? 0)
         cell.favorite.setImage(UIImage(named: "selected-heart"), for: .normal)
         return cell
     }
