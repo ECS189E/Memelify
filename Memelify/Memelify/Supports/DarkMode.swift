@@ -10,9 +10,9 @@ import Foundation
 import UIKit
 
 class DarkMode {
-    var navigationController : UINavigationController
-    var tabBarController : UITabBarController
-    var views : [UIView]
+    var navigationController: UINavigationController
+    var tabBarController: UITabBarController
+    var views: [UIView]
 
     init(navigationController: UINavigationController, tabBarController: UITabBarController, views: [UIView]) {
         self.navigationController = navigationController
@@ -40,7 +40,7 @@ class DarkMode {
     }
 
     @objc private func enabled(_ notification: Notification) {
-        for view in views{
+        for view in views {
             view.backgroundColor = UIColor.black
             view.tintColor = UIColor.white
         }
@@ -54,7 +54,7 @@ class DarkMode {
     }
 
     @objc private func disabled(_ notification: Notification) {
-        for view in views{
+        for view in views {
             view.backgroundColor = UIColor.white
             view.tintColor = UIColor.black
         }
@@ -66,4 +66,4 @@ class DarkMode {
         tabBarController.tabBar.tintColor = UIColor.black
         tabBarController.tabBar.unselectedItemTintColor = UIColor.darkGray
 
-    }}
+    } }

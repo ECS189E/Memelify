@@ -11,13 +11,14 @@ import UIKit
 class SettingsViewController: UITableViewController {
 
     @IBOutlet weak var darkTheme: UISegmentedControl!
-    var darkMode : DarkMode?
+    var darkMode: DarkMode?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.darkMode = DarkMode(navigationController: navigationController!, tabBarController: tabBarController!, views: [tableView])
 
         self.navigationItem.title = "Settings"
+
         // Add Observers for dark theme
         NotificationCenter.default.addObserver(self, selector: #selector(darkModeEnabled(_:)), name: .darkModeEnabled, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(darkModeDisabled(_:)), name: .darkModeDisabled, object: nil)

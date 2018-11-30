@@ -60,8 +60,11 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
         self.darkMode = DarkMode(navigationController: navigationController!, tabBarController: tabBarController!, views: [memeTable])
         self.memeTable.addSubview(self.refreshControl)
+
+        let sv = UIViewController.displaySpinner(onView: self.view)
         
         memeTable.dataSource = self
         memeTable.delegate = self
@@ -96,6 +99,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
                             let newMeme = MemeObject(id: id!, created: date!, title: title!, likes: likes!, pic: data)
                             self.memes.append(newMeme)
                             self.memeTable.reloadData()
+                            UIViewController.removeSpinner(spinner: sv)
                         }
                     }
                 }
