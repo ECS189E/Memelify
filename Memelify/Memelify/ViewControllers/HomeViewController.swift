@@ -11,14 +11,22 @@ import Alamofire
 
 class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, MemeSharingProtocol {
 
-    private let apiServer = "https://memelify.herokuapp.com/api/memes/latest"
-
+    private var apiServer = "https://memelify.herokuapp.com/api/memes/latest"
+    lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action:
+            #selector(HomeViewController.handleRefresh(_:)),
+                                 for: UIControl.Event.valueChanged)
+        refreshControl.tintColor = UIColor.red
+        
+        return refreshControl
+    }()
+    
     @IBOutlet weak var memeTable: UITableView!
 
     var memes = [MemeObject]()
     var favorites = [MemeObject]()
     var darkMode : DarkMode?
-
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return memes.count
@@ -53,10 +61,10 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     override func viewDidLoad() {
         super.viewDidLoad()
         self.darkMode = DarkMode(navigationController: navigationController!, tabBarController: tabBarController!, views: [memeTable])
-
+        self.memeTable.addSubview(self.refreshControl)
         memeTable.dataSource = self
         memeTable.delegate = self
-
+    
         let encodedData = try! NSKeyedArchiver.archivedData(withRootObject: self.favorites, requiringSecureCoding: false)
         UserDefaults.standard.register(defaults: ["saved": encodedData])
 
@@ -95,6 +103,12 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         imageView.contentMode = .scaleAspectFit
         imageView.image = UIImage(named: "Memelify-transparent.png")
         navigationItem.titleView = imageView
+    }
+    
+    @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
+        apiServer = "https://memelify.herokuapp.com/api/memes/hot"
+        self.memeTable.reloadData()
+        refreshControl.endRefreshing()
     }
 }
 
