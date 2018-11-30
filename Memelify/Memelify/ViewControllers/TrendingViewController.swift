@@ -10,8 +10,17 @@ import UIKit
 import Alamofire
 
 class TrendingViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, MemeSharingProtocol {
-    private let apiServer = "https://memelify.herokuapp.com/api/memes/hot"
-
+    private var apiServer = "https://memelify.herokuapp.com/api/memes/hot"
+    lazy var refreshControl: UIRefreshControl = {
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action:
+            #selector(HomeViewController.handleRefresh(_:)),
+                                 for: UIControl.Event.valueChanged)
+        refreshControl.tintColor = UIColor.red
+        
+        return refreshControl
+    }()
+    
     @IBOutlet weak var memeTable: UITableView!
 
     var memes = [MemeObject]()
@@ -40,6 +49,7 @@ class TrendingViewController: UIViewController, UITableViewDataSource, UITableVi
         cell.karma.text = String(cell.obj?.likes ?? 0)
         if favorites.contains(where: { $0.id == cell.obj?.id}) {
             cell.favorite.setImage(UIImage(named: "selected-heart"), for: .normal)
+            cell.fav = true
         } else {
             cell.favorite.setImage(UIImage(named: "unselected-heart"), for: .normal)
         }
@@ -49,16 +59,22 @@ class TrendingViewController: UIViewController, UITableViewDataSource, UITableVi
     override func viewDidLoad() {
         super.viewDidLoad()
         self.darkMode = DarkMode(navigationController: navigationController!, tabBarController: tabBarController!, views: [memeTable])
-
+        self.memeTable.addSubview(self.refreshControl)
+        
         memeTable.dataSource = self
         memeTable.delegate = self
 
-        Alamofire.request(apiServer).responseJSON { response in
+        makeRequest(api: apiServer)
+        
+    }
+    
+    func makeRequest(api: String) {
+        Alamofire.request(api).responseJSON { response in
             if let json = response.result.value as? [String: Any] {
                 guard let memes = json["memes"] as? [[String: Any]] else {
                     return
                 }
-
+                self.memes.removeAll()
                 for meme in memes {
                     guard let url = URL(string: meme["url"] as! String) else {
                         continue
@@ -68,7 +84,7 @@ class TrendingViewController: UIViewController, UITableViewDataSource, UITableVi
                     let date = meme["created"] as? String
                     let title = meme["title"] as? String
                     let likes = meme["likes"] as? Int
-
+                    
                     self.getData(from: url) { data, response, error in
                         guard let data = data, error == nil else { return }
                         DispatchQueue.main.async() {
@@ -78,17 +94,22 @@ class TrendingViewController: UIViewController, UITableViewDataSource, UITableVi
                         }
                     }
                 }
-
             }
-        }
+        } //end of alomafire request
     }
-
+    
     // Shows Memelify logo on the navigation bar
     override func viewDidAppear(_ animated: Bool) {
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
         imageView.contentMode = .scaleAspectFit
         imageView.image = UIImage(named: "Memelify-transparent.png")
         navigationItem.titleView = imageView
+    }
+    
+    @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
+        makeRequest(api: "https://memelify.herokuapp.com/api/memes/hot")
+        self.memeTable.reloadData()
+        refreshControl.endRefreshing()
     }
     
     func share(meme: UIImage, message: String) {
