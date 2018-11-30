@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol refreshFavsProtocol: class {
+    func refreshFavs(id: String)
+}
+
 protocol MemeSharingProtocol {
     func share(meme: UIImage, message: String)
 }
@@ -23,7 +27,8 @@ class MemeTile: UITableViewCell {
     var fav = false
     var obj: MemeObject?
     var memeSharingDelegate: MemeSharingProtocol?
-
+    weak var refreshDelegate: refreshFavsProtocol?
+    
     /// Adds current MemeTile object to local storage as a favorite Meme.
     /// - Parameters: sender: Any
     /// - Returns: None
@@ -39,18 +44,8 @@ class MemeTile: UITableViewCell {
             let image = UIImage(named: "selected-heart")
             self.favorite.setImage(image, for: .normal)
             
-//            if favs.contains(where: {$0.id == self.obj!.id} ){
-//                return
-//            }
-            
             favs.append(self.obj!)
             
-//            let updatedFavs = try? NSKeyedArchiver.archivedData(withRootObject: favs, requiringSecureCoding: false)
-//            UserDefaults.standard.set(updatedFavs, forKey: "saved")
-            
-//            print(favs)
-            
-        // remove favorite
         } else {
             fav = false
             
@@ -62,7 +57,15 @@ class MemeTile: UITableViewCell {
         
         let updatedFavs = try? NSKeyedArchiver.archivedData(withRootObject: favs, requiringSecureCoding: false)
         UserDefaults.standard.set(updatedFavs, forKey: "saved")
+        
+        if refreshDelegate == nil {
+            print("delegate: not in favorites view")
+        } else {
+            self.refreshDelegate!.refreshFavs(id: (self.obj?.id)!)
+            print("finished using delegate")
+        }
         print(favs)
+        
     }
     
     func findOutFav () -> Bool {

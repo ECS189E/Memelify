@@ -8,10 +8,11 @@
 
 import UIKit
 
-class FavoritesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, MemeSharingProtocol {
+class FavoritesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, MemeSharingProtocol, refreshFavsProtocol {
 
+    //@IBOutlet weak var memeTable: UITableView!
     @IBOutlet weak var memeTable: UITableView!
-
+    
     var memes = [MemeObject]()
     var favorites = [MemeObject]()
     var darkMode : DarkMode?
@@ -29,6 +30,7 @@ class FavoritesViewController: UIViewController, UITableViewDataSource, UITableV
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MemeTilePrototype", for: indexPath) as! MemeTile
         cell.memeSharingDelegate = self
+        cell.refreshDelegate = self
         cell.fav = true
         cell.obj = favorites[indexPath.row]
         cell.meme.image = favorites[indexPath.row].image
@@ -59,6 +61,13 @@ class FavoritesViewController: UIViewController, UITableViewDataSource, UITableV
         favorites = try! NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(UserDefaults.standard.object(forKey: "saved") as! Data) as! [MemeObject]
 
         print(favorites)
-        self.memeTable.reloadData()
     }
+    
+    func refreshFavs(id: String) {
+        favorites.removeAll(where: { $0.id==id})
+        let updatedFavs = try? NSKeyedArchiver.archivedData(withRootObject: favorites, requiringSecureCoding: false)
+        UserDefaults.standard.set(updatedFavs, forKey: "saved")
+        memeTable.reloadData()
+    }
+    
 }
