@@ -62,28 +62,34 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         super.viewDidLoad()
         self.darkMode = DarkMode(navigationController: navigationController!, tabBarController: tabBarController!, views: [memeTable])
         self.memeTable.addSubview(self.refreshControl)
+        
         memeTable.dataSource = self
         memeTable.delegate = self
     
         let encodedData = try! NSKeyedArchiver.archivedData(withRootObject: self.favorites, requiringSecureCoding: false)
         UserDefaults.standard.register(defaults: ["saved": encodedData])
+        
+        makeRequest(api: apiServer)
+        
+    }
 
-        Alamofire.request(apiServer).responseJSON { response in
+    func makeRequest(api: String) {
+        Alamofire.request(api).responseJSON { response in
             if let json = response.result.value as? [String: Any] {
                 guard let memes = json["memes"] as? [[String: Any]] else {
                     return
                 }
-
+                self.memes.removeAll()
                 for meme in memes {
                     guard let url = URL(string: meme["url"] as! String) else {
                         continue
                     }
-
+                    
                     let id = meme["id"] as? String
                     let date = meme["created"] as? String
                     let title = meme["title"] as? String
                     let likes = meme["likes"] as? Int
-
+                    
                     self.getData(from: url) { data, response, error in
                         guard let data = data, error == nil else { return }
                         DispatchQueue.main.async() {
@@ -94,9 +100,9 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
                     }
                 }
             }
-        }
+        } //end of alomafire request
     }
-
+    
     // Shows Memelify logo on the navigation bar
     override func viewDidAppear(_ animated: Bool) {
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
@@ -106,7 +112,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
-        apiServer = "https://memelify.herokuapp.com/api/memes/hot"
+        makeRequest(api: "https://memelify.herokuapp.com/api/memes/latest")
         self.memeTable.reloadData()
         refreshControl.endRefreshing()
     }
