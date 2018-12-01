@@ -3,28 +3,27 @@
 ### Proposal:
 
 **Our Memelify app is designed to bring the hottest trendiest memes to UC
-Davis students using an easy to use interface that allows users to connect to
-the “UC Davis Memes for Egghead Teens” Facebook group and even create new memes
-and potentially upload them. This app will utilize many different views to guide
-the user to the best memes UC davis has to offer and with a quick tap as soon as
-the app is opened the meme magic will begin!**
+Davis students using an easy to use interface that allows users to connect to the UC Davis subreddit without needing to have a Reddit account. User will not have to worry about other general posts either because Memelify selects only the Meme posts from that subreddit.
+This app will utilize many different views to guide the user to the best memes UC Davis has to offer and with a quick tap as soon as the app is opened the meme magic will begin!**
 
 ### Features:
-- Share feature
-- Notifications
+- Share memes and Memelify with friends.
+- Get notified about the hottest memes and the "Meme of the day"
+- Don't like white and bright apps? Switch to our amazing Dark Mode!
+- Save your favorite memes to your phone.
+- Choose between a list of trending or the latest memes.
 
 # Milestone 1 - Design:
 
 ### 3rd party libraries:
-- Graph QL or Reddit API
+- Reddit API
 - Alamofire
-- Possibly Apple's App Analytics
+- Survey Monkey SDK
 
 ### Server Support for the app: 
-We are going to use Heroku for our Platform as a Service and Alamofire for out 
-networking library. The API will be hosted on Heroku and it will make API 
-calls to either Facebook or Reddit API. We will use Alamofire will make 
-requests, wait for response, and parse JSON.
+We are going to use Heroku to host our own API and Alamofire for out 
+networking library to make HTTP requests, wait for response and parse JSON.
+The API will be hosted on Heroku and it will make API calls to the Reddit API.
 
 ### Listing of all of the models (data structures): 
 For our app we will need possibly two data structures for all of the information we need to store.
