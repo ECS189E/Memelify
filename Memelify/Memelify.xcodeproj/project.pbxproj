@@ -17,6 +17,7 @@
 		8A8F282521A67B6A0037B9F8 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8F282421A67B6A0037B9F8 /* FavoritesViewController.swift */; };
 		8A8F282C21A739A40037B9F8 /* meme-example1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8A8F282921A739A40037B9F8 /* meme-example1.jpg */; };
 		8AAE476621ACFC1D005B1E3A /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAE476521ACFC1D005B1E3A /* SettingsViewController.swift */; };
+		8AEF0DBD21B3478A000FC3DF /* SurveyMonkeyiOSSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AEF0DBC21B3478A000FC3DF /* SurveyMonkeyiOSSDK.framework */; };
 		8AF896BD21AFD2970025DE0E /* DarkMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF896BC21AFD2970025DE0E /* DarkMode.swift */; };
 		8AF896C321B1C4B60025DE0E /* ViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF896C221B1C4B60025DE0E /* ViewController+Extension.swift */; };
 		AD2BDCB921A7A2FF00A9B57F /* FancyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2BDCB821A7A2FF00A9B57F /* FancyButton.swift */; };
@@ -65,6 +66,8 @@
 		8A8F282421A67B6A0037B9F8 /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
 		8A8F282921A739A40037B9F8 /* meme-example1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "meme-example1.jpg"; sourceTree = "<group>"; };
 		8AAE476521ACFC1D005B1E3A /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		8AEF0DBC21B3478A000FC3DF /* SurveyMonkeyiOSSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SurveyMonkeyiOSSDK.framework; path = "Pods/surveymonkey-ios-sdk/SurveyMonkeyiOSSDK.framework"; sourceTree = "<group>"; };
+		8AEF0DCF21B349DC000FC3DF /* Memelify-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Memelify-Bridging-Header.h"; sourceTree = "<group>"; };
 		8AF896BC21AFD2970025DE0E /* DarkMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkMode.swift; sourceTree = "<group>"; };
 		8AF896C221B1C4B60025DE0E /* ViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+Extension.swift"; sourceTree = "<group>"; };
 		AD2BDCB821A7A2FF00A9B57F /* FancyButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FancyButton.swift; sourceTree = "<group>"; };
@@ -89,6 +92,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8AEF0DBD21B3478A000FC3DF /* SurveyMonkeyiOSSDK.framework in Frameworks */,
 				55E64BA9EFF4292D2A130795 /* Pods_Memelify.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -113,6 +117,7 @@
 		68757579D3A9DF34552155B1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8AEF0DBC21B3478A000FC3DF /* SurveyMonkeyiOSSDK.framework */,
 				205FAB71296DC65B890F3215 /* Pods_Memelify.framework */,
 			);
 			name = Frameworks;
@@ -146,6 +151,7 @@
 			children = (
 				8A8F281721A63A650037B9F8 /* MemeTile.swift */,
 				AD2BDCB821A7A2FF00A9B57F /* FancyButton.swift */,
+				8AEF0DCF21B349DC000FC3DF /* Memelify-Bridging-Header.h */,
 				AD2BDCBA21A7B4E500A9B57F /* MemeObject.swift */,
 				8A46D23921AFAFDD0038CA99 /* NotificationsName+Extensions.swift */,
 				8A46D23B21AFC62D0038CA99 /* MLabel.swift */,
@@ -603,7 +609,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Pods/surveymonkey-ios-sdk",
+				);
 				INFOPLIST_FILE = Memelify/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -612,6 +621,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = ecs189.Memelify;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Memelify/Supports/Memelify-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -625,7 +635,10 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = "";
-				FRAMEWORK_SEARCH_PATHS = "${inherited}";
+				FRAMEWORK_SEARCH_PATHS = (
+					"${inherited}",
+					"$(PROJECT_DIR)/Pods/surveymonkey-ios-sdk",
+				);
 				INFOPLIST_FILE = Memelify/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -634,6 +647,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = ecs189.Memelify;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Memelify/Supports/Memelify-Bridging-Header.h";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

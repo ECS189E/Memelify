@@ -30,6 +30,7 @@ class SettingsViewController: UITableViewController {
         }
     }
 
+    // Display Settings
     @objc private func darkModeEnabled(_ notification: Notification) {
         self.tableView.reloadData()
     }
@@ -65,4 +66,13 @@ class SettingsViewController: UITableViewController {
             NotificationCenter.default.post(name: .darkModeDisabled, object: nil)
         }
     }
+
+    // General Settings
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // Rate us
+        if indexPath.section == 2 {
+            let feedbackController = SMFeedbackViewController(survey: "JL895DP")
+            feedbackController?.present(from: self, animated: true, completion: nil)
+        }
+    }    
 }

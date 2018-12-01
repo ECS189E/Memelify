@@ -1,16 +1,20 @@
 PODS:
   - Alamofire (4.7.3)
+  - surveymonkey-ios-sdk (2.0.3)
 
 DEPENDENCIES:
   - Alamofire (~> 4.7)
+  - surveymonkey-ios-sdk (~> 2.0.0)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
+    - surveymonkey-ios-sdk
 
 SPEC CHECKSUMS:
   Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
+  surveymonkey-ios-sdk: 59c670cbe3688bd8d57e4aa9104daba836a4c1d2
 
-PODFILE CHECKSUM: 88514eb52103fd02c553bed0f41e3925947ec943
+PODFILE CHECKSUM: 864c4bfa20120acdf4d0a7bf502885e7af471641
 
 COCOAPODS: 1.5.3

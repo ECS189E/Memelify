@@ -61,8 +61,6 @@ class TrendingViewController: UIViewController, UITableViewDataSource, UITableVi
 
         self.darkMode = DarkMode(navigationController: navigationController!, tabBarController: tabBarController!, views: [memeTable])
         self.memeTable.addSubview(self.refreshControl)
-
-        let sv = UIViewController.displaySpinner(onView: self.view)
         
         memeTable.dataSource = self
         memeTable.delegate = self
@@ -72,6 +70,8 @@ class TrendingViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     func makeRequest(api: String) {
+        let sv = UIViewController.displaySpinner(onView: self.view)
+        
         Alamofire.request(api).responseJSON { response in
             if let json = response.result.value as? [String: Any] {
                 guard let memes = json["memes"] as? [[String: Any]] else {
