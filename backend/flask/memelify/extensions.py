@@ -15,17 +15,18 @@ admin = Admin(template_mode='bootstrap3')
 
 class MemeViewer(ModelView):
     """Allow Flask-Admin to display meme from an URL"""
-    column_list = ('url', 'votes', 'hotness', 'upvote_ratio', 'created_utc')
+    column_list = ('funny_score', 'votes', 'hotness', 'updated', 'url')
 
     def _display_meme(self, context, model, name):
         if not model.url:
             return ''
-        return Markup('</figure>\
-                            <a href="{url} style="font-size:70%;">\
-                                <img src="{url}" height="150px" width="auto">\
-                            </a>\
-                            <p>{title}</p>\
-                        </figure>'.format(url=model.url, title=model.title))
+        return Markup(
+            '</figure>\
+                <a href="{url}" style="font-size:70%;">\
+                    <img src="{url}" height="100px" width="auto">\
+                </a>\
+                <p>{title}</p>\
+            </figure>'.format(url=model.url, title=model.title))
 
     column_formatters = {
         'url': _display_meme

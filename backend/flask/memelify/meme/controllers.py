@@ -10,7 +10,8 @@ blueprint = Blueprint('meme',  __name__)
 def query_latest_memes():
     offset = request.args.get('offset', default=0, type=int)
     limit = request.args.get('limit', default=10, type=int)
-    latest_memes = (RedditMeme.query.order_by(RedditMeme.created_utc)
+    latest_memes = (RedditMeme.query
+                    .order_by(RedditMeme.created_utc.desc())
                     .offset(offset)
                     .limit(limit)
                     .all())

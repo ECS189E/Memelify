@@ -19,11 +19,12 @@ def create_app(config_object):
     http://flask.pocoo.org/docs/patterns/appfactories/.
     """
     app = create_app_context(config_object)
-
     register_blueprints(app)
 
-    from memelify.tasks import update_reddit_memes
-    update_reddit_memes.queue(limit=None)
+    @app.before_first_request
+    def run_first_task():
+        from memelify.tasks import update_reddit_memes
+        update_reddit_memes.queue(limit=None, job_id="should-not-be-duplicated")
     return app
 
 
@@ -36,6 +37,9 @@ def register_blueprints(app):
     from memelify.meme.controllers import blueprint
     app.register_blueprint(blueprint, url_prefix='/api')
 
+    import rq_dashboard
+    app.config.from_object(rq_dashboard.default_settings)
+    app.register_blueprint(rq_dashboard.blueprint, url_prefix='/rq')
 
 def register_extensions(app):
     """Register Flask extensions."""

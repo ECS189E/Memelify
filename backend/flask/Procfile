@@ -1,1 +1,4 @@
-web: gunicorn -w 1 autoapp:app --log-file -
+web: gunicorn autoapp:app
+init: flask db init
+migrate: flask db migrate -m "Init PostGrestQL"
+upgrade: flask db upgrade

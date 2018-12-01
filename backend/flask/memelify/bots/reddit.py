@@ -16,17 +16,8 @@ def create_bot():
                        user_agent='%s Bot' % name).subreddit(name)
 
 
-def is_meme(submission):
-    """Determine if a submission on Reddit is a meme."""
+def is_image(submission):
     if not submission.url:
         return False
-    if not is_image(submission):
-        return False
-    else:
-        return True
-        # MEME_CLASSIFIER = tf.keras.load_model('meme_classifier.h5')
-
-
-def is_image(submission):
     url_extension = urlparse(submission.url).path.split('.')[-1]
     return True if url_extension in {'jpeg', 'jpg', 'png'} else False
