@@ -9,7 +9,8 @@ import tensorflow as tf
 
 from PIL import Image
 from urllib.request import urlopen
-# from memory_profiler import profile
+import skimage
+from skimage.color import rgba2rgb, gray2rgb
 
 _BASE_DIR = os.path.abspath(os.path.dirname(__file__))
 _MODEL_PATH = os.path.join(_BASE_DIR, 'model.tflite')
@@ -35,15 +36,19 @@ def create_classifier(model_path=_MODEL_PATH, preprocess_fn=_PROCESS_FN):
     # Get input and output tensors.
     input_details = model.get_input_details()
     output_details = model.get_output_details()
-
+    # from memory_profiler import profile
     # @profile
     def get_meme_score(img_url):
         # Load and preprocess image
         bstring = urlopen(img_url)
         img = Image.open(bstring)
-        img = img.resize((224, 224), Image.ANTIALIAS)
-        img = img.convert('RGB')
-        img = np.expand_dims(preprocess_fn(np.array(img, dtype=float)), 0)
+        img = img.resize((224, 224), Image.AFFINE)
+        img = np.array(img)
+        if len(img.shape) > 2 and img.shape[2] == 4:
+            img = rgba2rgb(img)
+        elif img.size == 2:
+            img = gray2rgb(img)
+        img = np.expand_dims(preprocess_fn(img.astype(np.float32)), 0)
 
         # Predict meme score
         model.set_tensor(input_details[0]['index'], img)
@@ -56,7 +61,8 @@ def create_classifier(model_path=_MODEL_PATH, preprocess_fn=_PROCESS_FN):
 if __name__ == "__main__":  # Test
     MEME_URL = ['https://i.redd.it/rynj92e216021.jpg',
                 'https://i.redd.it/y0d9p1hybm121.jpg',
-                'https://i.redd.it/eyy0w1gppc121.jpg']
+                'https://i.redd.it/eyy0w1gppc121.jpg',
+                'https://i.redd.it/5err4vherp021.jpg']
     classifier = create_classifier()
     for url in MEME_URL:
         score = classifier(url)

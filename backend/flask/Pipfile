@@ -5,7 +5,6 @@ verify_ssl = true
 
 [dev-packages]
 pylint = "*"
-v = {editable = true,version = "*"}
 pep8 = "*"
 autopep8 = "*"
 pyment = "*"
@@ -15,16 +14,15 @@ memory-profiler = "*"
 flask = "*"
 praw = "*"
 gunicorn = "*"
-flask-apscheduler = "*"
+redis = "==2.10.6"
 flask-sqlalchemy = "*"
 flask-migrate = "*"
-redis = "==2.10.6"
-tensorflow = "==1.12.0"
-pillow = "*"
 flask-rq2 = "*"
 flask-admin = "*"
-rq-dashboard = "*"
+pillow = "*"
+tensorflow = "==1.12.0"
 psycopg2 = "*"
+scikit-image = "*"
 
 [requires]
 python_version = "3.6"
