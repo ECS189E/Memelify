@@ -1,6 +1,8 @@
 # coding: utf-8
 import math
 import datetime as dt
+from decimal import Decimal
+
 from memelify.extensions import db
 from sqlalchemy import Column, String, Text, Integer, Float
 
@@ -26,7 +28,7 @@ class RedditMeme(db.Model):
             'likes': self.votes,
             'url': self.url,
             'created': str(self.created_utc),
-            'funny_score': self.funny_score,
+            'funny_score': float(self.funny_score),
         }
 
     @classmethod
