@@ -28,6 +28,4 @@ class MemeViewer(ModelView):
                 <p>{title}</p>\
             </figure>'.format(url=model.url, title=model.title))
 
-    column_formatters = {
-        'url': _display_meme
-    }
+    column_formatters = {'url': _display_meme}
