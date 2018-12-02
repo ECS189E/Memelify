@@ -60,9 +60,10 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
         self.darkMode = DarkMode(navigationController: navigationController!, tabBarController: tabBarController!, views: [memeTable])
         self.memeTable.addSubview(self.refreshControl)
-        
+
         memeTable.dataSource = self
         memeTable.delegate = self
     
@@ -74,6 +75,8 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
 
     func makeRequest(api: String) {
+        let sv = UIViewController.displaySpinner(onView: self.view)
+        
         Alamofire.request(api).responseJSON { response in
             if let json = response.result.value as? [String: Any] {
                 guard let memes = json["memes"] as? [[String: Any]] else {
@@ -96,6 +99,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
                             let newMeme = MemeObject(id: id!, created: date!, title: title!, likes: likes!, pic: data)
                             self.memes.append(newMeme)
                             self.memeTable.reloadData()
+                            UIViewController.removeSpinner(spinner: sv)
                         }
                     }
                 }

@@ -8,7 +8,7 @@
 
 import UIKit
 
-@IBDesignable  class MLabel: UILabel {
+@IBDesignable class MLabel: UILabel {
 
     func setup() {
         if DarkMode.isEnabled() {
