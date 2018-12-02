@@ -9,7 +9,11 @@ class RedditMeme(db.Model):
     '''Holds meta-data for each meme-related post on Reddit being tracked.'''
     id = Column(String(10), primary_key=True)
     url = Column(String(255), unique=True, nullable=False)
+<<<<<<< HEAD
     title = Column(Text)
+=======
+    title = Column(String(255))
+>>>>>>> origin/master
     votes = Column(Integer, default=0)
     upvote_ratio = Column(Float)
     hotness = db.Column(db.Float(15, 6), default=0.00)
@@ -26,7 +30,11 @@ class RedditMeme(db.Model):
             'likes': self.votes,
             'url': self.url,
             'created': str(self.created_utc),
+<<<<<<< HEAD
             'funny_score': self.funny_score,
+=======
+            # 'funny_score': self.funny_score,
+>>>>>>> origin/master
         }
 
     @classmethod

@@ -41,7 +41,10 @@ def register_blueprints(app):
     app.config.from_object(rq_dashboard.default_settings)
     app.register_blueprint(rq_dashboard.blueprint, url_prefix='/rq')
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/master
 def register_extensions(app):
     """Register Flask extensions."""
 
