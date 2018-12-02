@@ -1,4 +1,3 @@
-web: gunicorn autoapp:app
-init: flask db init
-migrate: flask db migrate -m "Init PostGrestQL"
-upgrade: flask db upgrade
+web: flask db upgrade; gunicorn autoapp:app --log-file -
+worker: rq worker -u $REDISTOGO_URL
+dashboard: rq-dashboard -u $REDISTOGO_URL

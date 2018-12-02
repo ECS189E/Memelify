@@ -15,7 +15,7 @@ admin = Admin(template_mode='bootstrap3')
 
 class MemeViewer(ModelView):
     """Allow Flask-Admin to display meme from an URL"""
-    column_list = ('funny_score', 'votes', 'hotness', 'updated', 'url')
+    column_list = ('funny_score', 'votes', 'hotness', 'created_utc', 'updated', 'url')
 
     def _display_meme(self, context, model, name):
         if not model.url:

@@ -9,6 +9,7 @@ v = {editable = true,version = "*"}
 pep8 = "*"
 autopep8 = "*"
 pyment = "*"
+memory-profiler = "*"
 
 [packages]
 flask = "*"
@@ -19,7 +20,6 @@ flask-sqlalchemy = "*"
 flask-migrate = "*"
 redis = "==2.10.6"
 tensorflow = "==1.12.0"
-scikit-image = "*"
 pillow = "*"
 flask-rq2 = "*"
 flask-admin = "*"
