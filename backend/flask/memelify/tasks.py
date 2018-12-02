@@ -9,14 +9,18 @@ from memelify.meme.models import RedditMeme
 from memelify.bots import create_bot, create_classifier, is_image
 
 reddit_bot = create_bot()
-meme_predictor = create_classifier()
+meme_predictor = None
 
 
 @rq.job
 def update_reddit_memes(limit=None):
     """Find new memes"""
+    global meme_predictor
     app = create_app_context()
     app.app_context().push()
+    if meme_predictor is None:
+        meme_predictor = create_classifier()
+
     new_posts = reddit_bot.new(limit=limit)
     for post in new_posts:
         if is_image(post):
@@ -26,3 +30,8 @@ def update_reddit_memes(limit=None):
             if not exists:
                 post.funny_score = meme_predictor(post.url)
                 RedditMeme.create(post)
+            else:
+                post.funny_score = meme_predictor(post.url)
+                meme = db.session.query(RedditMeme).filter_by(id=post.id).first()
+                print("Updating meme {}: {:.4f}".format(meme.id, post.funny_score))
+                meme.update(post)

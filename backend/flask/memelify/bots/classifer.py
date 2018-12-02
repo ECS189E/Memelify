@@ -46,14 +46,17 @@ def create_classifier(model_path=_MODEL_PATH, preprocess_fn=_PROCESS_FN):
         img = np.array(img)
         if len(img.shape) > 2 and img.shape[2] == 4:
             img = rgba2rgb(img)
-        elif img.size == 2:
+        else:
             img = gray2rgb(img)
         img = np.expand_dims(preprocess_fn(img.astype(np.float32)), 0)
 
         # Predict meme score
-        model.set_tensor(input_details[0]['index'], img)
-        model.invoke()
-        score = model.get_tensor(output_details[0]['index'])
+        try:
+            model.set_tensor(input_details[0]['index'], img)
+            model.invoke()
+            score = model.get_tensor(output_details[0]['index'])
+        except:
+            print(img.shape)
         return float(score.ravel()[0])  # meme:0 not_meme: 1
     return get_meme_score
 

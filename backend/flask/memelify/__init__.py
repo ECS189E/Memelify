@@ -37,10 +37,6 @@ def register_blueprints(app):
     from memelify.meme.controllers import blueprint
     app.register_blueprint(blueprint, url_prefix='/api')
 
-    import rq_dashboard
-    app.config.from_object(rq_dashboard.default_settings)
-    app.register_blueprint(rq_dashboard.blueprint, url_prefix='/rq')
-
 
 def register_extensions(app):
     """Register Flask extensions."""
