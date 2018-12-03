@@ -12,13 +12,11 @@ opened, the meme magic begins!
 ## What we did:
 
 - Will worked on adding the pull down to refresh feature for the home and
-trending views. ([commit]
-(https://github.com/ECS189E/Memelify/tree/f2d152e0ab75a6526767e3d2e425b1a6071a2b06))
+trending views. ([commit](https://github.com/ECS189E/Memelify/tree/f2d152e0ab75a6526767e3d2e425b1a6071a2b06))
 - Will - fixed the double click to remove favorites bug on the favorites view
 - Will - added a sync for the favorites across different views and the ability
 to remove favorites, specifically they immediately disappear when on the
-favorites view ([commit]
-(https://github.com/ECS189E/Memelify/commit/48b0122ad6cf90b850401f4474427eb7123545ce))
+favorites view ([commit](https://github.com/ECS189E/Memelify/commit/48b0122ad6cf90b850401f4474427eb7123545ce))
 - Dat created a Machine Learning model to classify whether an image is a meme
 or not through “deep learning”. Why? Because when our reddit bots crawl data
 from Reddit, they can not distinguish between a regular image (e.g. email,
