@@ -11,7 +11,7 @@ import Alamofire
 
 class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, MemeSharingProtocol {
 
-    private var apiServer = "https://memelify.herokuapp.com/api/memes/latest"
+    private var apiServer = "https://memelify.herokuapp.com/api/memes/latest?offset=0&limit=2"
     lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action:
@@ -22,12 +22,14 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         return refreshControl
     }()
     
+    
     @IBOutlet weak var memeTable: UITableView!
 
     var memes = [MemeObject]()
     var favorites = [MemeObject]()
     var darkMode : DarkMode?
-
+    var offset = 0
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return memes.count
     }
@@ -57,13 +59,31 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         cell.memeSharingDelegate = self
         return cell
     }
+//
+//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+////        let top: CGFloat = 0
+//        let bottom: CGFloat = scrollView.contentSize.height - scrollView.frame.size.height
+//        let buffer: CGFloat = 1000
+//        let scrollPosition = scrollView.contentOffset.y
+//
+//        // Reached the bottom of the list
+//        if scrollPosition > bottom - buffer {
+//            print("making additional request...")
+//            makeAdditionalRequest()
+//        }
+//    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.darkMode = DarkMode(navigationController: navigationController!, tabBarController: tabBarController!, views: [memeTable])
         self.memeTable.addSubview(self.refreshControl)
-
+        
+        let spinner = UIActivityIndicatorView(style: .gray)
+        spinner.startAnimating()
+        spinner.frame = CGRect(x: 0, y: 0, width: self.memeTable.frame.width, height: 50)
+        self.memeTable.tableFooterView = spinner;
+        
         memeTable.dataSource = self
         memeTable.delegate = self
     
@@ -73,7 +93,56 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         makeRequest(api: apiServer)
         
     }
-
+    
+    func tableView(_ tableView: UITableView,
+                   willDisplay cell: UITableViewCell,
+                   forRowAt indexPath: IndexPath)
+    {
+        // At the bottom...
+        if (indexPath.row == memes.count - 1) {
+            print("making additional request...")
+            makeAdditionalRequest() // network request to get more data
+        }
+    }
+    
+    //makes a new api request to heroku but appends results instead of replacing them
+    func makeAdditionalRequest() {
+        //let sv = UIViewController.displaySpinner(onView: self.view)
+        offset = offset+2
+        
+        let request = "https://memelify.herokuapp.com/api/memes/latest?offset="+String(offset)+"&limit=2"
+        
+        Alamofire.request(request).responseJSON { response in
+            if let json = response.result.value as? [String: Any] {
+                guard let memes = json["memes"] as? [[String: Any]] else {
+                    return
+                }
+                
+                for meme in memes {
+                    guard let url = URL(string: meme["url"] as! String) else {
+                        continue
+                    }
+                    
+                    let id = meme["id"] as? String
+                    let date = meme["created"] as? String
+                    let title = meme["title"] as? String
+                    let likes = meme["likes"] as? Int
+                    
+                    self.getData(from: url) { data, response, error in
+                        guard let data = data, error == nil else { return }
+                        DispatchQueue.main.async() {
+                            let newMeme = MemeObject(id: id!, created: date!, title: title!, likes: likes!, pic: data)
+                            self.memes.append(newMeme)
+                            self.memeTable.reloadData()
+                            //UIViewController.removeSpinner(spinner: sv)
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    //makes a new api request to heroku but replaces results instead of appending them
     func makeRequest(api: String) {
         let sv = UIViewController.displaySpinner(onView: self.view)
         
@@ -116,7 +185,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
-        makeRequest(api: "https://memelify.herokuapp.com/api/memes/latest")
+        makeRequest(api: "https://memelify.herokuapp.com/api/memes/latest?offset=0&limit="+String(offset+2))
         self.memeTable.reloadData()
         refreshControl.endRefreshing()
     }
