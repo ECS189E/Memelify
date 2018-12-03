@@ -21,7 +21,7 @@ favorites view ([commit](https://github.com/ECS189E/Memelify/commit/48b0122ad6cf
 or not through “deep learning”. Why? Because when our reddit bots crawl data
 from Reddit, they can not distinguish between a regular image (e.g. email,
 announcement, ads) vs a funny image. Our classifier performs fairly good in
-most case, we reach 93% accuracy when testing on our test data. Google Colab
+most case, we reach 93% accuracy when testing on our test data. See [Google Colab](https://colab.research.google.com/drive/1OS7-tV8tYCyaHOqdDYbwVhXL8LuWRpGM).
 - Dat improved on backend side by adding heavy tasks to run in background.
 These tasks are updating “trendiness” scores, crawling new memes into database.
 Dat used a redis queue for managing background tasks.
