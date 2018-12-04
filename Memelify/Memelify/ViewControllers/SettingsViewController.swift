@@ -12,7 +12,7 @@ class SettingsViewController: UITableViewController {
 
     @IBOutlet weak var darkTheme: UISegmentedControl!
     var darkMode: DarkMode?
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.darkMode = DarkMode(navigationController: navigationController!, tabBarController: tabBarController!, views: [tableView])
@@ -69,10 +69,25 @@ class SettingsViewController: UITableViewController {
 
     // General Settings
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // Rate us
+        
         if indexPath.section == 2 {
-            let feedbackController = SMFeedbackViewController(survey: "JL895DP")
-            feedbackController?.present(from: self, animated: true, completion: nil)
+            
+            //invite friends
+            if indexPath.row == 0 {
+                self.share(message: "Come see us at https://github.com/ECS189E/Memelify !!")
+            
+            //rate us
+            } else if indexPath.row == 1 {
+                let feedbackController = SMFeedbackViewController(survey: "JL895DP")
+                feedbackController?.present(from: self, animated: true, completion: nil)
+            }
         }
-    }    
+    }
+    
+    func share(message: String) {
+        print("Inviting friends")
+        let friendVC = UIActivityViewController(activityItems: [message], applicationActivities: nil)
+        friendVC.popoverPresentationController?.sourceView = self.view
+        self.present(friendVC, animated: true, completion: nil)
+    }
 }

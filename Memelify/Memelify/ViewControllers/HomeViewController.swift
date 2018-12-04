@@ -11,7 +11,7 @@ import Alamofire
 
 class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, MemeSharingProtocol {
 
-    private var apiServer = "https://memelify.herokuapp.com/api/memes/latest?offset=0&limit=5"
+    private var apiServer = "https://memelify.herokuapp.com/api/memes/latest?offset=0&limit=10"
     lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action:
@@ -109,9 +109,9 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     //makes a new api request to heroku but appends results instead of replacing them
     func makeAdditionalRequest() {
         //let bottomSpinner = self.memeTable.tableFooterView
-        offset = offset+2
+        offset = offset+10
         
-        let request = "https://memelify.herokuapp.com/api/memes/latest?offset="+String(offset)+"&limit=2"
+        let request = "https://memelify.herokuapp.com/api/memes/latest?offset="+String(offset)+"&limit=10"
         
         Alamofire.request(request).responseJSON { response in
             if let json = response.result.value as? [String: Any] {
@@ -188,7 +188,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
-        makeRequest(api: "https://memelify.herokuapp.com/api/memes/latest?offset=0&limit="+String(offset+2))
+        makeRequest(api: "https://memelify.herokuapp.com/api/memes/latest?offset=0&limit="+String(offset+10))
         self.memeTable.reloadData()
         refreshControl.endRefreshing()
     }
