@@ -11,7 +11,7 @@ import Alamofire
 
 class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, MemeSharingProtocol {
 
-    private var apiServer = "https://memelify.herokuapp.com/api/memes/latest?offset=0&limit=2"
+    private var apiServer = "https://memelify.herokuapp.com/api/memes/latest?offset=0&limit=5"
     lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action:
@@ -59,19 +59,20 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         cell.memeSharingDelegate = self
         return cell
     }
-//
-//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-////        let top: CGFloat = 0
-//        let bottom: CGFloat = scrollView.contentSize.height - scrollView.frame.size.height
-//        let buffer: CGFloat = 1000
-//        let scrollPosition = scrollView.contentOffset.y
-//
-//        // Reached the bottom of the list
-//        if scrollPosition > bottom - buffer {
-//            print("making additional request...")
-//            makeAdditionalRequest()
-//        }
-//    }
+
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+//        let top: CGFloat = 0
+        let bottom: CGFloat = scrollView.contentSize.height - scrollView.frame.size.height
+        let buffer: CGFloat = 100
+        let scrollPosition = scrollView.contentOffset.y
+        
+        // Reached the bottom of the list
+        if scrollPosition > bottom - buffer {
+            //print("bottom: "+String(Double(bottom))+" scrollpos: "+String(Double(scrollPosition)))
+            print("natural making additional request...")
+            makeAdditionalRequest()
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -79,10 +80,10 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         self.darkMode = DarkMode(navigationController: navigationController!, tabBarController: tabBarController!, views: [memeTable])
         self.memeTable.addSubview(self.refreshControl)
         
-        let spinner = UIActivityIndicatorView(style: .gray)
-        spinner.startAnimating()
-        spinner.frame = CGRect(x: 0, y: 0, width: self.memeTable.frame.width, height: 50)
-        self.memeTable.tableFooterView = spinner;
+//        let spinner = UIActivityIndicatorView(style: .gray)
+//        spinner.startAnimating()
+//        spinner.frame = CGRect(x: 0, y: 0, width: self.memeTable.frame.width, height: 50)
+//        self.memeTable.tableFooterView = spinner
         
         memeTable.dataSource = self
         memeTable.delegate = self
@@ -94,20 +95,20 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
     }
     
-    func tableView(_ tableView: UITableView,
-                   willDisplay cell: UITableViewCell,
-                   forRowAt indexPath: IndexPath)
-    {
-        // At the bottom...
-        if (indexPath.row == memes.count - 1) {
-            print("making additional request...")
-            makeAdditionalRequest() // network request to get more data
-        }
-    }
+//    func tableView(_ tableView: UITableView,
+//                   willDisplay cell: UITableViewCell,
+//                   forRowAt indexPath: IndexPath)
+//    {
+//        // At the bottom...
+//        if (indexPath.row == memes.count - 1) {
+//            print("pulldown making additional request...")
+//            makeAdditionalRequest() // network request to get more data
+//        }
+//    }
     
     //makes a new api request to heroku but appends results instead of replacing them
     func makeAdditionalRequest() {
-        //let sv = UIViewController.displaySpinner(onView: self.view)
+        //let bottomSpinner = self.memeTable.tableFooterView
         offset = offset+2
         
         let request = "https://memelify.herokuapp.com/api/memes/latest?offset="+String(offset)+"&limit=2"
@@ -133,11 +134,13 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
                         DispatchQueue.main.async() {
                             let newMeme = MemeObject(id: id!, created: date!, title: title!, likes: likes!, pic: data)
                             self.memes.append(newMeme)
+                            
                             self.memeTable.reloadData()
-                            //UIViewController.removeSpinner(spinner: sv)
+                            
                         }
                     }
                 }
+                //UIViewController.removeSpinner(spinner: self.memeTable.tableFooterView!)
             }
         }
     }
