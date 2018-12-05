@@ -72,14 +72,16 @@ class SettingsViewController: UITableViewController {
         
         if indexPath.section == 2 {
             
-            //invite friends
+            // Invite friends
             if indexPath.row == 0 {
                 self.share(message: "Come see us at https://github.com/ECS189E/Memelify !!")
-            
-            //rate us
+            // Rate us
             } else if indexPath.row == 1 {
                 let feedbackController = SMFeedbackViewController(survey: "JL895DP")
                 feedbackController?.present(from: self, animated: true, completion: nil)
+            // About Us
+            } else {
+                self.performSegue(withIdentifier: "AboutUsSegue", sender: self)
             }
         }
     }

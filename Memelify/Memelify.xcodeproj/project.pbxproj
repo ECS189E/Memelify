@@ -17,6 +17,8 @@
 		8A8F282521A67B6A0037B9F8 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8F282421A67B6A0037B9F8 /* FavoritesViewController.swift */; };
 		8A8F282C21A739A40037B9F8 /* meme-example1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8A8F282921A739A40037B9F8 /* meme-example1.jpg */; };
 		8AAE476621ACFC1D005B1E3A /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAE476521ACFC1D005B1E3A /* SettingsViewController.swift */; };
+		8AC82EF021B83449000E8BF4 /* blue-background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8AC82EEF21B83449000E8BF4 /* blue-background.jpg */; };
+		8AC82EF221B83E57000E8BF4 /* doge.png in Resources */ = {isa = PBXBuildFile; fileRef = 8AC82EF121B83E57000E8BF4 /* doge.png */; };
 		8AEF0DBD21B3478A000FC3DF /* SurveyMonkeyiOSSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AEF0DBC21B3478A000FC3DF /* SurveyMonkeyiOSSDK.framework */; };
 		8AF896BD21AFD2970025DE0E /* DarkMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF896BC21AFD2970025DE0E /* DarkMode.swift */; };
 		8AF896C321B1C4B60025DE0E /* ViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF896C221B1C4B60025DE0E /* ViewController+Extension.swift */; };
@@ -66,6 +68,8 @@
 		8A8F282421A67B6A0037B9F8 /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
 		8A8F282921A739A40037B9F8 /* meme-example1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "meme-example1.jpg"; sourceTree = "<group>"; };
 		8AAE476521ACFC1D005B1E3A /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		8AC82EEF21B83449000E8BF4 /* blue-background.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "blue-background.jpg"; sourceTree = "<group>"; };
+		8AC82EF121B83E57000E8BF4 /* doge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = doge.png; sourceTree = "<group>"; };
 		8AEF0DBC21B3478A000FC3DF /* SurveyMonkeyiOSSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SurveyMonkeyiOSSDK.framework; path = "Pods/surveymonkey-ios-sdk/SurveyMonkeyiOSSDK.framework"; sourceTree = "<group>"; };
 		8AEF0DCF21B349DC000FC3DF /* Memelify-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Memelify-Bridging-Header.h"; sourceTree = "<group>"; };
 		8AF896BC21AFD2970025DE0E /* DarkMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkMode.swift; sourceTree = "<group>"; };
@@ -126,6 +130,8 @@
 		8A8F280021A6396B0037B9F8 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				8AC82EEF21B83449000E8BF4 /* blue-background.jpg */,
+				8AC82EF121B83E57000E8BF4 /* doge.png */,
 				8A8F282921A739A40037B9F8 /* meme-example1.jpg */,
 				DE24482B21A0F6D9008DF45E /* Memelify-transparent.png */,
 				8A8F281E21A64B650037B9F8 /* computer-guy.png */,
@@ -344,10 +350,12 @@
 			files = (
 				DE56B981219E24620044FB9F /* LaunchScreen.storyboard in Resources */,
 				DE56B97E219E24620044FB9F /* Assets.xcassets in Resources */,
+				8AC82EF221B83E57000E8BF4 /* doge.png in Resources */,
 				DE24482C21A0F6DB008DF45E /* Memelify-transparent.png in Resources */,
 				DE56B97C219E245B0044FB9F /* Main.storyboard in Resources */,
 				8A8F282C21A739A40037B9F8 /* meme-example1.jpg in Resources */,
 				8A8F281F21A64B650037B9F8 /* computer-guy.png in Resources */,
+				8AC82EF021B83449000E8BF4 /* blue-background.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
