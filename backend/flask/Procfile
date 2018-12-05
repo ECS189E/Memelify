@@ -1,3 +1,4 @@
 web: flask db upgrade; gunicorn autoapp:app --log-file -
-worker: rq worker -u $REDISTOGO_URL
+worker: flask rq worker -u $REDISTOGO_URL
+scheduler: flask rq sheduler
 dashboard: rq-dashboard -u $REDISTOGO_URL

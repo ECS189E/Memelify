@@ -10,7 +10,13 @@ def create_app_context(config_object=Config):
     app = Flask(__name__)
     app.url_map.strict_slashes = False   # allows both '/api' and '/api/'
     app.config.from_object(config_object)
-    register_extensions(app)
+
+    # Connecting App to database
+    db.init_app(app)
+    migrate.init_app(app, db)
+
+    # Create a Redis Queue for handling background tasks
+    rq.init_app(app)
     return app
 
 
@@ -19,12 +25,13 @@ def create_app(config_object):
     http://flask.pocoo.org/docs/patterns/appfactories/.
     """
     app = create_app_context(config_object)
+    register_extensions(app)
     register_blueprints(app)
 
     @app.before_first_request
     def run_first_task():
-        from memelify.tasks import update_reddit_memes
-        update_reddit_memes.queue(limit=None, job_id="should-not-be-duplicated")
+        from memelify.tasks import find_reddit_memes
+        find_reddit_memes.queue(limit=None, job_id="init-memes")
     return app
 
 
@@ -41,15 +48,8 @@ def register_blueprints(app):
 def register_extensions(app):
     """Register Flask extensions."""
 
-    # Connecting App to database
-    db.init_app(app)
-    migrate.init_app(app, db)
-
     # Create a Admin page for managing database
     admin.init_app(app)
     from memelify.extensions import MemeViewer
     from memelify.meme.models import RedditMeme
     admin.add_view(MemeViewer(RedditMeme, db.session))
-
-    # Create a Redis Queue for handling background tasks
-    rq.init_app(app)
