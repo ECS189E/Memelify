@@ -42,6 +42,7 @@ def get_top_meme():
     since_date = date.today() - datetime.timedelta(7)
     top_meme = (RedditMeme.query
                 .filter(cast(RedditMeme.created_utc, Date) < since_date)
+                # .filter(RedditMeme.funny_score > 0.2)  # 20% Threshold
                 .order_by(RedditMeme.hotness.desc())
                 .first())    
     return jsonify(top_meme.serialize if top_meme else {})
