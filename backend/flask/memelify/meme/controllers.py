@@ -23,6 +23,12 @@ def query_latest_memes():
                     .all())
     return jsonify(memes=[meme.serialize for meme in latest_memes])
 
+@blueprint.route('memes/<meme_id>', methods=('GET', ))
+def query_a_meme(meme_id):
+    meme = RedditMeme.query.filter_by(id=meme_id).first()
+    json = meme.serialize if meme else {}
+    return jsonify(json)
+
 
 @blueprint.route('memes/hot', methods=('GET', ))
 def query_hottest_memes():
@@ -42,7 +48,7 @@ def get_top_meme():
     since_date = date.today() - datetime.timedelta(7)
     top_meme = (RedditMeme.query
                 .filter(cast(RedditMeme.created_utc, Date) < since_date)
-                # .filter(RedditMeme.funny_score > 0.2)  # 20% Threshold
+                .filter(RedditMeme.funny_score > 0.2)  # 20% Threshold
                 .order_by(RedditMeme.hotness.desc())
                 .first())    
     return jsonify(top_meme.serialize if top_meme else {})
