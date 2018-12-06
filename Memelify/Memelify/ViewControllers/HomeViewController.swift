@@ -61,14 +61,12 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
 
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-//        let top: CGFloat = 0
         let bottom: CGFloat = scrollView.contentSize.height - scrollView.frame.size.height
         let buffer: CGFloat = 100
         let scrollPosition = scrollView.contentOffset.y
         
         // Reached the bottom of the list
         if scrollPosition > bottom - buffer {
-            //print("bottom: "+String(Double(bottom))+" scrollpos: "+String(Double(scrollPosition)))
             print("natural making additional request...")
             makeAdditionalRequest()
         }
@@ -80,11 +78,6 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         self.darkMode = DarkMode(navigationController: navigationController!, tabBarController: tabBarController!, views: [memeTable])
         self.memeTable.addSubview(self.refreshControl)
         
-//        let spinner = UIActivityIndicatorView(style: .gray)
-//        spinner.startAnimating()
-//        spinner.frame = CGRect(x: 0, y: 0, width: self.memeTable.frame.width, height: 50)
-//        self.memeTable.tableFooterView = spinner
-        
         memeTable.dataSource = self
         memeTable.delegate = self
     
@@ -92,19 +85,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         UserDefaults.standard.register(defaults: ["saved": encodedData])
         
         makeRequest(api: apiServer)
-        
     }
-    
-//    func tableView(_ tableView: UITableView,
-//                   willDisplay cell: UITableViewCell,
-//                   forRowAt indexPath: IndexPath)
-//    {
-//        // At the bottom...
-//        if (indexPath.row == memes.count - 1) {
-//            print("pulldown making additional request...")
-//            makeAdditionalRequest() // network request to get more data
-//        }
-//    }
     
     //makes a new api request to heroku but appends results instead of replacing them
     func makeAdditionalRequest() {
@@ -140,7 +121,6 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
                         }
                     }
                 }
-                //UIViewController.removeSpinner(spinner: self.memeTable.tableFooterView!)
             }
         }
     }
@@ -176,7 +156,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
                     }
                 }
             }
-        } //end of alomafire request
+        } //end of alamofire request
     }
     
     // Shows Memelify logo on the navigation bar

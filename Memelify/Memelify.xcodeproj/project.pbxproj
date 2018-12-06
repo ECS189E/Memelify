@@ -22,7 +22,6 @@
 		8AEF0DBD21B3478A000FC3DF /* SurveyMonkeyiOSSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AEF0DBC21B3478A000FC3DF /* SurveyMonkeyiOSSDK.framework */; };
 		8AF896BD21AFD2970025DE0E /* DarkMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF896BC21AFD2970025DE0E /* DarkMode.swift */; };
 		8AF896C321B1C4B60025DE0E /* ViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF896C221B1C4B60025DE0E /* ViewController+Extension.swift */; };
-		AD2BDCB921A7A2FF00A9B57F /* FancyButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2BDCB821A7A2FF00A9B57F /* FancyButton.swift */; };
 		AD2BDCBB21A7B4E500A9B57F /* MemeObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD2BDCBA21A7B4E500A9B57F /* MemeObject.swift */; };
 		DE24482C21A0F6DB008DF45E /* Memelify-transparent.png in Resources */ = {isa = PBXBuildFile; fileRef = DE24482B21A0F6D9008DF45E /* Memelify-transparent.png */; };
 		DE56B977219E245B0044FB9F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE56B976219E245B0044FB9F /* AppDelegate.swift */; };
@@ -74,7 +73,6 @@
 		8AEF0DCF21B349DC000FC3DF /* Memelify-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Memelify-Bridging-Header.h"; sourceTree = "<group>"; };
 		8AF896BC21AFD2970025DE0E /* DarkMode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkMode.swift; sourceTree = "<group>"; };
 		8AF896C221B1C4B60025DE0E /* ViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+Extension.swift"; sourceTree = "<group>"; };
-		AD2BDCB821A7A2FF00A9B57F /* FancyButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FancyButton.swift; sourceTree = "<group>"; };
 		AD2BDCBA21A7B4E500A9B57F /* MemeObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemeObject.swift; sourceTree = "<group>"; };
 		DE24482B21A0F6D9008DF45E /* Memelify-transparent.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Memelify-transparent.png"; sourceTree = "<group>"; };
 		DE56B973219E245B0044FB9F /* Memelify.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Memelify.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -156,7 +154,6 @@
 			isa = PBXGroup;
 			children = (
 				8A8F281721A63A650037B9F8 /* MemeTile.swift */,
-				AD2BDCB821A7A2FF00A9B57F /* FancyButton.swift */,
 				8AEF0DCF21B349DC000FC3DF /* Memelify-Bridging-Header.h */,
 				AD2BDCBA21A7B4E500A9B57F /* MemeObject.swift */,
 				8A46D23921AFAFDD0038CA99 /* NotificationsName+Extensions.swift */,
@@ -434,7 +431,6 @@
 				8A8F282321A67B590037B9F8 /* TrendingViewController.swift in Sources */,
 				DE56B977219E245B0044FB9F /* AppDelegate.swift in Sources */,
 				AD2BDCBB21A7B4E500A9B57F /* MemeObject.swift in Sources */,
-				AD2BDCB921A7A2FF00A9B57F /* FancyButton.swift in Sources */,
 				8A46D23C21AFC62D0038CA99 /* MLabel.swift in Sources */,
 				8A8F282521A67B6A0037B9F8 /* FavoritesViewController.swift in Sources */,
 				8A8F281821A63A660037B9F8 /* MemeTile.swift in Sources */,
