@@ -10,7 +10,7 @@ import UIKit
 import Alamofire
 
 class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, MemeSharingProtocol, refreshProtocol {
-
+    
     func refreshFavs(id: String) {
         self.memeTable.reloadData()
     }
@@ -94,7 +94,6 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
 
         makeRequest(api: "https://memelify.herokuapp.com/api/memes/latest?offset=0&limit=10")
-
     }
 
     // makes a new api request to heroku but appends results instead of replacing them

@@ -62,8 +62,7 @@ class TrendingViewController: UIViewController, UITableViewDataSource, UITableVi
             cell.favorite.setImage(UIImage(named: "unselected-heart"), for: .normal)
         }
         return cell
-    }
-
+    }	
     // handles adding more memes once the user scrolls to the bottom of the table
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         let bottom: CGFloat = scrollView.contentSize.height - scrollView.frame.size.height

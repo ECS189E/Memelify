@@ -25,7 +25,7 @@ class FavoritesViewController: UIViewController, UITableViewDataSource, UITableV
     func getData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
         URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
     }
-
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let currentImage = memes[indexPath.row].image
         let ratio = currentImage!.cropRatio()
@@ -69,13 +69,13 @@ class FavoritesViewController: UIViewController, UITableViewDataSource, UITableV
         imageView.image = UIImage(named: "Memelify-transparent.png")
         imageView.tintColor = UIColor.white
         navigationItem.titleView = imageView
-
         getFavorites()
-        self.memeTable.reloadData()
+        //self.memeTable.reloadData()
         print(favorites)
     }
-
+    
     func getFavorites() {
+        //let sv = UIViewController.displaySpinner(onView: self.view)
         self.memes.removeAll()
         favorites = UserDefaults.standard.stringArray(forKey: "test")!
         print(favorites.count)
@@ -100,9 +100,14 @@ class FavoritesViewController: UIViewController, UITableViewDataSource, UITableV
                             let newMeme = MemeObject(id: id!, created: date!, title: title!, likes: likes!, pic: data)
                             print(self.memes)
 
-                            if !self.memes.contains(newMeme) {
+                            if self.memes.contains(where: { $0.id == id }) {
+                                return
+                            }else{
                                 self.memes.append(newMeme)
                             }
+//                            if self.memes.count == self.favorites.count {
+//                                UIViewController.removeSpinner(spinner: sv)
+//                            }
 
                             self.memeTable.reloadData()
                         }
@@ -126,4 +131,5 @@ class FavoritesViewController: UIViewController, UITableViewDataSource, UITableV
         ac.addAction(UIAlertAction(title: "Hurray", style: .default))
         present(ac, animated: true)
     }
+    
 }

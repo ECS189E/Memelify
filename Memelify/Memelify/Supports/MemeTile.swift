@@ -30,28 +30,27 @@ class MemeTile: UITableViewCell {
     weak var homerefreshDelegate: refreshProtocol?
     weak var trendingrefreshDelegate: refreshProtocol?
     weak var favrefreshDelegate: refreshProtocol?
-
+    
     /// Adds current MemeTile object to local storage as a favorite Meme.
     /// - Parameters: sender: Any
     /// - Returns: None
     @IBAction func addToFavorites(_ sender: Any) {
         var favs = UserDefaults.standard.stringArray(forKey: "test")
-
         // add favorite
         if fav == false {
             fav = true
 
             let image = UIImage(named: "selected-heart")
             self.favorite.setImage(image, for: .normal)
-
+            
             if (favs?.contains((self.obj?.id)!))! {
                 print("found match")
                 return
             } else {
                 favs?.append((self.obj?.id)!)
             }
-
-        // remove favorite
+        
+        //remove favorite
         } else {
             fav = false
 
@@ -59,7 +58,7 @@ class MemeTile: UITableViewCell {
             self.favorite.setImage(image, for: .normal)
             favs?.removeAll(where: { $0 == self.obj?.id })
         }
-
+        
         UserDefaults.standard.set(favs, forKey: "test")
         if favrefreshDelegate == nil {
             print("delegate: not in favorites view")
@@ -67,7 +66,6 @@ class MemeTile: UITableViewCell {
             self.favrefreshDelegate!.refreshFavs(id: (self.obj?.id)!)
             print("finished using fav delegate")
         }
-
         if homerefreshDelegate == nil {
             print("delegate: not in home view")
         } else {
@@ -75,6 +73,7 @@ class MemeTile: UITableViewCell {
             print("finished using home delegate")
         }
 
+        
         if trendingrefreshDelegate == nil {
             print("delegate: not in trending view")
         } else {
@@ -82,7 +81,6 @@ class MemeTile: UITableViewCell {
             print("finished using trending delegate")
         }
         print(favs!)
-
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -124,3 +122,4 @@ class MemeTile: UITableViewCell {
         self.memeSharingDelegate?.share(meme: self.meme.image!, message: "From Memelify with ❤️")
     }
 }
+
