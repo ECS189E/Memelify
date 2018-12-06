@@ -10,7 +10,6 @@
 #define Memelify_Bridging_Header_h
 
 /* Used for Survey Monkey SDK (written in Obj-C) to work in our Swift App. */
-
 #import <SurveyMonkeyiOSSDK/SurveyMonkeyiOSSDK.h>
 
 #endif /* Memelify_Bridging_Header_h */

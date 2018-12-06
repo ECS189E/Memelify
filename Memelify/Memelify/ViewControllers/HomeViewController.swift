@@ -10,7 +10,7 @@ import UIKit
 import Alamofire
 
 class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, MemeSharingProtocol, refreshProtocol {
-    
+
     func refreshFavs(id: String) {
         self.memeTable.reloadData()
     }
@@ -18,20 +18,20 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action:
-            #selector(HomeViewController.handleRefresh(_:)),
-                                 for: UIControl.Event.valueChanged)
+                #selector(HomeViewController.handleRefresh(_:)),
+            for: UIControl.Event.valueChanged)
         refreshControl.tintColor = UIColor.red
-        
+
         return refreshControl
     }()
-    
+
     @IBOutlet weak var memeTable: UITableView!
 
-    var newfavs : [String?] = []
+    var newfavs: [String?] = []
     var memes = [MemeObject]()
-    var darkMode : DarkMode?
+    var darkMode: DarkMode?
     var offset = 0
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return memes.count
     }
@@ -48,13 +48,13 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MemeTilePrototype", for: indexPath) as! MemeTile
-        
+
         self.newfavs = UserDefaults.standard.stringArray(forKey: "test")!
         cell.obj = memes[indexPath.row]
         cell.meme.image = cell.obj?.image
         cell.homerefreshDelegate = self
         cell.karma.text = String(cell.obj?.likes ?? 0)
-        if newfavs.contains(where: { $0 == cell.obj?.id}){
+        if newfavs.contains(where: { $0 == cell.obj?.id }) {
             cell.favorite.setImage(UIImage(named: "selected-heart"), for: .normal)
             cell.fav = true
         } else {
@@ -65,12 +65,12 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         return cell
     }
 
-    //handles adding more memes once the user scrolls to the bottom of the table
+    // handles adding more memes once the user scrolls to the bottom of the table
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         let bottom: CGFloat = scrollView.contentSize.height - scrollView.frame.size.height
         let buffer: CGFloat = 100
         let scrollPosition = scrollView.contentOffset.y
-        
+
         // Reached the bottom of the list
         if scrollPosition > bottom - buffer {
             print("natural making additional request...")
@@ -83,62 +83,61 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
         self.darkMode = DarkMode(navigationController: navigationController!, tabBarController: tabBarController!, views: [memeTable])
         self.memeTable.addSubview(self.refreshControl)
-        
+
         memeTable.dataSource = self
         memeTable.delegate = self
-    
+
         if UserDefaults.standard.stringArray(forKey: "test") == nil {
             UserDefaults.standard.set(newfavs, forKey: "test")
-        }else {
+        } else {
             self.newfavs = UserDefaults.standard.stringArray(forKey: "test")!
         }
-        
+
         makeRequest(api: "https://memelify.herokuapp.com/api/memes/latest?offset=0&limit=10")
-        
+
     }
-    
-    //makes a new api request to heroku but appends results instead of replacing them
+
+    // makes a new api request to heroku but appends results instead of replacing them
     func makeAdditionalRequest() {
-        //let bottomSpinner = self.memeTable.tableFooterView
-        offset = offset+10
-        
-        let request = "https://memelify.herokuapp.com/api/memes/latest?offset="+String(offset)+"&limit=10"
-        
+        offset = offset + 10
+
+        let request = "https://memelify.herokuapp.com/api/memes/latest?offset=" + String(offset) + "&limit=10"
+
         Alamofire.request(request).responseJSON { response in
             if let json = response.result.value as? [String: Any] {
                 guard let memes = json["memes"] as? [[String: Any]] else {
                     return
                 }
-                
+
                 for meme in memes {
                     guard let url = URL(string: meme["url"] as! String) else {
                         continue
                     }
-                    
+
                     let id = meme["id"] as? String
                     let date = meme["created"] as? String
                     let title = meme["title"] as? String
                     let likes = meme["likes"] as? Int
-                    
+
                     self.getData(from: url) { data, response, error in
                         guard let data = data, error == nil else { return }
                         DispatchQueue.main.async() {
                             let newMeme = MemeObject(id: id!, created: date!, title: title!, likes: likes!, pic: data)
                             self.memes.append(newMeme)
-                            
+
                             self.memeTable.reloadData()
-                            
+
                         }
                     }
                 }
             }
         }
     }
-    
-    //makes a new api request to heroku but replaces results instead of appending them
+
+    // makes a new api request to heroku but replaces results instead of appending them
     func makeRequest(api: String) {
         let sv = UIViewController.displaySpinner(onView: self.view)
-        
+
         Alamofire.request(api).responseJSON { response in
             if let json = response.result.value as? [String: Any] {
                 guard let memes = json["memes"] as? [[String: Any]] else {
@@ -149,12 +148,12 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
                     guard let url = URL(string: meme["url"] as! String) else {
                         continue
                     }
-                    
+
                     let id = meme["id"] as? String
                     let date = meme["created"] as? String
                     let title = meme["title"] as? String
                     let likes = meme["likes"] as? Int
-                    
+
                     self.getData(from: url) { data, response, error in
                         guard let data = data, error == nil else { return }
                         DispatchQueue.main.async() {
@@ -169,7 +168,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
             }
         } //end of alamofire request
     }
-    
+
     // Shows Memelify logo on the navigation bar
     override func viewDidAppear(_ animated: Bool) {
         self.newfavs = UserDefaults.standard.stringArray(forKey: "test")!
@@ -179,9 +178,9 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         imageView.image = UIImage(named: "Memelify-transparent.png")
         navigationItem.titleView = imageView
     }
-    
+
     @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
-        makeRequest(api: "https://memelify.herokuapp.com/api/memes/latest?offset=0&limit="+String(offset+10))
+        makeRequest(api: "https://memelify.herokuapp.com/api/memes/latest?offset=0&limit=" + String(offset + 10))
         self.memeTable.reloadData()
         refreshControl.endRefreshing()
     }

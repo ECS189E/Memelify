@@ -63,7 +63,8 @@ class TrendingViewController: UIViewController, UITableViewDataSource, UITableVi
         }
         return cell
     }
-    //handles adding more memes once the user scrolls to the bottom of the table
+
+    // handles adding more memes once the user scrolls to the bottom of the table
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         let bottom: CGFloat = scrollView.contentSize.height - scrollView.frame.size.height
         let buffer: CGFloat = 100
@@ -87,7 +88,6 @@ class TrendingViewController: UIViewController, UITableViewDataSource, UITableVi
         memeTable.delegate = self
 
         makeRequest(api: "https://memelify.herokuapp.com/api/memes/hot")
-        
     }
     
     func makeRequest(api: String) {
@@ -120,12 +120,11 @@ class TrendingViewController: UIViewController, UITableViewDataSource, UITableVi
                     }
                 }
             }
-        } //end of alomafire request
+        } // end of alomafire request
     }
     
     func makeAdditionalRequest() {
-        //let bottomSpinner = self.memeTable.tableFooterView
-        offset = offset+10
+        offset = offset + 10
         
         let request = "https://memelify.herokuapp.com/api/memes/hot?offset="+String(offset)+"&limit=10"
         
@@ -152,7 +151,6 @@ class TrendingViewController: UIViewController, UITableViewDataSource, UITableVi
                             self.memes.append(newMeme)
                             
                             self.memeTable.reloadData()
-                            
                         }
                     }
                 }

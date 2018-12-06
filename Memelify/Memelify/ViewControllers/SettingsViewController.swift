@@ -12,7 +12,7 @@ class SettingsViewController: UITableViewController {
 
     @IBOutlet weak var darkTheme: UISegmentedControl!
     var darkMode: DarkMode?
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.darkMode = DarkMode(navigationController: navigationController!, tabBarController: tabBarController!, views: [tableView])
@@ -44,7 +44,6 @@ class SettingsViewController: UITableViewController {
         NotificationCenter.default.removeObserver(self, name: .darkModeDisabled, object: nil)
     }
 
-
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if DarkMode.isEnabled() {
             cell.backgroundColor = UIColor.black
@@ -69,23 +68,26 @@ class SettingsViewController: UITableViewController {
 
     // General Settings
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+
         if indexPath.section == 2 {
-            
+
             // Invite friends
             if indexPath.row == 0 {
                 self.share(message: "Come see us at https://github.com/ECS189E/Memelify !!")
-            // Rate us
+                // Rate us
             } else if indexPath.row == 1 {
                 let feedbackController = SMFeedbackViewController(survey: "JL895DP")
+
+                feedbackController?.cancelButtonTintColor = UIColor(red: 0, green: 133/255, blue: 145/255, alpha: 1.0)
+                feedbackController?.title = "Memelify Survey"
                 feedbackController?.present(from: self, animated: true, completion: nil)
-            // About Us
+                // About Us
             } else {
                 self.performSegue(withIdentifier: "AboutUsSegue", sender: self)
             }
         }
     }
-    
+
     func share(message: String) {
         print("Inviting friends")
         let friendVC = UIActivityViewController(activityItems: [message], applicationActivities: nil)

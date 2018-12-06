@@ -55,9 +55,6 @@
 		88CC833CDE3B2D1D65485575 /* Pods-Memelify.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Memelify.release.xcconfig"; path = "Pods/Target Support Files/Pods-Memelify/Pods-Memelify.release.xcconfig"; sourceTree = "<group>"; };
 		8A46D23921AFAFDD0038CA99 /* NotificationsName+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NotificationsName+Extensions.swift"; sourceTree = "<group>"; };
 		8A46D23B21AFC62D0038CA99 /* MLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MLabel.swift; sourceTree = "<group>"; };
-		8A8F280121A6396B0037B9F8 /* 01-star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "01-star.png"; sourceTree = "<group>"; };
-		8A8F280221A6396B0037B9F8 /* 02-star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "02-star.png"; sourceTree = "<group>"; };
-		8A8F280421A6396B0037B9F8 /* memelify logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "memelify logo.png"; sourceTree = "<group>"; };
 		8A8F280621A6396B0037B9F8 /* license.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = license.html; sourceTree = "<group>"; };
 		8A8F280721A6396B0037B9F8 /* backup.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = backup.txt; sourceTree = "<group>"; };
 		8A8F281721A63A650037B9F8 /* MemeTile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemeTile.swift; sourceTree = "<group>"; };
@@ -133,9 +130,6 @@
 				8A8F282921A739A40037B9F8 /* meme-example1.jpg */,
 				DE24482B21A0F6D9008DF45E /* Memelify-transparent.png */,
 				8A8F281E21A64B650037B9F8 /* computer-guy.png */,
-				8A8F280421A6396B0037B9F8 /* memelify logo.png */,
-				8A8F280121A6396B0037B9F8 /* 01-star.png */,
-				8A8F280221A6396B0037B9F8 /* 02-star.png */,
 				8A8F280521A6396B0037B9F8 /* license */,
 				8A8F280721A6396B0037B9F8 /* backup.txt */,
 			);
