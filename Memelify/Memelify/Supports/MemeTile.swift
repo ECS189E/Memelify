@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol refreshFavsProtocol: class {
+protocol refreshProtocol: class {
     func refreshFavs(id: String)
 }
 
@@ -27,15 +27,18 @@ class MemeTile: UITableViewCell {
     var fav = false
     var obj: MemeObject?
     var memeSharingDelegate: MemeSharingProtocol?
-    weak var refreshDelegate: refreshFavsProtocol?
+    weak var homerefreshDelegate: refreshProtocol?
+    weak var trendingrefreshDelegate: refreshProtocol?
+    weak var favrefreshDelegate: refreshProtocol?
     
     /// Adds current MemeTile object to local storage as a favorite Meme.
     /// - Parameters: sender: Any
     /// - Returns: None
     @IBAction func addToFavorites(_ sender: Any) {
         
-        var favs = [MemeObject]()
-        favs = try! NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(UserDefaults.standard.object(forKey: "saved") as! Data) as! [MemeObject]
+        //var favs: NSArray = [MemeObject]() as NSArray
+        var favs = UserDefaults.standard.stringArray(forKey: "test")
+        //        favs = try! NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(UserDefaults.standard.object(forKey: "saved") as! Data) as! [MemeObject]
         
         // add favorite
         if fav == false {
@@ -44,43 +47,45 @@ class MemeTile: UITableViewCell {
             let image = UIImage(named: "selected-heart")
             self.favorite.setImage(image, for: .normal)
             
-            if favs.contains(where: { $0.id==self.obj?.id}) {
+            if (favs?.contains((self.obj?.id)!))! {
+                print("found match")
                 return
             } else {
-                favs.append(self.obj!)
+                favs?.append((self.obj?.id)!)
             }
-        
+            
         //remove favorite
         } else {
             fav = false
             
             let image = UIImage(named: "unselected-heart")
             self.favorite.setImage(image, for: .normal)
-           
-            favs.removeAll(where: { $0.id==self.obj?.id})
+            favs?.removeAll(where: { $0 == self.obj?.id})
         }
         
-        let updatedFavs = try? NSKeyedArchiver.archivedData(withRootObject: favs, requiringSecureCoding: false)
-        UserDefaults.standard.set(updatedFavs, forKey: "saved")
-        
-        if refreshDelegate == nil {
+        UserDefaults.standard.set(favs, forKey: "test")
+        if favrefreshDelegate == nil {
             print("delegate: not in favorites view")
         } else {
-            self.refreshDelegate!.refreshFavs(id: (self.obj?.id)!)
-            print("finished using delegate")
+            self.favrefreshDelegate!.refreshFavs(id: (self.obj?.id)!)
+            print("finished using fav delegate")
         }
-        print(favs)
         
-    }
-    
-    func findOutFav () -> Bool {
-        var favs = [MemeObject]()
-        favs = try! NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(UserDefaults.standard.object(forKey: "saved") as! Data) as! [MemeObject]
-        if favs.contains(where: {$0.id == self.obj!.id} ){
-            return true
+        if homerefreshDelegate == nil {
+            print("delegate: not in home view")
+        } else {
+            self.homerefreshDelegate!.refreshFavs(id: (self.obj?.id)!)
+            print("finished using home delegate")
         }
-
-        return false
+        
+        if trendingrefreshDelegate == nil {
+            print("delegate: not in trending view")
+        } else {
+            self.trendingrefreshDelegate!.refreshFavs(id: (self.obj?.id)!)
+            print("finished using trending delegate")
+        }
+        print(favs!)
+        
     }
 
     required init?(coder aDecoder: NSCoder) {

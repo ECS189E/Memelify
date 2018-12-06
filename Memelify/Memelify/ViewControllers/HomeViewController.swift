@@ -9,7 +9,11 @@
 import UIKit
 import Alamofire
 
-class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, MemeSharingProtocol {
+class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, MemeSharingProtocol, refreshProtocol {
+    
+    func refreshFavs(id: String) {
+        self.memeTable.reloadData()
+    }
 
     lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
@@ -23,8 +27,8 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     @IBOutlet weak var memeTable: UITableView!
 
+    var newfavs : [String?] = []
     var memes = [MemeObject]()
-    var favorites = [MemeObject]()
     var darkMode : DarkMode?
     var offset = 0
     
@@ -44,10 +48,13 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MemeTilePrototype", for: indexPath) as! MemeTile
+        
+        self.newfavs = UserDefaults.standard.stringArray(forKey: "test")!
         cell.obj = memes[indexPath.row]
         cell.meme.image = cell.obj?.image
+        cell.homerefreshDelegate = self
         cell.karma.text = String(cell.obj?.likes ?? 0)
-        if favorites.contains(where: { $0.id == cell.obj?.id}){
+        if newfavs.contains(where: { $0 == cell.obj?.id}){
             cell.favorite.setImage(UIImage(named: "selected-heart"), for: .normal)
             cell.fav = true
         } else {
@@ -80,11 +87,14 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         memeTable.dataSource = self
         memeTable.delegate = self
     
-        let encodedData = try! NSKeyedArchiver.archivedData(withRootObject: self.favorites, requiringSecureCoding: false)
-        UserDefaults.standard.register(defaults: ["saved": encodedData])
+        if UserDefaults.standard.stringArray(forKey: "test") == nil {
+            UserDefaults.standard.set(newfavs, forKey: "test")
+        }else {
+            self.newfavs = UserDefaults.standard.stringArray(forKey: "test")!
+        }
         
         makeRequest(api: "https://memelify.herokuapp.com/api/memes/latest?offset=0&limit=10")
-
+        
     }
     
     //makes a new api request to heroku but appends results instead of replacing them
@@ -150,6 +160,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
                         DispatchQueue.main.async() {
                             let newMeme = MemeObject(id: id!, created: date!, title: title!, likes: likes!, pic: data)
                             self.memes.append(newMeme)
+                            //self.newfavs.adding(newMeme)
                             self.memeTable.reloadData()
                             UIViewController.removeSpinner(spinner: sv)
                         }
@@ -161,6 +172,8 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     // Shows Memelify logo on the navigation bar
     override func viewDidAppear(_ animated: Bool) {
+        self.newfavs = UserDefaults.standard.stringArray(forKey: "test")!
+        self.memeTable.reloadData()
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
         imageView.contentMode = .scaleAspectFit
         imageView.image = UIImage(named: "Memelify-transparent.png")

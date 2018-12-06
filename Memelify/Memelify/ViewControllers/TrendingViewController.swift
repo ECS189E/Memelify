@@ -9,7 +9,11 @@
 import UIKit
 import Alamofire
 
-class TrendingViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, MemeSharingProtocol {
+class TrendingViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, MemeSharingProtocol , refreshProtocol {
+    
+    func refreshFavs(id: String) {
+        self.memeTable.reloadData()
+    }
     
     lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
@@ -24,8 +28,9 @@ class TrendingViewController: UIViewController, UITableViewDataSource, UITableVi
     @IBOutlet weak var memeTable: UITableView!
 
     var memes = [MemeObject]()
-    var favorites = [MemeObject]()
+    var favorites: [String?] = []
     var darkMode : DarkMode?
+    var offset = 0
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return memes.count
@@ -43,11 +48,14 @@ class TrendingViewController: UIViewController, UITableViewDataSource, UITableVi
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MemeTilePrototype", for: indexPath) as! MemeTile
+        
+        self.favorites = UserDefaults.standard.stringArray(forKey: "test")!
         cell.memeSharingDelegate = self
+        cell.trendingrefreshDelegate = self
         cell.obj = memes[indexPath.row]
         cell.meme.image = cell.obj?.image
         cell.karma.text = String(cell.obj?.likes ?? 0)
-        if favorites.contains(where: { $0.id == cell.obj?.id}) {
+        if favorites.contains(where: { $0 == cell.obj?.id}) {
             cell.favorite.setImage(UIImage(named: "selected-heart"), for: .normal)
             cell.fav = true
         } else {
@@ -55,12 +63,25 @@ class TrendingViewController: UIViewController, UITableViewDataSource, UITableVi
         }
         return cell
     }
-
+    //handles adding more memes once the user scrolls to the bottom of the table
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        let bottom: CGFloat = scrollView.contentSize.height - scrollView.frame.size.height
+        let buffer: CGFloat = 100
+        let scrollPosition = scrollView.contentOffset.y
+        
+        // Reached the bottom of the list
+        if scrollPosition > bottom - buffer {
+            print("natural making additional request...")
+            makeAdditionalRequest()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.darkMode = DarkMode(navigationController: navigationController!, tabBarController: tabBarController!, views: [memeTable])
         self.memeTable.addSubview(self.refreshControl)
+        self.favorites = UserDefaults.standard.stringArray(forKey: "test")!
         
         memeTable.dataSource = self
         memeTable.delegate = self
@@ -102,8 +123,47 @@ class TrendingViewController: UIViewController, UITableViewDataSource, UITableVi
         } //end of alomafire request
     }
     
+    func makeAdditionalRequest() {
+        //let bottomSpinner = self.memeTable.tableFooterView
+        offset = offset+10
+        
+        let request = "https://memelify.herokuapp.com/api/memes/hot?offset="+String(offset)+"&limit=10"
+        
+        Alamofire.request(request).responseJSON { response in
+            if let json = response.result.value as? [String: Any] {
+                guard let memes = json["memes"] as? [[String: Any]] else {
+                    return
+                }
+                
+                for meme in memes {
+                    guard let url = URL(string: meme["url"] as! String) else {
+                        continue
+                    }
+                    
+                    let id = meme["id"] as? String
+                    let date = meme["created"] as? String
+                    let title = meme["title"] as? String
+                    let likes = meme["likes"] as? Int
+                    
+                    self.getData(from: url) { data, response, error in
+                        guard let data = data, error == nil else { return }
+                        DispatchQueue.main.async() {
+                            let newMeme = MemeObject(id: id!, created: date!, title: title!, likes: likes!, pic: data)
+                            self.memes.append(newMeme)
+                            
+                            self.memeTable.reloadData()
+                            
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
     // Shows Memelify logo on the navigation bar
     override func viewDidAppear(_ animated: Bool) {
+        self.favorites = UserDefaults.standard.stringArray(forKey: "test")!
+        self.memeTable.reloadData()
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
         imageView.contentMode = .scaleAspectFit
         imageView.image = UIImage(named: "Memelify-transparent.png")

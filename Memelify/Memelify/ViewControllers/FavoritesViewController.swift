@@ -7,34 +7,42 @@
 //
 
 import UIKit
+import Alamofire
 
-class FavoritesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, MemeSharingProtocol, refreshFavsProtocol {
+class FavoritesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, MemeSharingProtocol, refreshProtocol {
 
     //@IBOutlet weak var memeTable: UITableView!
     @IBOutlet weak var memeTable: UITableView!
     
     var memes = [MemeObject]()
-    var favorites = [MemeObject]()
+    var favorites: [String?] = []
     var darkMode : DarkMode?
+    var count = 0
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return favorites.count
+        return memes.count
     }
-
+    
+    func getData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
+        URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
+    }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let currentImage = favorites[indexPath.row].image
+        let currentImage = memes[indexPath.row].image
         let ratio = currentImage!.cropRatio()
         return (tableView.frame.width / ratio) + 40
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MemeTilePrototype", for: indexPath) as! MemeTile
+        
+        self.favorites = UserDefaults.standard.stringArray(forKey: "test")!
         cell.memeSharingDelegate = self
-        cell.refreshDelegate = self
+        cell.favrefreshDelegate = self
         cell.fav = true
-        cell.obj = favorites[indexPath.row]
-        cell.meme.image = favorites[indexPath.row].image
-        cell.karma.text = String(favorites[indexPath.row].likes ?? 0)
+        cell.obj = memes[indexPath.row]
+        cell.meme.image = memes[indexPath.row].image
+        cell.karma.text = String(memes[indexPath.row].likes ?? 0)
         cell.favorite.setImage(UIImage(named: "selected-heart"), for: .normal)
         return cell
     }
@@ -46,29 +54,65 @@ class FavoritesViewController: UIViewController, UITableViewDataSource, UITableV
 
         memeTable.dataSource = self
         memeTable.delegate = self
-
-        favorites = try! NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(UserDefaults.standard.object(forKey: "saved") as! Data) as! [MemeObject]
+        getFavorites()
     }
 
     // Shows Memelify logo on the navigation bar
     override func viewDidAppear(_ animated: Bool) {
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
         imageView.contentMode = .scaleAspectFit
-        memeTable.reloadData()
+        //memeTable.reloadData()
         imageView.image = UIImage(named: "Memelify-transparent.png")
         imageView.tintColor = UIColor.white
         navigationItem.titleView = imageView
-
-        favorites = try! NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(UserDefaults.standard.object(forKey: "saved") as! Data) as! [MemeObject]
-
+        
+        getFavorites()
+        self.memeTable.reloadData()
         print(favorites)
     }
     
+    func getFavorites() {
+        let sv = UIViewController.displaySpinner(onView: self.view)
+        self.memes.removeAll()
+        favorites = UserDefaults.standard.stringArray(forKey: "test")!
+        print(favorites.count)
+        for ids in favorites {
+            
+                Alamofire.request("https://memelify.herokuapp.com/api/memes/"+ids!).responseJSON { response in
+                    
+                    if let json = response.result.value as? [String: Any] {
+                        guard let url = URL(string: json["url"] as! String) else {
+                            print("no url")
+                            return
+                        }
+                        
+                        let id = json["id"] as? String
+                        let date = json["created"] as? String
+                        let title = json["title"] as? String
+                        let likes = json["likes"] as? Int
+                        
+                        self.getData(from: url) { data, response, error in
+                            guard let data = data, error == nil else { return }
+                            DispatchQueue.main.async() {
+                                let newMeme = MemeObject(id: id!, created: date!, title: title!, likes: likes!, pic: data)
+                                print(self.memes)
+                                if !self.memes.contains(newMeme) {
+                                    self.memes.append(newMeme)
+                                }
+                                self.memeTable.reloadData()
+                                UIViewController.removeSpinner(spinner: sv)
+                            }
+                        }
+                    }
+                } //end of alamofire request
+        }
+        //print(self.memes)
+        print("done in getfavs")
+    }
+    
     func refreshFavs(id: String) {
-        favorites.removeAll(where: { $0.id==id})
-        let updatedFavs = try? NSKeyedArchiver.archivedData(withRootObject: favorites, requiringSecureCoding: false)
-        UserDefaults.standard.set(updatedFavs, forKey: "saved")
-        memeTable.reloadData()
+        getFavorites()
+        self.memeTable.reloadData()
     }
     
 }
