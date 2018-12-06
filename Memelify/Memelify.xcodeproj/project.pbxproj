@@ -16,6 +16,8 @@
 		8A8F282321A67B590037B9F8 /* TrendingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8F282221A67B590037B9F8 /* TrendingViewController.swift */; };
 		8A8F282521A67B6A0037B9F8 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8F282421A67B6A0037B9F8 /* FavoritesViewController.swift */; };
 		8A8F282C21A739A40037B9F8 /* meme-example1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8A8F282921A739A40037B9F8 /* meme-example1.jpg */; };
+		8AADFF8F21B9B66100C20C65 /* UIScrollView+EmptyDataSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 8AADFF8D21B9B66000C20C65 /* UIScrollView+EmptyDataSet.m */; };
+		8AADFF9921B9BFC300C20C65 /* grumpyCat.png in Resources */ = {isa = PBXBuildFile; fileRef = 8AADFF9821B9BFC300C20C65 /* grumpyCat.png */; };
 		8AAE476621ACFC1D005B1E3A /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AAE476521ACFC1D005B1E3A /* SettingsViewController.swift */; };
 		8AC82EF021B83449000E8BF4 /* blue-background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8AC82EEF21B83449000E8BF4 /* blue-background.jpg */; };
 		8AC82EF221B83E57000E8BF4 /* doge.png in Resources */ = {isa = PBXBuildFile; fileRef = 8AC82EF121B83E57000E8BF4 /* doge.png */; };
@@ -63,6 +65,9 @@
 		8A8F282221A67B590037B9F8 /* TrendingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingViewController.swift; sourceTree = "<group>"; };
 		8A8F282421A67B6A0037B9F8 /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
 		8A8F282921A739A40037B9F8 /* meme-example1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "meme-example1.jpg"; sourceTree = "<group>"; };
+		8AADFF8D21B9B66000C20C65 /* UIScrollView+EmptyDataSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+EmptyDataSet.m"; sourceTree = "<group>"; };
+		8AADFF8E21B9B66100C20C65 /* UIScrollView+EmptyDataSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+EmptyDataSet.h"; sourceTree = "<group>"; };
+		8AADFF9821B9BFC300C20C65 /* grumpyCat.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = grumpyCat.png; sourceTree = "<group>"; };
 		8AAE476521ACFC1D005B1E3A /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		8AC82EEF21B83449000E8BF4 /* blue-background.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "blue-background.jpg"; sourceTree = "<group>"; };
 		8AC82EF121B83E57000E8BF4 /* doge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = doge.png; sourceTree = "<group>"; };
@@ -127,6 +132,7 @@
 			children = (
 				8AC82EEF21B83449000E8BF4 /* blue-background.jpg */,
 				8AC82EF121B83E57000E8BF4 /* doge.png */,
+				8AADFF9821B9BFC300C20C65 /* grumpyCat.png */,
 				8A8F282921A739A40037B9F8 /* meme-example1.jpg */,
 				DE24482B21A0F6D9008DF45E /* Memelify-transparent.png */,
 				8A8F281E21A64B650037B9F8 /* computer-guy.png */,
@@ -147,13 +153,15 @@
 		8A8F281621A63A650037B9F8 /* Supports */ = {
 			isa = PBXGroup;
 			children = (
-				8A8F281721A63A650037B9F8 /* MemeTile.swift */,
-				8AEF0DCF21B349DC000FC3DF /* Memelify-Bridging-Header.h */,
-				AD2BDCBA21A7B4E500A9B57F /* MemeObject.swift */,
+				8AADFF8E21B9B66100C20C65 /* UIScrollView+EmptyDataSet.h */,
+				8AADFF8D21B9B66000C20C65 /* UIScrollView+EmptyDataSet.m */,
+				8AF896C221B1C4B60025DE0E /* ViewController+Extension.swift */,
 				8A46D23921AFAFDD0038CA99 /* NotificationsName+Extensions.swift */,
+				8AEF0DCF21B349DC000FC3DF /* Memelify-Bridging-Header.h */,
+				8A8F281721A63A650037B9F8 /* MemeTile.swift */,
+				AD2BDCBA21A7B4E500A9B57F /* MemeObject.swift */,
 				8A46D23B21AFC62D0038CA99 /* MLabel.swift */,
 				8AF896BC21AFD2970025DE0E /* DarkMode.swift */,
-				8AF896C221B1C4B60025DE0E /* ViewController+Extension.swift */,
 			);
 			path = Supports;
 			sourceTree = "<group>";
@@ -347,6 +355,7 @@
 				8A8F282C21A739A40037B9F8 /* meme-example1.jpg in Resources */,
 				8A8F281F21A64B650037B9F8 /* computer-guy.png in Resources */,
 				8AC82EF021B83449000E8BF4 /* blue-background.jpg in Resources */,
+				8AADFF9921B9BFC300C20C65 /* grumpyCat.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -377,12 +386,14 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Memelify/Pods-Memelify-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/DZNEmptyDataSet/DZNEmptyDataSet.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DZNEmptyDataSet.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -428,6 +439,7 @@
 				8A46D23C21AFC62D0038CA99 /* MLabel.swift in Sources */,
 				8A8F282521A67B6A0037B9F8 /* FavoritesViewController.swift in Sources */,
 				8A8F281821A63A660037B9F8 /* MemeTile.swift in Sources */,
+				8AADFF8F21B9B66100C20C65 /* UIScrollView+EmptyDataSet.m in Sources */,
 				8AAE476621ACFC1D005B1E3A /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

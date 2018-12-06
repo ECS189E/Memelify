@@ -15,6 +15,7 @@ class SettingsViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
         self.darkMode = DarkMode(navigationController: navigationController!, tabBarController: tabBarController!, views: [tableView])
 
         self.navigationItem.title = "Settings"

@@ -2,7 +2,7 @@
 //  MemeTile.swift
 //  Memelify
 //
-//  Created by Will J on 11/16/18.
+//  Created by William, Dat, and Kauana.
 //  Copyright © 2018 Memelify. All rights reserved.
 //
 

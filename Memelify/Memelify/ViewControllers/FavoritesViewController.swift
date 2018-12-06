@@ -9,7 +9,7 @@
 import UIKit
 import Alamofire
 
-class FavoritesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, MemeSharingProtocol, refreshProtocol {
+class FavoritesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, MemeSharingProtocol, refreshProtocol, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate {
 
     @IBOutlet weak var memeTable: UITableView!
 
@@ -49,6 +49,11 @@ class FavoritesViewController: UIViewController, UITableViewDataSource, UITableV
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        // For DZNEmptyDataSet
+        memeTable.emptyDataSetSource = self
+        memeTable.emptyDataSetDelegate = self
+        memeTable.tableFooterView = UIView()
+
         self.darkMode = DarkMode(navigationController: navigationController!, tabBarController: tabBarController!, views: [memeTable])
 
         memeTable.dataSource = self
@@ -56,7 +61,7 @@ class FavoritesViewController: UIViewController, UITableViewDataSource, UITableV
         getFavorites()
     }
 
-    // Shows Memelify logo on the navigation bar
+    // Shows Memelify logo in the navigation bar
     override func viewDidAppear(_ animated: Bool) {
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
         imageView.contentMode = .scaleAspectFit
@@ -105,8 +110,6 @@ class FavoritesViewController: UIViewController, UITableViewDataSource, UITableV
                 }
             } //end of alamofire request
         }
-
-        print("done in getfavs")
     }
 
     func refreshFavs(id: String) {
@@ -114,4 +117,13 @@ class FavoritesViewController: UIViewController, UITableViewDataSource, UITableV
         self.memeTable.reloadData()
     }
 
+    func image(forEmptyDataSet scrollView: UIScrollView) -> UIImage? {
+        return UIImage(named: "grumpyCat")
+    }
+
+    func emptyDataSet(_ scrollView: UIScrollView, didTap button: UIButton) {
+        let ac = UIAlertController(title: "Button tapped!", message: nil, preferredStyle: .alert)
+        ac.addAction(UIAlertAction(title: "Hurray", style: .default))
+        present(ac, animated: true)
+    }
 }

@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  Memelify
 //
-//  Created by Will J on 11/15/18.
+//  Created by William, Kauana and Dat.
 //  Copyright © 2018 Memelify. All rights reserved.
 //
 

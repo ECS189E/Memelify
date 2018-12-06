@@ -5,4 +5,5 @@ use_frameworks!
 target 'Memelify' do
     pod 'Alamofire', '~> 4.7'
     pod 'surveymonkey-ios-sdk', '~> 2.0.0'
+    pod 'DZNEmptyDataSet'
 end
