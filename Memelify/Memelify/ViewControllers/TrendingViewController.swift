@@ -10,7 +10,7 @@ import UIKit
 import Alamofire
 
 class TrendingViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, MemeSharingProtocol {
-    private var apiServer = "https://memelify.herokuapp.com/api/memes/hot"
+    
     lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action:
@@ -65,7 +65,7 @@ class TrendingViewController: UIViewController, UITableViewDataSource, UITableVi
         memeTable.dataSource = self
         memeTable.delegate = self
 
-        makeRequest(api: apiServer)
+        makeRequest(api: "https://memelify.herokuapp.com/api/memes/hot")
         
     }
     

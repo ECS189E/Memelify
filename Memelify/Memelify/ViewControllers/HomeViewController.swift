@@ -11,7 +11,6 @@ import Alamofire
 
 class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, MemeSharingProtocol {
 
-    private var apiServer = "https://memelify.herokuapp.com/api/memes/latest?offset=0&limit=10"
     lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action:
@@ -21,7 +20,6 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         return refreshControl
     }()
-    
     
     @IBOutlet weak var memeTable: UITableView!
 
@@ -60,8 +58,8 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         return cell
     }
 
+    //handles adding more memes once the user scrolls to the bottom of the table
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-//        let top: CGFloat = 0
         let bottom: CGFloat = scrollView.contentSize.height - scrollView.frame.size.height
         let buffer: CGFloat = 100
         let scrollPosition = scrollView.contentOffset.y
@@ -80,31 +78,15 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         self.darkMode = DarkMode(navigationController: navigationController!, tabBarController: tabBarController!, views: [memeTable])
         self.memeTable.addSubview(self.refreshControl)
         
-//        let spinner = UIActivityIndicatorView(style: .gray)
-//        spinner.startAnimating()
-//        spinner.frame = CGRect(x: 0, y: 0, width: self.memeTable.frame.width, height: 50)
-//        self.memeTable.tableFooterView = spinner
-        
         memeTable.dataSource = self
         memeTable.delegate = self
     
         let encodedData = try! NSKeyedArchiver.archivedData(withRootObject: self.favorites, requiringSecureCoding: false)
         UserDefaults.standard.register(defaults: ["saved": encodedData])
         
-        makeRequest(api: apiServer)
+        makeRequest(api: "https://memelify.herokuapp.com/api/memes/latest?offset=0&limit=10")
         
     }
-    
-//    func tableView(_ tableView: UITableView,
-//                   willDisplay cell: UITableViewCell,
-//                   forRowAt indexPath: IndexPath)
-//    {
-//        // At the bottom...
-//        if (indexPath.row == memes.count - 1) {
-//            print("pulldown making additional request...")
-//            makeAdditionalRequest() // network request to get more data
-//        }
-//    }
     
     //makes a new api request to heroku but appends results instead of replacing them
     func makeAdditionalRequest() {
@@ -140,7 +122,6 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
                         }
                     }
                 }
-                //UIViewController.removeSpinner(spinner: self.memeTable.tableFooterView!)
             }
         }
     }
