@@ -65,5 +65,5 @@ class DarkMode {
         tabBarController.tabBar.barStyle = .default
         tabBarController.tabBar.tintColor = UIColor.black
         tabBarController.tabBar.unselectedItemTintColor = UIColor.darkGray
-
-    } }
+    }
+}
