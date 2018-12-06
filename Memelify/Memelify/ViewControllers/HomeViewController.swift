@@ -83,12 +83,8 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         let encodedData = try! NSKeyedArchiver.archivedData(withRootObject: self.favorites, requiringSecureCoding: false)
         UserDefaults.standard.register(defaults: ["saved": encodedData])
         
-<<<<<<< HEAD
         makeRequest(api: "https://memelify.herokuapp.com/api/memes/latest?offset=0&limit=10")
-        
-=======
-        makeRequest(api: apiServer)
->>>>>>> 8307081758196a670683ff4fa995a8af0f08a2e3
+
     }
     
     //makes a new api request to heroku but appends results instead of replacing them
