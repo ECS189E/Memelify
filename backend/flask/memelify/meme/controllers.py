@@ -11,7 +11,7 @@ from memelify.meme.models import RedditMeme
 blueprint = Blueprint('meme',  __name__)
 
 _FUNNY_SCORE_THRESHOLD = 0.2
-_ENABLE_NOFITICATION = False
+_ENABLE_NOFITICATION = True
 
 @blueprint.route('memes/latest', methods=('GET', ))
 def query_latest_memes():
@@ -20,7 +20,7 @@ def query_latest_memes():
     latest_memes = (RedditMeme.query
                     .filter(and_(
                         RedditMeme.funny_score > _FUNNY_SCORE_THRESHOLD,
-                        RedditMeme.is_hidden is not True))
+                        RedditMeme.is_hidden.isnot(True)))
                     .order_by(RedditMeme.created_utc.desc())
                     .offset(offset)
                     .limit(limit)
@@ -42,7 +42,7 @@ def query_hottest_memes():
     hottest_memes = (RedditMeme.query
                      .filter(and_(
                         RedditMeme.funny_score > _FUNNY_SCORE_THRESHOLD,
-                        RedditMeme.is_hidden is not True))
+                        RedditMeme.is_hidden.isnot(True)))
                      .order_by(RedditMeme.hotness.desc())
                      .offset(offset)
                      .limit(limit)
@@ -57,14 +57,13 @@ def get_top_meme():
     since_date = date.today() - datetime.timedelta(2)
     top_meme = (RedditMeme.query
                 .filter(and_(
-                    cast(RedditMeme.created_utc, Date) < since_date),
+                    cast(RedditMeme.created_utc, Date) < since_date,
                     RedditMeme.funny_score > _FUNNY_SCORE_THRESHOLD,
-                    RedditMeme.is_hidden is not True,
+                    RedditMeme.is_hidden.isnot(True))
                 )
                 .order_by(RedditMeme.hotness.desc())
                 .first())
 
-    print(_ENABLE_NOFITICATION)
     if _ENABLE_NOFITICATION is True:
         return jsonify(top_meme.serialize if top_meme else {})
     else:
@@ -75,6 +74,6 @@ def get_top_meme():
 def notify():
     global _ENABLE_NOFITICATION
 
-    enable = request.args.get('enable', default=0, type=int)
+    enable = request.args.get('enable', default=1, type=int)
     _ENABLE_NOFITICATION = bool(enable)
     return jsonify(enable=_ENABLE_NOFITICATION)
