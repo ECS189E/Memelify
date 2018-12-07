@@ -11,7 +11,7 @@ from memelify.meme.models import RedditMeme
 blueprint = Blueprint('meme',  __name__)
 
 _FUNNY_SCORE_THRESHOLD = 0.2
-_ENABLE_NOFITICATION = True
+_ENABLE_NOFITICATION = False
 
 @blueprint.route('memes/latest', methods=('GET', ))
 def query_latest_memes():
