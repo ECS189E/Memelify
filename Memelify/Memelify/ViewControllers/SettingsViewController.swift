@@ -7,10 +7,14 @@
 //
 
 import UIKit
+import Alamofire
+
 
 class SettingsViewController: UITableViewController {
 
     @IBOutlet weak var darkTheme: UISegmentedControl!
+    @IBOutlet weak var memeNotifcationToggle: UISegmentedControl!
+
     var darkMode: DarkMode?
 
     override func viewDidLoad() {
@@ -52,6 +56,15 @@ class SettingsViewController: UITableViewController {
             cell.backgroundColor = UIColor.white
         }
     }
+
+    @IBAction func toggleMemeofTheDay(_ sender: Any) {
+        if memeNotifcationToggle.selectedSegmentIndex == 0 {
+            Alamofire.request("https://memelify.herokuapp.com/api/memes/notification?enable=1")
+        } else {
+            Alamofire.request("https://memelify.herokuapp.com/api/memes/notification?enable=0")
+        }
+    }
+
 
     @IBAction func toggleDarkMode(_ sender: Any) {
         if darkTheme.selectedSegmentIndex == 0 {
