@@ -117,7 +117,7 @@ class FavoritesViewController: UIViewController, UITableViewDataSource, UITableV
         }
     }
 
-    func refreshFavs(id: String) {
+    func refreshFavs(row: Int) {
         getFavorites()
         self.memeTable.reloadData()
     }

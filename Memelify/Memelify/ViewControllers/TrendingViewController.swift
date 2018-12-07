@@ -11,8 +11,10 @@ import Alamofire
 
 class TrendingViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, MemeSharingProtocol , refreshProtocol {
     
-    func refreshFavs(id: String) {
-        self.memeTable.reloadData()
+    func refreshFavs(row: Int) {
+        let index = NSIndexPath(row: row, section: 0)
+        self.memeTable.reloadRows(at: [index as IndexPath], with: UITableView.RowAnimation.none)
+        //self.memeTable.reloadData()
     }
     
     lazy var refreshControl: UIRefreshControl = {
@@ -50,6 +52,7 @@ class TrendingViewController: UIViewController, UITableViewDataSource, UITableVi
         let cell = tableView.dequeueReusableCell(withIdentifier: "MemeTilePrototype", for: indexPath) as! MemeTile
         
         self.favorites = UserDefaults.standard.stringArray(forKey: "test")!
+        cell.row = indexPath.row
         cell.memeSharingDelegate = self
         cell.trendingrefreshDelegate = self
         cell.obj = memes[indexPath.row]

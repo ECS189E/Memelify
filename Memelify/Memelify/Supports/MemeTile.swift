@@ -9,7 +9,7 @@
 import UIKit
 
 protocol refreshProtocol: class {
-    func refreshFavs(id: String)
+    func refreshFavs(row: Int)
 }
 
 protocol MemeSharingProtocol {
@@ -24,6 +24,7 @@ class MemeTile: UITableViewCell {
     @IBOutlet weak var favorite: UIButton!
     @IBOutlet weak var buttons: UIView!
 
+    var row = 0
     var fav = false
     var obj: MemeObject?
     var memeSharingDelegate: MemeSharingProtocol?
@@ -63,13 +64,13 @@ class MemeTile: UITableViewCell {
         if favrefreshDelegate == nil {
             print("delegate: not in favorites view")
         } else {
-            self.favrefreshDelegate!.refreshFavs(id: (self.obj?.id)!)
+            self.favrefreshDelegate!.refreshFavs(row: self.row)
             print("finished using fav delegate")
         }
         if homerefreshDelegate == nil {
             print("delegate: not in home view")
         } else {
-            self.homerefreshDelegate!.refreshFavs(id: (self.obj?.id)!)
+            self.homerefreshDelegate!.refreshFavs(row: self.row)
             print("finished using home delegate")
         }
 
@@ -77,7 +78,7 @@ class MemeTile: UITableViewCell {
         if trendingrefreshDelegate == nil {
             print("delegate: not in trending view")
         } else {
-            self.trendingrefreshDelegate!.refreshFavs(id: (self.obj?.id)!)
+            self.trendingrefreshDelegate!.refreshFavs(row: self.row)
             print("finished using trending delegate")
         }
         print(favs!)
