@@ -13,7 +13,7 @@ protocol refreshProtocol: class {
     func refreshFavs(row: Int)
 }
 
-//allows memes to be shared 
+//allows memes to be shared
 protocol MemeSharingProtocol {
     func share(meme: UIImage, message: String)
 }
@@ -27,7 +27,6 @@ class MemeTile: UITableViewCell {
     @IBOutlet weak var buttons: UIView!
 
     var row = 0
-    var fav = false
     var obj: MemeObject?
     var memeSharingDelegate: MemeSharingProtocol?
     weak var homerefreshDelegate: refreshProtocol?
@@ -38,29 +37,18 @@ class MemeTile: UITableViewCell {
     /// - Parameters: sender: Any
     /// - Returns: None
     @IBAction func addToFavorites(_ sender: Any) {
-        var favs = UserDefaults.standard.stringArray(forKey: "favs")
+        guard var favs = UserDefaults.standard.stringArray(forKey: "favs") else { return }
 
         // add favorite
-        if fav == false {
-            fav = true
-
+        if !fav() {
             let image = UIImage(named: "selected-heart")
             self.favorite.setImage(image, for: .normal)
-            let check = favs?.contains(where: { $0 == self.obj?.id })
-            if check! {
-                print("found match")
-                return
-            } else {
-                favs?.append((self.obj?.id)!)
-            }
-
-        //remove favorite
+            favs.append((self.obj?.id)!)
+            // remove favorite
         } else {
-            fav = false
-
             let image = UIImage(named: "unselected-heart")
             self.favorite.setImage(image, for: .normal)
-            favs?.removeAll(where: { $0 == self.obj?.id })
+            favs.removeAll(where: { $0 == self.obj?.id })
         }
 
         UserDefaults.standard.set(favs, forKey: "favs")
@@ -78,7 +66,12 @@ class MemeTile: UITableViewCell {
             self.trendingrefreshDelegate!.refreshFavs(row: self.row)
             print("finished using trending delegate")
         }
-        print(favs!)
+    }
+
+    func fav() -> Bool {
+        guard let favs = UserDefaults.standard.stringArray(forKey: "favs") else { return false }
+        guard let id = self.obj?.id else { return false }
+        return favs.contains(id)
     }
 
     required init?(coder aDecoder: NSCoder) {

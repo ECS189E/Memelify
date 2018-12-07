@@ -23,7 +23,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         refreshControl.addTarget(self, action:
                 #selector(HomeViewController.handleRefresh(_:)),
             for: UIControl.Event.valueChanged)
-        refreshControl.tintColor = UIColor.red
+        refreshControl.tintColor = UIColor.init(red: 0, green: 133/255, blue: 145/255, alpha: 1.0)
 
         return refreshControl
     }()
@@ -59,9 +59,8 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         cell.meme.image = cell.obj?.image
         cell.homerefreshDelegate = self
         cell.karma.text = String(cell.obj?.likes ?? 0)
-        if favorites.contains(where: { $0 == cell.obj?.id }) {
+        if cell.fav() {
             cell.favorite.setImage(UIImage(named: "selected-heart"), for: .normal)
-            cell.fav = true
         } else {
             cell.favorite.setImage(UIImage(named: "unselected-heart"), for: .normal)
         }
