@@ -39,14 +39,15 @@ class MemeTile: UITableViewCell {
     /// - Returns: None
     @IBAction func addToFavorites(_ sender: Any) {
         var favs = UserDefaults.standard.stringArray(forKey: "favs")
+        
         // add favorite
         if fav == false {
             fav = true
 
             let image = UIImage(named: "selected-heart")
             self.favorite.setImage(image, for: .normal)
-            
-            if (favs?.contains(where: { $0 == self.obj?.id }))! {
+            let check = favs?.contains(where: { $0 == self.obj?.id })
+            if check! {
                 print("found match")
                 return
             } else {
