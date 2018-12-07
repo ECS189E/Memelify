@@ -38,7 +38,7 @@ class MemeTile: UITableViewCell {
     /// - Parameters: sender: Any
     /// - Returns: None
     @IBAction func addToFavorites(_ sender: Any) {
-        var favs = UserDefaults.standard.stringArray(forKey: "test")
+        var favs = UserDefaults.standard.stringArray(forKey: "favs")
         // add favorite
         if fav == false {
             fav = true
@@ -62,7 +62,7 @@ class MemeTile: UITableViewCell {
             favs?.removeAll(where: { $0 == self.obj?.id })
         }
         
-        UserDefaults.standard.set(favs, forKey: "test")
+        UserDefaults.standard.set(favs, forKey: "favs")
         
         //update all views so that favorites are synced automatically
         if favrefreshDelegate != nil {

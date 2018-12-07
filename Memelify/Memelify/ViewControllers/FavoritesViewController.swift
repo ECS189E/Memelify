@@ -31,7 +31,7 @@ class FavoritesViewController: UIViewController, UITableViewDataSource, UITableV
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let currentImage = memes[indexPath.row].image
-        memes[indexPath.row].height = memes[indexPath.row].image?.size.height
+        memes[indexPath.row].height = (memes[indexPath.row].image?.size.height)! + CGFloat(40)
         let ratio = currentImage!.cropRatio()
         return (tableView.frame.width / ratio) + 40
     }
