@@ -92,7 +92,7 @@ class SettingsViewController: UITableViewController {
             } else if indexPath.row == 1 {
                 let feedbackController = SMFeedbackViewController(survey: "JL895DP")
 
-                feedbackController?.cancelButtonTintColor = UIColor(red: 0, green: 133/255, blue: 145/255, alpha: 1.0)
+                feedbackController?.cancelButtonTintColor = UIColor(red: 0, green: 133 / 255, blue: 145 / 255, alpha: 1.0)
                 feedbackController?.title = "Memelify Survey"
                 feedbackController?.present(from: self, animated: true, completion: nil)
                 // About Us
