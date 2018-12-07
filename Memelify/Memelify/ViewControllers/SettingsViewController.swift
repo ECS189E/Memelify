@@ -33,6 +33,9 @@ class SettingsViewController: UITableViewController {
         } else {
             darkTheme.selectedSegmentIndex = 1
         }
+        
+        // Disable Notification by default
+        Alamofire.request("https://memelify.herokuapp.com/api/memes/notification?enable=0")
     }
 
     // Display Settings
