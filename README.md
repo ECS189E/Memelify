@@ -19,6 +19,15 @@ as soon as Memelify is opened, the meme magic begins!**
 
 # App Design:
 
+## Frontend Diagram
+
+<img src="./images/frontend_diagram.svg">
+
+## Backend Diagram
+
+<img src="./backend/backend_diagram.svg">
+
+
 ### 3rd party libraries:
 
 - Reddit API
