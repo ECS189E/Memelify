@@ -40,6 +40,5 @@ def update_hot_score():
 
 
 # Cron jobs are scheduled tasks to be executed every certain time.
-print("Setting up cron jobs")
-find_reddit_memes.cron('* * * * *', 'find_memes', limit=5, queue='low')  # every 1 minute
-update_hot_score.cron('* * * * *', 'update_memes', queue='high')          # every 2 minutes
+find_reddit_memes.cron('* * * * *', 'find_memes', limit=5, queue='low')
+update_hot_score.cron('* * * * *', 'update_memes', queue='high')
