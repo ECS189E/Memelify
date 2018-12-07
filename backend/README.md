@@ -1,13 +1,19 @@
 # Memelify Backend Service
 
-This directory contains code for Memelify API service
+For learning purposes, we built our backend (mostly) from scratch with [Flask](http://flask.pocoo.org/). Our backend crawls from multiple sources (subreddits, Facebook Graph API) and applied Machine Learning to "extract" memes only.
+
+<img src="./backend_diagram.svg">
+
+Endpoint : `https://memelify.herokuapp.com/api/memes/latest`
+
 
 ##  Usage
 
 | API               |  Return                            |
 |:------------------|:-----------------------------------|
-|`/api/meme/latest`| list of latest memes (default=10)   |
-|`/api/meme/hot`  | list of trending memes (default=10) |
+|`/api/meme/latest` | list of latest memes (default=10)  |
+|`/api/meme/hot`    | list of trending memes (default=10)|
+|`/api/meme/top`    | display "Meme of the Day"          |
 
 * Extra parameters (for pagination)
 
@@ -25,7 +31,6 @@ The response is a json object.
 
 ```javascript
 {
-    has_more: true,
     memes: [
         {
             created: "2018-11-20 09:46:06",
@@ -41,25 +46,11 @@ The response is a json object.
             title: "I see your Gucci n95 and I raise you my own fancy mask.",
             url: "https://i.redd.it/lca2e9jyadz11.jpg"
         }],
-    offset: 3,
-    size: 142
 }
 ```
 
-* The JSON object has following skeleton:
-```s
-{
-    has_more: bool  --- if we still have more items to scroll down
-    offset:   int   --- current offset index
-    size:     int   --- size of the whole list
-    memes:    []    --- collection of memes object
-}
-```
-## Limitations
+## How did we apply Machine Learning?
 
-* No HTTPS.
-* The current implementation does not know if there is a new meme appeared.
-Therefore, we need to manually restart docker container to reload the bot.
 
 
 ## Reference:
