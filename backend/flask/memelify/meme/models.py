@@ -4,7 +4,7 @@ import datetime as dt
 from decimal import Decimal
 
 from memelify.extensions import db
-from sqlalchemy import Column, String, Text, Integer, Float
+from sqlalchemy import Column, String, Text, Integer, Float, Boolean, DateTime
 
 
 class RedditMeme(db.Model):
@@ -14,11 +14,11 @@ class RedditMeme(db.Model):
     title = Column(Text)
     votes = Column(Integer, default=0)
     upvote_ratio = Column(Float)
-    hotness = db.Column(db.Float(15, 6), default=0.00)
-    funny_score = db.Column(db.Float(2, 1),default=0.00)
-    updated = Column(db.DateTime, nullable=False, default=dt.datetime.utcnow)
-    created_utc = Column(db.DateTime, nullable=False, default=dt.datetime.utcnow)
-
+    hotness = Column(Float(15, 6), default=0.00)
+    funny_score = Column(Float(2, 1), default=0.00)
+    updated = Column(DateTime, nullable=False, default=dt.datetime.utcnow)
+    created_utc = Column(DateTime, nullable=False, default=dt.datetime.utcnow)
+    is_hidden = Column(Boolean, default=False)
     @property
     def serialize(self):
         """Convert a meme to dictionary object to parse into JSON easier"""
