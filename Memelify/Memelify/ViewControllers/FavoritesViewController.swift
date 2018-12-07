@@ -69,18 +69,18 @@ class FavoritesViewController: UIViewController, UITableViewDataSource, UITableV
     override func viewDidAppear(_ animated: Bool) {
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
         imageView.contentMode = .scaleAspectFit
-        //memeTable.reloadData()
+
         imageView.image = UIImage(named: "Memelify-transparent.png")
         imageView.tintColor = UIColor.white
         navigationItem.titleView = imageView
+
         getFavorites()
-        //self.memeTable.reloadData()
+
         print(favorites)
     }
     
-    //makes a series of api calls to fetch the favorited memes and saves them to the device
+    // makes a series of api calls to fetch the favorited memes and saves them to the device
     func getFavorites() {
-        //let sv = UIViewController.displaySpinner(onView: self.view)
         self.memes.removeAll()
         favorites = UserDefaults.standard.stringArray(forKey: "favs")!
         print(favorites.count)
@@ -107,7 +107,7 @@ class FavoritesViewController: UIViewController, UITableViewDataSource, UITableV
 
                             if self.memes.contains(where: { $0.id == id }) {
                                 return
-                            }else{
+                            } else{
                                 self.memes.append(newMeme)
                             }
                             self.memeTable.reloadData()
@@ -126,11 +126,4 @@ class FavoritesViewController: UIViewController, UITableViewDataSource, UITableV
     func image(forEmptyDataSet scrollView: UIScrollView) -> UIImage? {
         return UIImage(named: "grumpyCat")
     }
-
-    func emptyDataSet(_ scrollView: UIScrollView, didTap button: UIButton) {
-        let ac = UIAlertController(title: "Button tapped!", message: nil, preferredStyle: .alert)
-        ac.addAction(UIAlertAction(title: "Hurray", style: .default))
-        present(ac, animated: true)
-    }
-    
 }

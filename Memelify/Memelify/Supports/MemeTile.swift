@@ -33,13 +33,13 @@ class MemeTile: UITableViewCell {
     weak var homerefreshDelegate: refreshProtocol?
     weak var trendingrefreshDelegate: refreshProtocol?
     weak var favrefreshDelegate: refreshProtocol?
-    
+
     /// Adds current MemeTile object to local storage as a favorite Meme.
     /// - Parameters: sender: Any
     /// - Returns: None
     @IBAction func addToFavorites(_ sender: Any) {
         var favs = UserDefaults.standard.stringArray(forKey: "favs")
-        
+
         // add favorite
         if fav == false {
             fav = true
@@ -53,7 +53,7 @@ class MemeTile: UITableViewCell {
             } else {
                 favs?.append((self.obj?.id)!)
             }
-        
+
         //remove favorite
         } else {
             fav = false
@@ -62,9 +62,9 @@ class MemeTile: UITableViewCell {
             self.favorite.setImage(image, for: .normal)
             favs?.removeAll(where: { $0 == self.obj?.id })
         }
-        
+
         UserDefaults.standard.set(favs, forKey: "favs")
-        
+
         //update all views so that favorites are synced automatically
         if favrefreshDelegate != nil {
             self.favrefreshDelegate!.refreshFavs(row: self.row)

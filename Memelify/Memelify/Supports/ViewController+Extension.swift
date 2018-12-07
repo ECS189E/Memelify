@@ -13,7 +13,7 @@ import UIKit
 extension UIViewController {
     class func displaySpinner(onView: UIView) -> UIView {
         let spinnerView = UIView.init(frame: onView.bounds)
-        spinnerView.backgroundColor = UIColor.init(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.5)
+        spinnerView.backgroundColor = UIColor.init(red: 0, green: 133/255, blue: 145/255, alpha: 1.0)
 
         let ai = UIActivityIndicatorView.init(style: .whiteLarge)
         ai.startAnimating()
