@@ -75,6 +75,6 @@ def get_top_meme():
 def notify():
     global _ENABLE_NOFITICATION
 
-    enable = request.args.get('enable', default=1, type=int)
+    enable = request.args.get('enable', default=0, type=int)
     _ENABLE_NOFITICATION = bool(enable)
     return jsonify(enable=_ENABLE_NOFITICATION)
