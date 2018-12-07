@@ -5,7 +5,6 @@
 **The Memelify app is designed to bring the hottest memes to users by providing
 an easy to use interface that allows users to connect to a subreddit. No signup
 required.
-
 By analyzing images with a powerful machine learning model, Memelify
 selects only the coolest memes from posts. That is why that with a quick tap,
 as soon as Memelify is opened, the meme magic begins!**
@@ -19,11 +18,11 @@ as soon as Memelify is opened, the meme magic begins!**
 
 # App Design:
 
-## Frontend Diagram
+### Frontend Diagram
 
 <img src="./images/frontend_diagram.svg">
 
-## Backend Diagram
+### Backend Diagram
 
 <img src="./backend/backend_diagram.svg">
 
@@ -44,24 +43,24 @@ networking library to make HTTP requests, wait for response and parse JSON.
 
 ##### Memetile (UI components in the stack view):
 
-- UIImageView meme: the actual image of the meme
-- Int karma: this just keeps track of the karma number for posts
-- bool favorite: whether or not the user has marked the meme as a favorite meme
-- UIButtons: favorite (heart icon) and share (square with arrow icon)
-- UILabel: up arrow to indicate karma count.
+- **UIImageView meme**: the actual image of the meme
+- **Int karma**: this just keeps track of the karma number for posts
+- **bool favorite**: whether or not the user has marked the meme as a favorite meme
+- **UIButtons**: favorite (heart icon) and share (square with arrow icon)
+- **UILabel**: up arrow to indicate karma count.
 
 ##### MemeObject (Meme information parsed from Reddit API call)
-- id: post id
-- date: "created_at" date
-- title: post title
-- likes: post likes
-- image: post image
+- **id**: post id
+- **date**: "created_at" date
+- **title**: post title
+- **likes**: post likes
+- **image**: post image
 
-#### Dark Mode (controls how the app's appearance if DarkMode is enabled or not):
+##### Dark Mode (controls how the app's appearance if DarkMode is enabled or not):
 
-- navigationController: UINavigationController allows navigation modifications
+- **navigationController**: UINavigationController allows navigation modifications
   for DarkMode
-- tabBarController: UITabBarController allows tabBar modifications for DarkMode
+- **tabBarController**: UITabBarController allows tabBar modifications for DarkMode
 
 ##### MLabel:
 - Used to implement the Dark Model feature. It allows app to know what to do
