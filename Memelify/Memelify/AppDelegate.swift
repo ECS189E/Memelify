@@ -7,15 +7,24 @@
 //
 
 import UIKit
+import Alamofire
+import UserNotifications
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
 
     var window: UIWindow?
-
-
+    // a hack for demo purpose.
+    // Run notification service periodically.
+    var TimerFunc: Timer!
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) {
+            (granted, error) in
+            print("granted: \(granted)")
+        }
+        UNUserNotificationCenter.current().delegate = self
+        self.TimerFunc = Timer.scheduledTimer(timeInterval: 10, target: self, selector: #selector(AppDelegate.scheduleNotifications), userInfo: nil, repeats: true)
         return true
     }
 
@@ -46,6 +55,65 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
 
+    // ====================
+    // Notification Handler
+    // ====================
 
+    //for displaying notification when app is in foreground
+    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        completionHandler([.alert, .badge, .sound])
+    }
+
+    // For handling tap and user actions
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        switch response.actionIdentifier {
+            case "memeOfTheDay":
+                print("Notify Meme of The Day")
+            default:
+                break
+        }
+        completionHandler()
+    }
+
+
+    @objc func scheduleNotifications() {
+        print("Triggering Notification")
+        let api = "https://memelify.herokuapp.com/api/memes/top"
+        Alamofire.request(api).responseJSON { response in
+            if let meme = response.result.value as? [String: Any] {
+                guard let meme_url = meme["url"] else {
+                    print("Notifcation service is not enabled. Skipping")
+                    print(meme)
+                    return
+                }
+
+                let url = URL(string: meme_url as! String)
+                let identifier = "memelifyIdentifier"
+                let description = meme["title"] as? String
+                DispatchQueue.main.async() {
+                    let content = UNMutableNotificationContent()
+                    content.badge = 1
+                    content.title = "Meme of The Day"
+                    content.body = description!
+                    content.sound = UNNotificationSound.default
+
+                    // If you want to attach any image to show in local notification
+                    print("Loading image")
+                    let task = URLSession.shared.dataTask(with: url!) { (data, resp, error) in
+                        guard let data = data, error == nil else { return }
+                        let myImage = UIImage(data: data)
+                        if let attachment = UNNotificationAttachment.create(identifier: identifier, image: myImage!, options: nil) {
+                            print("Image is loaded")
+                            content.attachments = [attachment]
+                        }
+                        let trigger = UNTimeIntervalNotificationTrigger.init(timeInterval: 0.1, repeats: false)
+                        let request = UNNotificationRequest(identifier: identifier, content: content, trigger: trigger)
+                        UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+                    }
+                    task.resume()
+                }
+            }
+        }
+    }
 }
 
