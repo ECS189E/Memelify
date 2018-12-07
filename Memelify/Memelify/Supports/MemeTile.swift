@@ -8,10 +8,12 @@
 
 import UIKit
 
+//allows other views to be updated when favorites button is clicked
 protocol refreshProtocol: class {
-    func refreshFavs(id: String)
+    func refreshFavs(row: Int)
 }
 
+//allows memes to be shared 
 protocol MemeSharingProtocol {
     func share(meme: UIImage, message: String)
 }
@@ -24,6 +26,7 @@ class MemeTile: UITableViewCell {
     @IBOutlet weak var favorite: UIButton!
     @IBOutlet weak var buttons: UIView!
 
+    var row = 0
     var fav = false
     var obj: MemeObject?
     var memeSharingDelegate: MemeSharingProtocol?
@@ -35,7 +38,7 @@ class MemeTile: UITableViewCell {
     /// - Parameters: sender: Any
     /// - Returns: None
     @IBAction func addToFavorites(_ sender: Any) {
-        var favs = UserDefaults.standard.stringArray(forKey: "test")
+        var favs = UserDefaults.standard.stringArray(forKey: "favs")
         // add favorite
         if fav == false {
             fav = true
@@ -43,7 +46,7 @@ class MemeTile: UITableViewCell {
             let image = UIImage(named: "selected-heart")
             self.favorite.setImage(image, for: .normal)
             
-            if (favs?.contains((self.obj?.id)!))! {
+            if (favs?.contains(where: { $0 == self.obj?.id }))! {
                 print("found match")
                 return
             } else {
@@ -59,25 +62,19 @@ class MemeTile: UITableViewCell {
             favs?.removeAll(where: { $0 == self.obj?.id })
         }
         
-        UserDefaults.standard.set(favs, forKey: "test")
-        if favrefreshDelegate == nil {
-            print("delegate: not in favorites view")
-        } else {
-            self.favrefreshDelegate!.refreshFavs(id: (self.obj?.id)!)
+        UserDefaults.standard.set(favs, forKey: "favs")
+        
+        //update all views so that favorites are synced automatically
+        if favrefreshDelegate != nil {
+            self.favrefreshDelegate!.refreshFavs(row: self.row)
             print("finished using fav delegate")
         }
-        if homerefreshDelegate == nil {
-            print("delegate: not in home view")
-        } else {
-            self.homerefreshDelegate!.refreshFavs(id: (self.obj?.id)!)
+        if homerefreshDelegate != nil {
+            self.homerefreshDelegate!.refreshFavs(row: self.row)
             print("finished using home delegate")
         }
-
-        
-        if trendingrefreshDelegate == nil {
-            print("delegate: not in trending view")
-        } else {
-            self.trendingrefreshDelegate!.refreshFavs(id: (self.obj?.id)!)
+        if trendingrefreshDelegate != nil {
+            self.trendingrefreshDelegate!.refreshFavs(row: self.row)
             print("finished using trending delegate")
         }
         print(favs!)

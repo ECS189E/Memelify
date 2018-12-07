@@ -11,10 +11,13 @@ import Alamofire
 
 class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, MemeSharingProtocol, refreshProtocol {
     
-    func refreshFavs(id: String) {
-        self.memeTable.reloadData()
+    // delegate function updates the specific row when favorite button is clicked
+    func refreshFavs(row: Int) {
+        let index = NSIndexPath(row: row, section: 0)
+        self.memeTable.reloadRows(at: [index as IndexPath], with: UITableView.RowAnimation.none)
     }
-
+    
+    // pull down to refresh ui element
     lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action:
@@ -27,7 +30,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
     @IBOutlet weak var memeTable: UITableView!
 
-    var newfavs: [String?] = []
+    var favorites: [String?] = []
     var memes = [MemeObject]()
     var darkMode: DarkMode?
     var offset = 0
@@ -35,26 +38,28 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return memes.count
     }
-
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return memes[indexPath.row].height!
+    }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let currentImage = memes[indexPath.row].image
+        memes[indexPath.row].height = (memes[indexPath.row].image?.size.height)! + CGFloat(40)
         let ratio = currentImage!.cropRatio()
         return (tableView.frame.width / ratio) + 40
-    }
-
-    func getData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
-        URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MemeTilePrototype", for: indexPath) as! MemeTile
 
-        self.newfavs = UserDefaults.standard.stringArray(forKey: "test")!
+        self.favorites = UserDefaults.standard.stringArray(forKey: "favs")!
+        cell.row = indexPath.row
         cell.obj = memes[indexPath.row]
         cell.meme.image = cell.obj?.image
         cell.homerefreshDelegate = self
         cell.karma.text = String(cell.obj?.likes ?? 0)
-        if newfavs.contains(where: { $0 == cell.obj?.id }) {
+        if favorites.contains(where: { $0 == cell.obj?.id }) {
             cell.favorite.setImage(UIImage(named: "selected-heart"), for: .normal)
             cell.fav = true
         } else {
@@ -86,14 +91,20 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
         memeTable.dataSource = self
         memeTable.delegate = self
-
-        if UserDefaults.standard.stringArray(forKey: "test") == nil {
-            UserDefaults.standard.set(newfavs, forKey: "test")
+        
+        //creates user device data if its not there otherwise reloads it
+        if UserDefaults.standard.stringArray(forKey: "favs") == nil {
+            UserDefaults.standard.set(favorites, forKey: "favs")
         } else {
-            self.newfavs = UserDefaults.standard.stringArray(forKey: "test")!
+            self.favorites = UserDefaults.standard.stringArray(forKey: "favs")!
         }
 
         makeRequest(api: "https://memelify.herokuapp.com/api/memes/latest?offset=0&limit=10")
+    }
+    
+    // gets the data (picture) from the web
+    func getData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
+        URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
     }
 
     // makes a new api request to heroku but appends results instead of replacing them
@@ -158,7 +169,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
                         DispatchQueue.main.async() {
                             let newMeme = MemeObject(id: id!, created: date!, title: title!, likes: likes!, pic: data)
                             self.memes.append(newMeme)
-                            //self.newfavs.adding(newMeme)
+                            //self.favorites.adding(newMeme)
                             self.memeTable.reloadData()
                             UIViewController.removeSpinner(spinner: sv)
                         }
@@ -170,7 +181,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
 
     // Shows Memelify logo on the navigation bar
     override func viewDidAppear(_ animated: Bool) {
-        self.newfavs = UserDefaults.standard.stringArray(forKey: "test")!
+        self.favorites = UserDefaults.standard.stringArray(forKey: "favs")!
         self.memeTable.reloadData()
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
         imageView.contentMode = .scaleAspectFit
@@ -178,6 +189,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         navigationItem.titleView = imageView
     }
 
+    // the functionality of the pull down to refesh ui element
     @objc func handleRefresh(_ refreshControl: UIRefreshControl) {
         makeRequest(api: "https://memelify.herokuapp.com/api/memes/latest?offset=0&limit=" + String(offset + 10))
         self.memeTable.reloadData()

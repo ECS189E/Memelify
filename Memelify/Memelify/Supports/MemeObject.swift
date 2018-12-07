@@ -16,13 +16,15 @@ class MemeObject: NSObject, NSCoding {
     var title: String?
     var likes: Int?
     var image: UIImage?
-
+    var height: CGFloat?
+    
     init(id: String, created: String, title: String, likes: Int, pic: Data) {
         self.id = id
         self.date = created
         self.title = title
         self.likes = likes
         self.image = UIImage(data: pic)
+        self.height = 0
     }
 
     func encode(with aCoder: NSCoder) {
@@ -40,7 +42,8 @@ class MemeObject: NSObject, NSCoding {
         self.likes = (aDecoder.decodeObject(forKey: "likes") as? Int)!
         self.image = aDecoder.decodeObject(forKey: "image") as? UIImage
     }
-
+    
+    // toString method for testing
     override var description: String {
         return self.title! + " " + self.date!
     }

@@ -11,10 +11,13 @@ import Alamofire
 
 class TrendingViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, MemeSharingProtocol , refreshProtocol {
     
-    func refreshFavs(id: String) {
-        self.memeTable.reloadData()
+    //refresh specific row based on favorite click
+    func refreshFavs(row: Int) {
+        let index = NSIndexPath(row: row, section: 0)
+        self.memeTable.reloadRows(at: [index as IndexPath], with: UITableView.RowAnimation.none)
     }
     
+    //pull down to refresh ui element
     lazy var refreshControl: UIRefreshControl = {
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action:
@@ -35,21 +38,23 @@ class TrendingViewController: UIViewController, UITableViewDataSource, UITableVi
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return memes.count
     }
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return memes[indexPath.row].height!
+    }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let currentImage = memes[indexPath.row].image
+        memes[indexPath.row].height = (memes[indexPath.row].image?.size.height)! + CGFloat(40)
         let ratio = currentImage!.cropRatio()
         return (tableView.frame.width / ratio) + 40
-    }
-
-    func getData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
-        URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MemeTilePrototype", for: indexPath) as! MemeTile
         
-        self.favorites = UserDefaults.standard.stringArray(forKey: "test")!
+        self.favorites = UserDefaults.standard.stringArray(forKey: "favs")!
+        cell.row = indexPath.row
         cell.memeSharingDelegate = self
         cell.trendingrefreshDelegate = self
         cell.obj = memes[indexPath.row]
@@ -62,7 +67,8 @@ class TrendingViewController: UIViewController, UITableViewDataSource, UITableVi
             cell.favorite.setImage(UIImage(named: "unselected-heart"), for: .normal)
         }
         return cell
-    }	
+    }
+    
     // handles adding more memes once the user scrolls to the bottom of the table
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         let bottom: CGFloat = scrollView.contentSize.height - scrollView.frame.size.height
@@ -81,12 +87,16 @@ class TrendingViewController: UIViewController, UITableViewDataSource, UITableVi
 
         self.darkMode = DarkMode(navigationController: navigationController!, tabBarController: tabBarController!, views: [memeTable])
         self.memeTable.addSubview(self.refreshControl)
-        self.favorites = UserDefaults.standard.stringArray(forKey: "test")!
+        self.favorites = UserDefaults.standard.stringArray(forKey: "favs")!
         
         memeTable.dataSource = self
         memeTable.delegate = self
 
         makeRequest(api: "https://memelify.herokuapp.com/api/memes/hot")
+    }
+    
+    func getData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
+        URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
     }
     
     func makeRequest(api: String) {
@@ -159,7 +169,7 @@ class TrendingViewController: UIViewController, UITableViewDataSource, UITableVi
     
     // Shows Memelify logo on the navigation bar
     override func viewDidAppear(_ animated: Bool) {
-        self.favorites = UserDefaults.standard.stringArray(forKey: "test")!
+        self.favorites = UserDefaults.standard.stringArray(forKey: "favs")!
         self.memeTable.reloadData()
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 50, height: 50))
         imageView.contentMode = .scaleAspectFit
