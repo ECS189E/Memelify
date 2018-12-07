@@ -16,18 +16,22 @@ class FavoritesViewController: UIViewController, UITableViewDataSource, UITableV
     var memes = [MemeObject]()
     var favorites: [String?] = []
     var darkMode: DarkMode?
-    var count = 0
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return memes.count
     }
-
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return memes[indexPath.row].height!
+    }
+    
     func getData(from url: URL, completion: @escaping (Data?, URLResponse?, Error?) -> ()) {
         URLSession.shared.dataTask(with: url, completionHandler: completion).resume()
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let currentImage = memes[indexPath.row].image
+        memes[indexPath.row].height = memes[indexPath.row].image?.size.height
         let ratio = currentImage!.cropRatio()
         return (tableView.frame.width / ratio) + 40
     }
@@ -35,7 +39,7 @@ class FavoritesViewController: UIViewController, UITableViewDataSource, UITableV
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MemeTilePrototype", for: indexPath) as! MemeTile
 
-        self.favorites = UserDefaults.standard.stringArray(forKey: "test")!
+        self.favorites = UserDefaults.standard.stringArray(forKey: "favs")!
         cell.memeSharingDelegate = self
         cell.favrefreshDelegate = self
         cell.fav = true
@@ -74,10 +78,11 @@ class FavoritesViewController: UIViewController, UITableViewDataSource, UITableV
         print(favorites)
     }
     
+    //makes a series of api calls to fetch the favorited memes and saves them to the device
     func getFavorites() {
         //let sv = UIViewController.displaySpinner(onView: self.view)
         self.memes.removeAll()
-        favorites = UserDefaults.standard.stringArray(forKey: "test")!
+        favorites = UserDefaults.standard.stringArray(forKey: "favs")!
         print(favorites.count)
         for ids in favorites {
 
@@ -105,10 +110,6 @@ class FavoritesViewController: UIViewController, UITableViewDataSource, UITableV
                             }else{
                                 self.memes.append(newMeme)
                             }
-//                            if self.memes.count == self.favorites.count {
-//                                UIViewController.removeSpinner(spinner: sv)
-//                            }
-
                             self.memeTable.reloadData()
                         }
                     }
