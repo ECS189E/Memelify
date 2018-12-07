@@ -19,7 +19,7 @@ def query_latest_memes():
     latest_memes = (RedditMeme.query
                     .filter(and_(
                         RedditMeme.funny_score > _FUNNY_SCORE_THRESHOLD,
-                        RedditMeme.is_hidden is False))
+                        RedditMeme.is_hidden is not True))
                     .order_by(RedditMeme.created_utc.desc())
                     .offset(offset)
                     .limit(limit)
@@ -41,7 +41,7 @@ def query_hottest_memes():
     hottest_memes = (RedditMeme.query
                      .filter(and_(
                         RedditMeme.funny_score > _FUNNY_SCORE_THRESHOLD,
-                        RedditMeme.is_hidden is False))
+                        RedditMeme.is_hidden is not True))
                      .order_by(RedditMeme.hotness.desc())
                      .offset(offset)
                      .limit(limit)
@@ -56,7 +56,7 @@ def get_top_meme():
                 .filter(and_(
                     cast(RedditMeme.created_utc, Date) < since_date),
                     RedditMeme.funny_score > _FUNNY_SCORE_THRESHOLD,
-                    RedditMeme.is_hidden is False,
+                    RedditMeme.is_hidden is not True,
                 )
                 .order_by(RedditMeme.hotness.desc())
                 .first())

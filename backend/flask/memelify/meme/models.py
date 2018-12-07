@@ -19,6 +19,8 @@ class RedditMeme(db.Model):
     updated = Column(DateTime, nullable=False, default=dt.datetime.utcnow)
     created_utc = Column(DateTime, nullable=False, default=dt.datetime.utcnow)
     is_hidden = Column(Boolean, default=False)
+
+
     @property
     def serialize(self):
         """Convert a meme to dictionary object to parse into JSON easier"""
