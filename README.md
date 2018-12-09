@@ -26,13 +26,19 @@ as soon as Memelify is opened, the meme magic begins!**
   - Implemented the Reddit API calls on Home and Trending view controllers and how the API response should be displayed.
 
 - **Will**:
-  -
+  - Created the MemeTile and MemeObject class and implemented the functionality of saving the favorite to the user's device
+  - Added functionality to the Home/Trending/Favorites views so that they displayed the memes with the correct favorites icon and popularity score synced up across the different views instantaneously
+  - Added the pull-down to refresh feature in home/trending views
+  - Added the infinite scrolling to home/trending views
+  - Added the invite friends to Settings View
 
 - **Dat**:
   -
   
  ### Things that are worth mentioning:
  - We are using Heroku's free plan to store our API. The issue with this plan is that the VMs sleep after 30 minutes of inactivity. Therefore, if the app hasn't been used in 30 minutes, the first time you open the app, it may take a bit longer to get the memes because the VMs need to resume their work. However, subsequent calls should be pretty quick.
+ - Implementing the dark mode was an involved feature that used the observer pattern to know when to change colors across views
+ - saving information to the device can only be done in certain ways and takes time if you want to save custom objects so that part had to be retrofitted in order to give the user the best experience without lag and buffering
 
 # App Design:
 
