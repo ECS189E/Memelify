@@ -16,13 +16,31 @@ as soon as Memelify is opened, the meme magic begins!**
 - Save your favorite memes to your phone.
 - Choose between a list of trending or the latest memes.
 
+# Individual Contributions
+
+- **Kauana**: 
+  - Created launch screen, logo, and all memes displayed on the app. Added the 'awesome face' app icon, but did not create it. Created UI for Settings Controller. Implemented Settings Controller features: Dark Mode, Rate our App, About Us. 
+  - Created the UI for Tab View Controllers: Home, Trending and Favorite controllers. Also, created the UI for Memetile (stack view with a row for image plus another for buttons). 
+  - Created the Navigation Bar for all screens.
+  - Implemented empty tableView set feature. When the user has no favorite memes, we show an image to let the user know.
+  - Implemented the Reddit API calls on Home and Trending view controllers and how the API response should be displayed.
+
+- **Will**:
+  -
+
+- **Dat**:
+  -
+  
+ ### Things that are worth mentioning:
+ - We are using Heroku's free plan to store our API. The issue with this plan is that the VMs sleep after 30 minutes of inactivity. Therefore, if the app hasn't been used in 30 minutes, the first time you open the app, it may take a bit longer to get the memes because the VMs need to resume their work. However, subsequent calls should be pretty quick.
+
 # App Design:
 
-### Frontend Diagram
+### Frontend Diagram:
 
 <img src="./images/frontend_diagram.svg">
 
-### Backend Diagram
+### Backend Diagram:
 
 <img src="./backend/backend_diagram.svg">
 
