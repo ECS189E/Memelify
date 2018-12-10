@@ -33,7 +33,11 @@ as soon as Memelify is opened, the meme magic begins!**
   - Added the invite friends to Settings View
 
 - **Dat**:
-  -
+  - Handled all the backend and API service.
+  - Succesfully deployed to heroku.
+  - Applied Machine Learning for meme classification task.
+  - Implemented Meme Sharing Feature.
+  - Implemented 'Meme of The Day' Notification Service.
   
  ### Things that are worth mentioning:
  - We are using Heroku's free plan to store our API. The issue with this plan is that the VMs sleep after 30 minutes of inactivity. Therefore, if the app hasn't been used in 30 minutes, the first time you open the app, it may take a bit longer to get the memes because the VMs need to resume their work. However, subsequent calls should be pretty quick.
