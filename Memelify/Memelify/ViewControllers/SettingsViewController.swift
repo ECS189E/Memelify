@@ -11,23 +11,23 @@ import Alamofire
 
 
 class SettingsViewController: UITableViewController {
-    
+
     @IBOutlet weak var darkTheme: UISegmentedControl!
     @IBOutlet weak var memeNotifcationToggle: UISegmentedControl!
-    
+
     var darkMode: DarkMode?
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         self.darkMode = DarkMode(navigationController: navigationController!, tabBarController: tabBarController!, views: [tableView])
-        
+
         self.navigationItem.title = "Settings"
-        
+
         // Add Observers for dark theme
         NotificationCenter.default.addObserver(self, selector: #selector(darkModeEnabled(_:)), name: .darkModeEnabled, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(darkModeDisabled(_:)), name: .darkModeDisabled, object: nil)
-        
+
         if DarkMode.isEnabled() {
             darkTheme.selectedSegmentIndex = 0
         } else {
@@ -41,21 +41,21 @@ class SettingsViewController: UITableViewController {
         }
         
     }
-    
+
     // Display Settings
     @objc private func darkModeEnabled(_ notification: Notification) {
         self.tableView.reloadData()
     }
-    
+
     @objc private func darkModeDisabled(_ notification: Notification) {
         self.tableView.reloadData()
     }
-    
+
     deinit {
         NotificationCenter.default.removeObserver(self, name: .darkModeEnabled, object: nil)
         NotificationCenter.default.removeObserver(self, name: .darkModeDisabled, object: nil)
     }
-    
+
     override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         if DarkMode.isEnabled() {
             cell.backgroundColor = UIColor.black
@@ -63,7 +63,7 @@ class SettingsViewController: UITableViewController {
             cell.backgroundColor = UIColor.white
         }
     }
-    
+
     @IBAction func toggleMemeofTheDay(_ sender: Any) {
         if memeNotifcationToggle.selectedSegmentIndex == 0 {
             UserDefaults.standard.set(true, forKey: "notificationEnabled")

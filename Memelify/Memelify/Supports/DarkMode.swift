@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 
+
 class DarkMode {
     var navigationController: UINavigationController
     var tabBarController: UITabBarController
@@ -21,7 +22,6 @@ class DarkMode {
 
         NotificationCenter.default.addObserver(self, selector: #selector(enabled(_:)), name: .darkModeEnabled, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(disabled(_:)), name: .darkModeDisabled, object: nil)
-
 
         if DarkMode.isEnabled() {
             NotificationCenter.default.post(name: .darkModeEnabled, object: nil)

@@ -8,8 +8,8 @@
 
 import UIKit
 
-@IBDesignable class MLabel: UILabel {
 
+@IBDesignable class MLabel: UILabel {
     func setup() {
         if DarkMode.isEnabled() {
             self.textColor = UIColor.white
@@ -20,7 +20,6 @@ import UIKit
 
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)!
-
         // Add Observers for dark theme
         NotificationCenter.default.addObserver(self, selector: #selector(darkModeEnabled(_:)), name: .darkModeEnabled, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(darkModeDisabled(_:)), name: .darkModeDisabled, object: nil)

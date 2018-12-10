@@ -1,24 +1,28 @@
 PODS:
   - Alamofire (4.7.3)
   - DZNEmptyDataSet (1.8.1)
+  - Kingfisher (5.0.0)
   - surveymonkey-ios-sdk (2.0.3)
 
 DEPENDENCIES:
   - Alamofire (~> 4.7)
   - DZNEmptyDataSet
+  - Kingfisher (~> 5.0)
   - surveymonkey-ios-sdk (~> 2.0.0)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
     - DZNEmptyDataSet
+    - Kingfisher
     - surveymonkey-ios-sdk
 
 SPEC CHECKSUMS:
   Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
+  Kingfisher: 2b0dd651e4fe5a07305b8242fde56f8e2d410f58
   surveymonkey-ios-sdk: 59c670cbe3688bd8d57e4aa9104daba836a4c1d2
 
-PODFILE CHECKSUM: e391fc8ae222a21d69f894709fcab1fd530effff
+PODFILE CHECKSUM: 8ca16b61d71ee74290afad0a627febe44094f9c5
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.6.0.beta.2
